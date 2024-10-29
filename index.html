@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <button onclick="greet()">test if wasm works</button>
+    <input type="file" id="file" onchange="load_flv_file()"/>
+    <button onclick="play()">play</button>
+</div>
+<br/>
+<video id="video" style="width: 1080px; height: 720px;" controls></video>
+<audio id="audio"></audio>
+</body>
+<script type="module">
+    import init, {init_local, greet, push_data, get_codec, start, consume} from './pkg/flv_wasm.js';
+    const run = async () => {
+        await init();
+        await init_local()
+    }
+    run()
+
+    function play() {
+        const video = document.getElementById('video');
+        video.play();
+        let data = consume();
+        let flag = data[0];
+        sourceBufferVideo.appendBuffer(data[1]);
+        // load data asynchronously
+
+    }
+
+    window.play = play;
+
+    function load_flv_file() {
+        const file = document.getElementById('file').files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            console.log(data.length);
+            push_data(data)
+            start();
+            init_mse_player();
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    let sourceBufferAudio;
+    let sourceBufferVideo;
+    let mediaSource;
+
+    function init_mse_player() {
+        mediaSource = new MediaSource();
+        const video = document.getElementById('video');
+        const audio = document.getElementById('audio');
+        video.src = URL.createObjectURL(mediaSource);
+        mediaSource.onsourceopen = function () {
+            console.log('source open');
+            console.log(get_codec());
+            // todo: supports h264/aac only
+            sourceBufferVideo = mediaSource.addSourceBuffer('video/mp4; codecs="' + get_codec()[0] + ',' + get_codec()[1] +'"');
+
+            /*
+            let audio_codec = get_codec()[1];
+            if (audio_codec === 'mp3') {
+                sourceBufferAudio = mediaSource.addSourceBuffer('audio/mpeg;')
+            } else {
+                // aac
+
+            }*/
+
+            sourceBufferVideo.addEventListener('updateend', async function () {
+                // console.log('update end');
+                try {
+                    // console.log('source open');
+                    let data = await consume();
+                    let flag = data[0];
+                    sourceBufferVideo.appendBuffer(data[1]);
+                    /*if (flag === 1 || flag === 0) {
+                        // video
+                        sourceBufferVideo.appendBuffer(data[1]);
+                    } else if(flag === 1) {
+                        // audio
+                        sourceBufferAudio.appendBuffer(data[1]);
+                    }*/
+                } catch (e) {
+                    console.log('end');
+                    mediaSource.endOfStream()
+                }
+            })
+
+            sourceBufferAudio.onerror = sourceBufferVideo.onerror = function (e) {
+                console.log('error', e);
+            };
+            sourceBufferAudio.onabort = sourceBufferVideo.onabort = function (e) {
+                console.log('abort', e);
+            }
+        }
+    }
+
+    window.greet = greet;
+    window.load_flv_file = load_flv_file;
+</script>
+</html>
