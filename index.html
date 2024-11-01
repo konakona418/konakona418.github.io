@@ -8,6 +8,11 @@
 <div>
     <button onclick="greet()">test if wasm works</button>
     <input type="file" id="file" onchange="load_flv_file()"/>
+    <br/>
+    <input type="text" id="url">
+    <label for="url"></label>
+    <br/>
+    <button onclick="load_remote_file()">load remote file</button>
     <button onclick="play()">play</button>
 </div>
 <br/>
@@ -23,14 +28,43 @@
     run()
 
     function play() {
-        const video = document.getElementById('video');
-        video.play();
         let data = consume();
         let flag = data[0];
         sourceBufferVideo.appendBuffer(data[1]);
         // load data asynchronously
 
     }
+
+    async function load_remote_file() {
+        const url = document.getElementById('url').value;
+
+        try {
+            let size;
+            const res = await fetch(url, {method: 'get', mode : 'cors'}).then(
+                res => {
+                    console.log(res);
+                    size = res.headers.get('Content-Length');
+                    return res.body.getReader();
+                }
+            );
+            let buffer = new Uint8Array(size);
+            let readBytes = 0;
+            while (readBytes < size) {
+                const result = await res.read();
+                buffer.set(result.value, readBytes);
+                readBytes += result.value.length;
+            }
+
+            console.log(buffer.length);
+            push_data(buffer);
+            start();
+            init_mse_player();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    window.load_remote_file = load_remote_file;
 
     window.play = play;
 
@@ -43,24 +77,35 @@
             push_data(data)
             start();
             init_mse_player();
+            play()
         };
         reader.readAsArrayBuffer(file);
     }
 
-    let sourceBufferAudio;
     let sourceBufferVideo;
+    let sourceBufferAudio;
     let mediaSource;
+
+
+    let buffering = false;
 
     function init_mse_player() {
         mediaSource = new MediaSource();
         const video = document.getElementById('video');
         const audio = document.getElementById('audio');
         video.src = URL.createObjectURL(mediaSource);
+        audio.src = URL.createObjectURL(mediaSource);
         mediaSource.onsourceopen = function () {
             console.log('source open');
             console.log(get_codec());
             // todo: supports h264/aac only
+            // todo: it seems that the video has some lag. maybe that has something to do with codec settings.
+            // 'cause the settings in video source is the minimum requirement.
+            // or there's still some margin for optimization.
+
             sourceBufferVideo = mediaSource.addSourceBuffer('video/mp4; codecs="' + get_codec()[0] + ',' + get_codec()[1] +'"');
+            sourceBufferVideo.mode = 'sequence';
+
 
             /*
             let audio_codec = get_codec()[1];
@@ -72,29 +117,35 @@
             }*/
 
             sourceBufferVideo.addEventListener('updateend', async function () {
-                // console.log('update end');
+                buffering = false;
                 try {
-                    // console.log('source open');
-                    let data = await consume();
+                    if (!mediaSource || !sourceBufferVideo || buffering) return;
+                    let data = consume();
                     let flag = data[0];
-                    sourceBufferVideo.appendBuffer(data[1]);
-                    /*if (flag === 1 || flag === 0) {
-                        // video
-                        sourceBufferVideo.appendBuffer(data[1]);
-                    } else if(flag === 1) {
+                    buffering = true;
+                    if (flag === 2) {
                         // audio
-                        sourceBufferAudio.appendBuffer(data[1]);
-                    }*/
+                        if (get_codec()[0] === 'mp3') {
+                            //sourceBufferAudio.appendBuffer(data[1]);
+                        } else {
+                            //console.log('audio');
+                            sourceBufferVideo.appendBuffer(data[1]);
+                        }
+                    } else {
+                        //console.log('video');
+                        sourceBufferVideo.appendBuffer(data[1]);
+                    }
                 } catch (e) {
                     console.log('end');
-                    mediaSource.endOfStream()
+                    mediaSource.endOfStream();
                 }
-            })
+            });
 
-            sourceBufferAudio.onerror = sourceBufferVideo.onerror = function (e) {
+
+            sourceBufferVideo.onerror = function (e) {
                 console.log('error', e);
             };
-            sourceBufferAudio.onabort = sourceBufferVideo.onabort = function (e) {
+            sourceBufferVideo.onabort = function (e) {
                 console.log('abort', e);
             }
         }
