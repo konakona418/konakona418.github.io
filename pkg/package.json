@@ -1,0 +1,18 @@
+{
+  "name": "flv-wasm",
+  "type": "module",
+  "collaborators": [
+    "konakona418 <creeperblin@outlook.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "flv_wasm_bg.wasm",
+    "flv_wasm.js",
+    "flv_wasm.d.ts"
+  ],
+  "main": "flv_wasm.js",
+  "types": "flv_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

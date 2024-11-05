@@ -6,6 +6,8 @@
 </head>
 <body>
 <div>
+    <button onclick="reload_transmuxer()">reload flv transmuxer</button>
+    <br/>
     <button onclick="greet()">test if wasm works</button>
     <input type="file" id="file" onchange="load_flv_file()"/>
     <br/>
@@ -20,7 +22,7 @@
 <audio id="audio"></audio>
 </body>
 <script type="module">
-    import init, {init_local, greet, push_data, get_codec, start, consume} from './pkg/flv_wasm.js';
+    import init, {init_local, greet, push_data, get_codec, start, consume, continue_decoding} from './pkg/flv_wasm.js';
     const run = async () => {
         await init();
         await init_local()
@@ -28,16 +30,21 @@
     run()
 
     function play() {
-        let data = consume();
-        let flag = data[0];
-        sourceBufferVideo.appendBuffer(data[1]);
-        // load data asynchronously
-
+        document.getElementById('video').play();
     }
+
+    function reload_transmuxer() {
+        init_local();
+        mediaSource = null;
+        document.getElementById('video').src = '';
+        document.getElementById('audio').src = '';
+    }
+
+    window.reload_transmuxer = reload_transmuxer;
 
     async function load_remote_file() {
         const url = document.getElementById('url').value;
-
+        let started = false;
         try {
             let size;
             const res = await fetch(url, {method: 'get', mode : 'cors'}).then(
@@ -47,18 +54,44 @@
                     return res.body.getReader();
                 }
             );
-            let buffer = new Uint8Array(size);
             let readBytes = 0;
             while (readBytes < size) {
                 const result = await res.read();
-                buffer.set(result.value, readBytes);
+                push_data(result.value);
+                try {
+                    if (started) {
+                        continue_decoding();
+
+                        /*buffering = false;
+                        try {
+                            if (mediaSource && sourceBufferVideo && !buffering) {
+                                let data = consume();
+                                let flag = data[0];
+                                buffering = true;
+                                if (flag !== 15) {
+                                    sourceBufferVideo.appendBuffer(data[1]);
+                                } else {
+                                    mediaSource.endOfStream();
+                                }
+                            }
+                        } catch (e) {
+                            console.log(e)
+                            // console.log('no more data in queue.');
+                        }*/
+
+                    } else {
+                        await start();
+                        await init_mse_player();
+                        started = true;
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
                 readBytes += result.value.length;
+                console.log('Loaded: ' + result.value.length / 1024 + ' KiBs');
             }
 
-            console.log(buffer.length);
-            push_data(buffer);
-            start();
-            init_mse_player();
+            console.log('Loaded: ' + readBytes / (1024 * 1024) + ' MiBs in total.');
         } catch (e) {
             console.log(e);
         }
@@ -73,7 +106,7 @@
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
-            console.log(data.length);
+            console.log('Loaded: ' + data.length / (1024 * 1024) + ' MiBs in total.');
             push_data(data)
             start();
             init_mse_player();
@@ -115,6 +148,15 @@
 
             }*/
 
+            let data = consume();
+            let flag = data[0];
+            buffering = true;
+            if (flag !== 15) {
+                sourceBufferVideo.appendBuffer(data[1]);
+            } else {
+                mediaSource.endOfStream();
+            }
+
             sourceBufferVideo.addEventListener('updateend', async function () {
                 buffering = false;
                 try {
@@ -122,21 +164,14 @@
                     let data = consume();
                     let flag = data[0];
                     buffering = true;
-                    if (flag === 2) {
-                        // audio
-                        if (get_codec()[0] === 'mp3') {
-                            //sourceBufferAudio.appendBuffer(data[1]);
-                        } else {
-                            //console.log('audio');
-                            sourceBufferVideo.appendBuffer(data[1]);
-                        }
-                    } else {
-                        //console.log('video');
+                    if (flag !== 15) {
                         sourceBufferVideo.appendBuffer(data[1]);
+                    } else {
+                        mediaSource.endOfStream();
                     }
                 } catch (e) {
-                    console.log('end');
-                    mediaSource.endOfStream();
+                    // console.log('no more data in queue.');
+                    //mediaSource.endOfStream();
                 }
             });
 

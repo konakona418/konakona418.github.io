@@ -7,6 +7,7 @@ export function init_local(): void;
  */
 export function push_data(data: any): void;
 export function start(): void;
+export function continue_decoding(): void;
 export function stop(): void;
 /**
  * Return the codec configuration
@@ -19,7 +20,7 @@ export function get_codec(): any;
 /**
  * Return the next data to be sent to the player
  * An array of 2 elements is returned:
- * - The first element is the media type (0: header, 1: video, 2: audio)
+ * - The first element is the media type (0: header, 1: video, 2: audio, 15: end of sequence)
  * - The second element is the payload
  * @returns {any}
  */
@@ -33,6 +34,7 @@ export interface InitOutput {
   readonly init_local: (a: number) => void;
   readonly push_data: (a: number, b: number) => void;
   readonly start: (a: number) => void;
+  readonly continue_decoding: (a: number) => void;
   readonly stop: (a: number) => void;
   readonly get_codec: (a: number) => void;
   readonly consume: (a: number) => void;
