@@ -19,25 +19,25 @@
   <meta name="author" content="李萌">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景这段时间突发奇想，想要给 Godot 引擎的视频组件做一个 ffmpeg 的兼容层，整完这个就做 CS61B 的 lab 去了。今天晚上上完离散数学已经差不多九点了，以为配个环境应该要不了半小时，结果中间出各种问题，一直折腾到现在。现在把配置工作差不多做完了，顺便把踩的坑记录一下。 几个关键问题下载版本的选择说实话 Windows 系统在这种时候就极其拉垮，开始下了全部源文件准备自己编译，结果">
+    <meta name="description" content="背景上一篇文章介绍了我配置 ffmpeg 开发环境的过程。这篇文章介绍配置 Godot Extension （GDExtension）开发环境过程中踩的一些坑。 众所周知，Godot 引擎在 4.x 大版本伊始就将旧的 GDNative 插件系统更换为了更先进（大约）的GDExtension 系统。其开发团队希望这套新系统是向后兼容的，然而不幸的是因为种种原因，minor version 0 和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ffmpeg libav C++ 开发环境配置踩坑">
-<meta property="og:url" content="https://lizi.moe/2025/02/20/ffmpeg-libav-C-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/index.html">
+<meta property="og:title" content="Godot Extension 开发环境配置踩坑">
+<meta property="og:url" content="https://lizi.moe/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/index.html">
 <meta property="og:site_name" content="李萌的博客">
-<meta property="og:description" content="背景这段时间突发奇想，想要给 Godot 引擎的视频组件做一个 ffmpeg 的兼容层，整完这个就做 CS61B 的 lab 去了。今天晚上上完离散数学已经差不多九点了，以为配个环境应该要不了半小时，结果中间出各种问题，一直折腾到现在。现在把配置工作差不多做完了，顺便把踩的坑记录一下。 几个关键问题下载版本的选择说实话 Windows 系统在这种时候就极其拉垮，开始下了全部源文件准备自己编译，结果">
+<meta property="og:description" content="背景上一篇文章介绍了我配置 ffmpeg 开发环境的过程。这篇文章介绍配置 Godot Extension （GDExtension）开发环境过程中踩的一些坑。 众所周知，Godot 引擎在 4.x 大版本伊始就将旧的 GDNative 插件系统更换为了更先进（大约）的GDExtension 系统。其开发团队希望这套新系统是向后兼容的，然而不幸的是因为种种原因，minor version 0 和">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lizi.moe/img/post/2025-02/00/ffmpeg-site.png">
-<meta property="article:published_time" content="2025-02-20T15:31:30.000Z">
-<meta property="article:modified_time" content="2025-02-20T16:04:37.861Z">
+<meta property="article:published_time" content="2025-02-21T06:58:26.000Z">
+<meta property="article:modified_time" content="2025-02-21T07:22:37.400Z">
 <meta property="article:author" content="李萌">
 <meta property="article:tag" content="C++">
-<meta property="article:tag" content="音视频处理">
+<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="CMake">
+<meta property="article:tag" content="游戏开发">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lizi.moe/img/post/2025-02/00/ffmpeg-site.png">
   
   
   
-  <title>ffmpeg libav C++ 开发环境配置踩坑 - 李萌的博客</title>
+  <title>Godot Extension 开发环境配置踩坑 - 李萌的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ffmpeg libav C++ 开发环境配置踩坑"></span>
+            <span id="subtitle" data-typed-text="Godot Extension 开发环境配置踩坑"></span>
           
         </div>
 
@@ -214,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 23:31" pubdate>
-          2025年2月20日 晚上
+        <time datetime="2025-02-21 14:58" pubdate>
+          2025年2月21日 下午
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          512 字
+          680 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -274,31 +274,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ffmpeg libav C++ 开发环境配置踩坑</h1>
+            <h1 id="seo-header">Godot Extension 开发环境配置踩坑</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>这段时间突发奇想，想要给 Godot 引擎的视频组件做一个 ffmpeg 的兼容层，整完这个就做 CS61B 的 lab 去了。今天晚上上完离散数学已经差不多九点了，以为配个环境应该要不了半小时，结果中间出各种问题，一直折腾到现在。现在把配置工作差不多做完了，顺便把踩的坑记录一下。</p>
-<h2 id="几个关键问题"><a href="#几个关键问题" class="headerlink" title="几个关键问题"></a>几个关键问题</h2><h3 id="下载版本的选择"><a href="#下载版本的选择" class="headerlink" title="下载版本的选择"></a>下载版本的选择</h3><p>说实话 Windows 系统在这种时候就极其拉垮，开始下了全部源文件准备自己编译，结果 Windows 这边就出各种奇异搞笑问题。所以我的建议是，如果用 Windows 系统，最好还是去下预编译的版本吧……省事又省心。</p>
-<p>一个预编译版本可在 <a target="_blank" rel="noopener" href="https://www.ffmpeg.org/download.html">ffmpeg 官网</a> 找到。</p>
-<p><img src="/img/post/2025-02/00/ffmpeg-site.png" srcset="/img/loading.gif" lazyload alt="ffmpeg site download" title="红框中所示"></p>
-<p>进入 Release 中下载 Windows 的包，解压缩。</p>
-<h3 id="CMake-项目架构"><a href="#CMake-项目架构" class="headerlink" title="CMake 项目架构"></a>CMake 项目架构</h3><p>首先把 lib include 目录都放到正确的地方。例如我这里：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">Project/<br>    thirdparty/<br>        libavx/<br>            include/<br>                libavcodec/<br>                    ...<br>                libavdevice/<br>                    ...<br>            lib/<br>                ...<br><br>    src/<br>        main.cpp<br></code></pre></td></tr></table></figure>
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>上一篇文章介绍了我配置 ffmpeg 开发环境的过程。这篇文章介绍配置 Godot Extension （GDExtension）开发环境过程中踩的一些坑。</p>
+<p>众所周知，Godot 引擎在 4.x 大版本伊始就将旧的 GDNative 插件系统更换为了更先进（大约）的GDExtension 系统。其开发团队希望这套新系统是向后兼容的，然而不幸的是因为种种原因，minor version 0 和 1 之间就不兼容了。不过这不是今天介绍的重点。</p>
+<p>我现在正在使用 Godot 4.2，开发环境为 Clion。</p>
+<h2 id="怎么构建静态库？"><a href="#怎么构建静态库？" class="headerlink" title="怎么构建静态库？"></a>怎么构建静态库？</h2><h3 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h3><p>对于构建开发 GDExtension 所需的 godot-cpp 库，官方给出的说法是使用 scons 构建系统，并且附上了相应的脚本。实际上如果你平时使用过这个，当然可以按照官方的说法搞。但我平时不用这个。另外比较坑的一点是这个脚本不会输出它使用的编译器，导致开始我编译静态库用的是 MSVC，弄到 Clion 那边编译插件动态库时候用的 MinGW，然后一直链接失败……所以说还是要注意一下。</p>
+<h3 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h3><p>官方也给出了使用 CMake 构建的方案。该怎么编译怎么编译就是了。</p>
+<h2 id="怎么写-CMakeList？"><a href="#怎么写-CMakeList？" class="headerlink" title="怎么写 CMakeList？"></a>怎么写 CMakeList？</h2><p>因为我用的 Clion，然后构建系统用的 CMake，所以说这上面要花点工夫。官方的样例代码 <code>godot-cpp/test</code> 里面有一个 CMakeList，可以作为参考。</p>
+<p>我的项目架构如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs text">/src<br>/thirdparty<br>├─godot_cpp<br>│  ├─bin # static lib<br>│  ├─gd_extension<br>│  │  └─gdextension_interface.h<br>│  ├─gen<br>│  │  ├─include<br>│  │  │  └─godot_cpp<br>│  │  │      ├─classes<br>│  │  │      ├─core<br>│  │  │      └─variant<br>│  │  └─src<br>│  │      ├─classes<br>│  │      └─variant<br>│  └─include<br>│      └─godot_cpp<br>│          ├─classes<br>│          ├─core<br>│          ├─templates<br>│          └─variant<br>└─libavx # ffmpeg<br>    ├─bin<br>    ├─include<br>    │  ├─libavcodec<br>    │  ├─libavdevice<br>    │  ├─libavfilter<br>    │  ├─libavformat<br>    │  ├─libavutil<br>    │  ├─libpostproc<br>    │  ├─libswresample<br>    │  └─libswscale<br>    └─lib<br>        └─pkgconfig<br></code></pre></td></tr></table></figure>
 
-<p>然后 CMakeList.txt 文件我是这么写的：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.29</span>)<br><span class="hljs-keyword">project</span>(godot_ffmpeg)<br><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><br><span class="hljs-keyword">include_directories</span>(thirdparty/libavx/<span class="hljs-keyword">include</span>)<br><span class="hljs-keyword">link_directories</span>(thirdparty/libavx/lib)<br><br><span class="hljs-keyword">add_executable</span>(godot_ffmpeg src/main.cpp)<br><br><span class="hljs-keyword">target_link_libraries</span>(<br>        godot_ffmpeg<br>        avcodec<br>        avdevice<br>        avfilter<br>        avformat<br>        avutil<br>        postproc<br>        swresample<br>        swscale<br>)<br></code></pre></td></tr></table></figure>
-
-<p>这样 CMakeList 算是勉强配置好了。</p>
-<h3 id="使用-C-调用-ffmpeg-函数"><a href="#使用-C-调用-ffmpeg-函数" class="headerlink" title="使用 C++ 调用 ffmpeg 函数"></a>使用 C++ 调用 ffmpeg 函数</h3><p>我这里创建的是一个 C++ 项目（因为 GDExtension 提供的是 C++ API）开始编译的时候报 <code>undefined reference to xxx</code>，这个解决起来简单，加个 <code>extern &quot;C&quot;</code> 的事情。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> &#123;<br>    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libavcodec/avcodec.h&gt;</span></span><br>    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libavformat/avformat.h&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="动态链接库"><a href="#动态链接库" class="headerlink" title="动态链接库"></a>动态链接库</h3><p>现在可以正常过编译了，但是运行时直接退出，返回 <code>-1073741515 (0xC0000135)</code>。这个是因为没有找到动态链接库导致的。把刚才下载的预编译包的 bin 里的 dll 复制到输出目录下面即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> &#123;<br>    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libavcodec/avcodec.h&gt;</span></span><br>    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libavformat/avformat.h&gt;</span></span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    AVFormatContext* avFormatContext = <span class="hljs-built_in">avformat_alloc_context</span>();<br>    <span class="hljs-keyword">if</span> (avFormatContext == <span class="hljs-literal">nullptr</span>) &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;avFormatContext is nullptr&quot;</span> &lt;&lt; std::endl;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;avFormatContext is not nullptr&quot;</span> &lt;&lt; std::endl;<br>    &#125;<br>    <span class="hljs-built_in">avformat_free_context</span>(avFormatContext);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-<p>运行正常输出：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">avcodec_alloc_context success<br></code></pre></td></tr></table></figure>
+<p>注意 <code>godot-cpp/include</code> <code>godot-cpp/gen/include</code> <code>godot-cpp/gd_extension</code> 里面的头文件都要导入！</p>
+<p>并且最后还需要链接刚刚编译好的静态库。</p>
+<p>我的 CMakeList 如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.29</span>)<br><span class="hljs-keyword">project</span>(godot_ffmpeg)<br><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_EXTENSIONS <span class="hljs-keyword">OFF</span>)<br><br><span class="hljs-keyword">set</span>(BUILD_AS_GODOT_EXTENSION <span class="hljs-keyword">ON</span>)<br><span class="hljs-keyword">set</span>(GODOT_EXTENSION_PLATFORM <span class="hljs-string">&quot;windows&quot;</span>)<br><span class="hljs-keyword">set</span>(GODOT_EXTENSION_TARGETED_BITS <span class="hljs-number">64</span>)<br><span class="hljs-keyword">set</span>(GODOT_EXTENSION_BUILD_TEMPLATE <span class="hljs-string">&quot;release&quot;</span>)<br><br><span class="hljs-keyword">file</span>(GLOB_RECURSE SOURCES <span class="hljs-string">&quot;$&#123;CMAKE_SOURCE_DIR&#125;/src/*.c**&quot;</span>)<br><span class="hljs-keyword">file</span>(GLOB_RECURSE HEADERS <span class="hljs-string">&quot;$&#123;CMAKE_SOURCE_DIR&#125;/src/*.h**&quot;</span>)<br><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/libavx/<span class="hljs-keyword">include</span>)<br><br><span class="hljs-keyword">link_directories</span>(<span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/libavx/lib)<br><br><span class="hljs-keyword">if</span> (BUILD_AS_GODOT_EXTENSION)<br><br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Building as Godot extension.&quot;</span>)<br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Platform: $&#123;GODOT_EXTENSION_PLATFORM&#125;&quot;</span>)<br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Targeted bits: $&#123;GODOT_EXTENSION_TARGETED_BITS&#125;&quot;</span>)<br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Build template: $&#123;GODOT_EXTENSION_BUILD_TEMPLATE&#125;&quot;</span>)<br><br>    <span class="hljs-keyword">set</span>(GODOT_GDEXTENSION_DIR <span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/godot_cpp/gd_extension)<br>    <span class="hljs-keyword">set</span>(CPP_BINDINGS_PATH <span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/godot_cpp)<br>    <span class="hljs-keyword">set</span>(CPP_LIB_PATH <span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/godot_cpp/bin)<br><br>    <span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;GODOT_GDEXTENSION_DIR&#125;</span>)<br>    <span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;CPP_BINDINGS_PATH&#125;</span>/<span class="hljs-keyword">include</span>)<br>    <span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;CPP_BINDINGS_PATH&#125;</span>/gen/<span class="hljs-keyword">include</span>)<br><br>    <span class="hljs-keyword">link_directories</span>(<span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/thirdparty/godot_cpp/bin/)<br><br>    <span class="hljs-keyword">add_library</span>(godot_ffmpeg SHARED <span class="hljs-variable">$&#123;SOURCES&#125;</span> <span class="hljs-variable">$&#123;HEADERS&#125;</span>)<br><span class="hljs-keyword">else</span> ()<br><br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Building as standalone executable.&quot;</span>)<br>    <span class="hljs-keyword">add_executable</span>(godot_ffmpeg <span class="hljs-variable">$&#123;SOURCES&#125;</span> <span class="hljs-variable">$&#123;HEADERS&#125;</span>)<br><br><span class="hljs-keyword">endif</span> ()<br><br><span class="hljs-keyword">if</span> (BUILD_AS_GODOT_EXTENSION)<br><br>    <span class="hljs-keyword">target_include_directories</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span><br>            PRIVATE<br>                <span class="hljs-variable">$&#123;CPP_BINDINGS_PATH&#125;</span>/<span class="hljs-keyword">include</span><br>                <span class="hljs-variable">$&#123;CPP_BINDINGS_PATH&#125;</span>/gen/<span class="hljs-keyword">include</span><br>                <span class="hljs-variable">$&#123;GODOT_GDEXTENSION_DIR&#125;</span><br>    )<br><br><span class="hljs-keyword">endif</span> ()<br><br><span class="hljs-keyword">target_link_libraries</span>(<br>        godot_ffmpeg<br>        PRIVATE<br>        avcodec<br>        avdevice<br>        avfilter<br>        avformat<br>        avutil<br>        postproc<br>        swresample<br>        swscale<br>)<br><br><span class="hljs-keyword">if</span> (BUILD_AS_GODOT_EXTENSION)<br><br>    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Linking from: $&#123;CPP_LIB_PATH&#125;/libgodot-cpp.$&#123;GODOT_EXTENSION_PLATFORM&#125;.$&#123;GODOT_EXTENSION_BUILD_TEMPLATE&#125;.$&#123;GODOT_EXTENSION_TARGETED_BITS&#125;.a&quot;</span>)<br><br>    <span class="hljs-keyword">target_link_libraries</span>(godot_ffmpeg PRIVATE<br>            <span class="hljs-variable">$&#123;CPP_LIB_PATH&#125;</span>/libgodot-cpp.<span class="hljs-variable">$&#123;GODOT_EXTENSION_PLATFORM&#125;</span>.<span class="hljs-variable">$&#123;GODOT_EXTENSION_BUILD_TEMPLATE&#125;</span>.<span class="hljs-variable">$&#123;GODOT_EXTENSION_TARGETED_BITS&#125;</span>.a)<br><br><span class="hljs-keyword">endif</span> ()<br></code></pre></td></tr></table></figure>
 
 <p>以上。</p>
 
@@ -315,7 +308,11 @@
       
         <a href="/tags/C/" class="print-no-link">#C++</a>
       
-        <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" class="print-no-link">#音视频处理</a>
+        <a href="/tags/Godot/" class="print-no-link">#Godot</a>
+      
+        <a href="/tags/CMake/" class="print-no-link">#CMake</a>
+      
+        <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="print-no-link">#游戏开发</a>
       
     </div>
   
@@ -327,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ffmpeg libav C++ 开发环境配置踩坑</div>
-      <div>https://lizi.moe/2025/02/20/ffmpeg-libav-C-开发环境配置踩坑/</div>
+      <div>Godot Extension 开发环境配置踩坑</div>
+      <div>https://lizi.moe/2025/02/21/Godot-Extension-开发环境配置踩坑/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月20日</div>
+          <div>2025年2月21日</div>
         </div>
       
       
@@ -372,18 +369,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" title="Godot Extension 开发环境配置踩坑">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Godot Extension 开发环境配置踩坑</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/20/%E8%AE%B0%E4%B8%80%E6%AC%A1-ROS-%E6%9C%8D%E5%8A%A1%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E4%B8%8D%E7%AC%A6%E9%A2%84%E6%9C%9F%E7%9A%84%E9%97%AE%E9%A2%98/" title="记一次运算符优先级导致的 ROS 服务执行逻辑不符预期的问题">
-                        <span class="hidden-mobile">记一次运算符优先级导致的 ROS 服务执行逻辑不符预期的问题</span>
+                      <a href="/2025/02/20/ffmpeg-libav-C-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" title="ffmpeg libav C++ 开发环境配置踩坑">
+                        <span class="hidden-mobile">ffmpeg libav C++ 开发环境配置踩坑</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
