@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>人麻了</title>
+    <link href="/2025/02/21/%E4%BA%BA%E9%BA%BB%E4%BA%86/"/>
+    <url>/2025/02/21/%E4%BA%BA%E9%BA%BB%E4%BA%86/</url>
+    
+    <content type="html"><![CDATA[<p>配这个 GDExtension 给我整麻了，Windows Build 默认使用 Windows 那套 API 进行动态库加载，然后我这个 MinGW 编译的不知为何就完全用不了。这事情之前就有人提过不知道为何没有解决。总之给我整道心破碎了，就这样吧。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>日常</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Godot Extension 开发环境配置踩坑</title>
     <link href="/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/"/>
     <url>/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/</url>
