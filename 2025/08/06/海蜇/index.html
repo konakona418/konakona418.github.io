@@ -19,22 +19,22 @@
   <meta name="author" content="李萌">
   <meta name="keywords" content="">
   
-    <meta name="description" content="今天看 Jason Turner 的视频才发现，原来我之前用 std::optional 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。 比如说这样的代码： 12345678910struct Container &#123;    int x;">
+    <meta name="description" content="突然想吃肥肠了。 最早去江油那边是吃老君路的川罗肥肠，毕竟老店有口皆碑，后来在市区开了分店，也就没必要专程驱车小五十公里去吃了，反正味道大差不差；后来在青莲镇吃一家叫什么杨肥肠还是伍肥肠的店，对面就是李白故里景区。但是从来没进去看过，李白又没有坐在里面为什么要去看。一般吃完就直接开车回绵阳了。 平时的早上可以吃肥肠米粉。据说起源是开元镇，所以现在很多店都叫某某开元米粉。但是去开元镇吃过，感觉很一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="optional-和一些杂七杂八的容器的一个小问题">
-<meta property="og:url" content="https://lizi.moe/2025/08/04/optional-%E5%92%8C%E4%B8%80%E4%BA%9B%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="海蜇">
+<meta property="og:url" content="https://lizi.moe/2025/08/06/%E6%B5%B7%E8%9C%87/index.html">
 <meta property="og:site_name" content="李萌的博客">
-<meta property="og:description" content="今天看 Jason Turner 的视频才发现，原来我之前用 std::optional 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。 比如说这样的代码： 12345678910struct Container &#123;    int x;">
+<meta property="og:description" content="突然想吃肥肠了。 最早去江油那边是吃老君路的川罗肥肠，毕竟老店有口皆碑，后来在市区开了分店，也就没必要专程驱车小五十公里去吃了，反正味道大差不差；后来在青莲镇吃一家叫什么杨肥肠还是伍肥肠的店，对面就是李白故里景区。但是从来没进去看过，李白又没有坐在里面为什么要去看。一般吃完就直接开车回绵阳了。 平时的早上可以吃肥肠米粉。据说起源是开元镇，所以现在很多店都叫某某开元米粉。但是去开元镇吃过，感觉很一">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-04T02:45:45.000Z">
-<meta property="article:modified_time" content="2025-08-04T12:21:18.511Z">
+<meta property="article:published_time" content="2025-08-06T01:29:46.000Z">
+<meta property="article:modified_time" content="2025-08-06T01:58:04.354Z">
 <meta property="article:author" content="李萌">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="日常">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>optional-和一些杂七杂八的容器的一个小问题 - 李萌的博客</title>
+  <title>海蜇 - 李萌的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="optional-和一些杂七杂八的容器的一个小问题"></span>
+            <span id="subtitle" data-typed-text="海蜇"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-04 10:45" pubdate>
-          2025年8月4日 上午
+        <time datetime="2025-08-06 09:29" pubdate>
+          2025年8月6日 上午
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          818 字
+          380 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          7 分钟
+          4 分钟
         
       </span>
     
@@ -271,44 +271,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">optional-和一些杂七杂八的容器的一个小问题</h1>
+            <h1 id="seo-header">海蜇</h1>
             
             
               <div class="markdown-body">
                 
-                <p>今天看 Jason Turner 的视频才发现，原来我之前用 <code>std::optional</code> 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。</p>
-<p>比如说这样的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Container</span> &#123;<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-built_in">Container</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">x</span>(x) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function">std::optional&lt;Container&gt; <span class="hljs-title">get_value</span><span class="hljs-params">()</span> </span>&#123;<br>    std::optional&lt;Container&gt; ret;<br>    ret = <span class="hljs-built_in">Container</span>(<span class="hljs-number">42</span>);<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这中间会有一个移动构造，因为 <code>= Container(42)</code> 那里右边是个 prvalue。然后把这个 <code>ret</code> 返回出去。</p>
-<p>之前我如果简写的话，会写成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> Container&#123;<span class="hljs-number">42</span>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>但是 Turner 说这里还是会调用一下移动构造（隐式构造一个 <code>std::optional</code> ）。他说这样其实不是非常的 RVO 友好。</p>
-<p>我自己也拿 Compiler Explorer 试了一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asm">call std::optional&lt;LifeMonitor&gt;::optional&lt;LifeMonitor, true&gt;(LifeMonitor&amp;&amp;)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs delphi">value_init -&gt; Param <span class="hljs-function"><span class="hljs-keyword">Constructor</span><span class="hljs-params">(42)</span></span><br><span class="hljs-function"><span class="hljs-title">move_of_value_init</span> -&gt; <span class="hljs-title">Move</span> <span class="hljs-title">Constructor</span> <span class="hljs-title">from</span> <span class="hljs-title">value_init</span></span><br><span class="hljs-function"><span class="hljs-title">value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br><span class="hljs-function"><span class="hljs-title">move_of_value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br></code></pre></td></tr></table></figure>
-
-<p>好吧还真是。等于说刚才两段代码是等价的。</p>
-<p>其实还是有 copy elision 的，就是最后那个隐式生成的 optional 作为返回值是被 NRVO 优化了的。但是，可能有些时候我们以为编译器优化的会更彻底一些，比如说直接在调用方的栈空间里面就地构造这个对象，从而避免这个多余的移动赋值，但是编译器实际上并没有进行这个优化。</p>
-<p>我看评论区有 Rustacean 说什么 Rust 就可以对这种东西进行比较好的优化因为默认移动云云（唉，r批）。他说的可能有一定道理，因为在语义约束更严格的时候，确实可能有利于编译器进行更激进的优化。不过比较可惜的是，他并没有给出佐证他的论断的证据。</p>
-<p>鉴于我现在还是用的 C++，所以还是回到 C++ 上来。Turner 的建议是，如果要保证 RVO 或者 NRVO 能够应用，最好写成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::optional&lt;Container&gt; ret;<br>ret.<span class="hljs-built_in">emplace</span>(<span class="hljs-number">42</span>);<br><span class="hljs-keyword">return</span> ret;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> std::optional&lt;Container&gt;&#123;<span class="hljs-number">42</span>&#125;;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> std::<span class="hljs-built_in">optional</span>&lt;Container&gt;(std::in_place, <span class="hljs-number">42</span>);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs delphi">value_init -&gt; Param <span class="hljs-function"><span class="hljs-keyword">Constructor</span><span class="hljs-params">(42)</span></span><br><span class="hljs-function"><span class="hljs-title">value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br></code></pre></td></tr></table></figure>
-
-<p>看汇编也没有那个移动构造了。</p>
-<p>这三种方法都可以。这样一方面能够应用 RVO&#x2F;NRVO，也能够保证 optional 里面的对象是就地构造的，没有多余的移动构造。pair&#x2F;tuple 什么的也是一个道理。</p>
-<p>评论里面还有个哥们指出了一点我觉得很有道理，他说返回值是 <code>std::optional</code> 或者 <code>std::expected</code> 这一类的东西的代码一般都有分支，比如说：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">std::optional&lt;Container&gt; <span class="hljs-title">get_value</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> std::<span class="hljs-literal">nullopt</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> std::optional&lt;Container&gt;&#123;<span class="hljs-number">42</span>&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这样编译器又不能进行激进优化了，移动赋值又要冒出来。所以他建议如果没必要返回 optional 或者 expected 就不要返回它，好让编译器正常进行优化。</p>
-<p>其实这个问题并不是非常严重。我之前虽然知道这个隐式移动构造的事情，但是确实也没太往优化这方面想过，所以写下来记录一下。</p>
+                <blockquote>
+<p>突然想吃肥肠了。</p>
+<p>最早去江油那边是吃老君路的川罗肥肠，毕竟老店有口皆碑，后来在市区开了分店，也就没必要专程驱车小五十公里去吃了，反正味道大差不差；后来在青莲镇吃一家叫什么杨肥肠还是伍肥肠的店，对面就是李白故里景区。但是从来没进去看过，李白又没有坐在里面为什么要去看。一般吃完就直接开车回绵阳了。</p>
+<p>平时的早上可以吃肥肠米粉。据说起源是开元镇，所以现在很多店都叫某某开元米粉。但是去开元镇吃过，感觉很一般，不如园艺山上面一家胖米粉，胖米粉不如我家旁边的米粉。</p>
+<p>不知道以后看见红烧肥肠或者粉蒸肥肠或者蘸水肥肠的时候会作何感想。也有可能什么感想都没有吧。毕竟我时常忘事。</p>
+<p>然后莫名想到某首海鲜曲。翻译不是我做的。</p>
+</blockquote>
+<p>抬起头望着天空</p>
+<p>发现有什么东西漂浮在空中</p>
+<p>睁大了双眼去细细端详</p>
+<p>原来是一只巨大的海蜇</p>
+<p>它的身材与人类的一般的大</p>
+<p>却飞在空中比电线杆的高度还要高</p>
+<p>它如何来到这座小镇呢</p>
+<p>又是为了什么而到来呢</p>
+<p>在外面匆匆行走的人们</p>
+<p>接二连三地戴上头盔</p>
 
                 
               </div>
@@ -321,7 +305,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C/" class="print-no-link">#C++</a>
+        <a href="/tags/%E6%97%A5%E5%B8%B8/" class="print-no-link">#日常</a>
       
     </div>
   
@@ -333,8 +317,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>optional-和一些杂七杂八的容器的一个小问题</div>
-      <div>https://lizi.moe/2025/08/04/optional-和一些杂七杂八的容器的一个小问题/</div>
+      <div>海蜇</div>
+      <div>https://lizi.moe/2025/08/06/海蜇/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +330,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月4日</div>
+          <div>2025年8月6日</div>
         </div>
       
       
@@ -378,18 +362,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/06/%E6%B5%B7%E8%9C%87/" title="海蜇">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">海蜇</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/05/%E5%8E%BB%E8%A5%BF%E5%AE%89-GDG-%E8%80%8D%E4%BA%86%E4%B8%80%E5%9C%88/" title="去西安 GDG 耍了一圈">
-                        <span class="hidden-mobile">去西安 GDG 耍了一圈</span>
+                      <a href="/2025/08/04/optional-%E5%92%8C%E4%B8%80%E4%BA%9B%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/" title="optional-和一些杂七杂八的容器的一个小问题">
+                        <span class="hidden-mobile">optional-和一些杂七杂八的容器的一个小问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
