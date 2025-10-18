@@ -19,17 +19,22 @@
   <meta name="author" content="李萌">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://lizi.moe/archives/2025/02/index.html">
+    <meta name="description" content="背景众所周知，C++并没有像许多语言（例如 C# 或者 Java）那样的反射（Reflection）机制，也没有类似于 Rust 的所谓过程宏（Procedural Macro）来间接实现类似的效果。虽然说大部分场景并不会涉及到类似的需求，但是一旦涉及到就非常令人头大。在这些场景下，往往需要依赖工具提供的额外支持，或者极其复杂的宏机制来达到这样的效果，案例包括 Qt 中的反射和 GDExtensi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在 C++ 中实现反射的一种简易方案">
+<meta property="og:url" content="https://lizi.moe/md/%E5%9C%A8-C-%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%80%E7%A7%8D%E7%AE%80%E6%98%93%E6%96%B9%E6%A1%88.html">
 <meta property="og:site_name" content="李萌的博客">
+<meta property="og:description" content="背景众所周知，C++并没有像许多语言（例如 C# 或者 Java）那样的反射（Reflection）机制，也没有类似于 Rust 的所谓过程宏（Procedural Macro）来间接实现类似的效果。虽然说大部分场景并不会涉及到类似的需求，但是一旦涉及到就非常令人头大。在这些场景下，往往需要依赖工具提供的额外支持，或者极其复杂的宏机制来达到这样的效果，案例包括 Qt 中的反射和 GDExtensi">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-19T13:55:11.000Z">
+<meta property="article:modified_time" content="2025-06-29T13:26:31.078Z">
 <meta property="article:author" content="李萌">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>归档 - 李萌的博客</title>
+  <title>在 C++ 中实现反射的一种简易方案 - 李萌的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="在 C++ 中实现反射的一种简易方案"></span>
           
         </div>
 
@@ -216,53 +221,21 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 13 篇文章</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2025</p>
-    
-    <a href="/2025/02/22/2025-%E5%B9%B4%E5%88%9D-%E6%8F%AD%E9%98%B3-%E6%BD%AE%E5%B7%9E-%E6%B1%95%E5%A4%B4%E7%BA%AA%E8%A1%8C/" class="list-group-item list-group-item-action">
-      <time>02-22</time>
-      <div class="list-group-item-title">2025 年初 揭阳-潮州-汕头纪行</div>
-    </a>
-  
-    
-    <a href="/2025/02/21/%E4%BA%BA%E9%BA%BB%E4%BA%86/" class="list-group-item list-group-item-action">
-      <time>02-21</time>
-      <div class="list-group-item-title">人麻了</div>
-    </a>
-  
-    
-    <a href="/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" class="list-group-item list-group-item-action">
-      <time>02-21</time>
-      <div class="list-group-item-title">Godot Extension 开发环境配置踩坑</div>
-    </a>
-  
-    
-    <a href="/2025/02/20/ffmpeg-libav-C-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" class="list-group-item list-group-item-action">
-      <time>02-20</time>
-      <div class="list-group-item-title">ffmpeg libav C++ 开发环境配置踩坑</div>
-    </a>
-  
-    
-    <a href="/2025/02/20/%E8%AE%B0%E4%B8%80%E6%AC%A1-ROS-%E6%9C%8D%E5%8A%A1%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E4%B8%8D%E7%AC%A6%E9%A2%84%E6%9C%9F%E7%9A%84%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>02-20</time>
-      <div class="list-group-item-title">记一次运算符优先级导致的 ROS 服务执行逻辑不符预期的问题</div>
-    </a>
-  
-    
-    <a href="/2025/02/19/hello-world/" class="list-group-item list-group-item-action">
-      <time>02-19</time>
-      <div class="list-group-item-title">Hello World</div>
-    </a>
-  
-</div>
+<article class="page-content">
+  <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>众所周知，C++并没有像许多语言（例如 C# 或者 Java）那样的反射（Reflection）机制，也没有类似于 Rust 的所谓过程宏（Procedural Macro）来间接实现类似的效果。虽然说大部分场景并不会涉及到类似的需求，但是一旦涉及到就非常令人头大。在这些场景下，往往需要依赖工具提供的额外支持，或者极其复杂的宏机制来达到这样的效果，案例包括 Qt 中的反射和 GDExtension 的 GDOBJECT。</p>
+<p>这里给出一种比较简单的、不依赖于额外工具的侵入式反射实现。</p>
+<p>简略起见（其实是因为我只做了这些），这里主要介绍类的成员和方法的反射。</p>
+<h2 id="对于类成员变量"><a href="#对于类成员变量" class="headerlink" title="对于类成员变量"></a>对于类成员变量</h2><p>这里主要讨论 <code>const MemberType</code> 和 <code>MemberType</code> 的普通的成员变量。<code>static MemberType</code> 不在讨论的范畴内。</p>
+<p>对于 <code>ClassType</code> 类的 <code>member</code> 成员，我们可以通过 <code>&amp;ClassType::member</code> 来获得成员变量的指针，其类型为 <code>ClassType::MemberType*</code>。</p>
+<p>我们可以使用一个自动推导类型模板参数（C++17 引入）传入这个指针。接着，用 <code>decltype()</code> 拿到他的类型。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">auto</span> Member&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">register_member</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; name)</span> </span>&#123;<br>    <span class="hljs-keyword">using</span> MemberTypeFull = <span class="hljs-keyword">decltype</span>(Member);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>累了先不写了，改天续上。</p>
 
 
+  
+
+</article>
 
 
 

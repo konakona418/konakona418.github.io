@@ -19,17 +19,22 @@
   <meta name="author" content="李萌">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://lizi.moe/archives/2025/02/index.html">
+    <meta name="description" content="今天看 Jason Turner 的视频才发现，原来我之前用 std::optional 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。 比如说这样的代码： 12345678910struct Container &#123;    int x;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="optional-和一些杂七杂八的容器的一个小问题">
+<meta property="og:url" content="https://lizi.moe/md/optional-%E5%92%8C%E4%B8%80%E4%BA%9B%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98.html">
 <meta property="og:site_name" content="李萌的博客">
+<meta property="og:description" content="今天看 Jason Turner 的视频才发现，原来我之前用 std::optional 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。 比如说这样的代码： 12345678910struct Container &#123;    int x;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-04T02:45:45.000Z">
+<meta property="article:modified_time" content="2025-08-04T12:21:18.511Z">
 <meta property="article:author" content="李萌">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>归档 - 李萌的博客</title>
+  <title>optional-和一些杂七杂八的容器的一个小问题 - 李萌的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="optional-和一些杂七杂八的容器的一个小问题"></span>
           
         </div>
 
@@ -216,53 +221,45 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 13 篇文章</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2025</p>
-    
-    <a href="/2025/02/22/2025-%E5%B9%B4%E5%88%9D-%E6%8F%AD%E9%98%B3-%E6%BD%AE%E5%B7%9E-%E6%B1%95%E5%A4%B4%E7%BA%AA%E8%A1%8C/" class="list-group-item list-group-item-action">
-      <time>02-22</time>
-      <div class="list-group-item-title">2025 年初 揭阳-潮州-汕头纪行</div>
-    </a>
-  
-    
-    <a href="/2025/02/21/%E4%BA%BA%E9%BA%BB%E4%BA%86/" class="list-group-item list-group-item-action">
-      <time>02-21</time>
-      <div class="list-group-item-title">人麻了</div>
-    </a>
-  
-    
-    <a href="/2025/02/21/Godot-Extension-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" class="list-group-item list-group-item-action">
-      <time>02-21</time>
-      <div class="list-group-item-title">Godot Extension 开发环境配置踩坑</div>
-    </a>
-  
-    
-    <a href="/2025/02/20/ffmpeg-libav-C-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91/" class="list-group-item list-group-item-action">
-      <time>02-20</time>
-      <div class="list-group-item-title">ffmpeg libav C++ 开发环境配置踩坑</div>
-    </a>
-  
-    
-    <a href="/2025/02/20/%E8%AE%B0%E4%B8%80%E6%AC%A1-ROS-%E6%9C%8D%E5%8A%A1%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91%E4%B8%8D%E7%AC%A6%E9%A2%84%E6%9C%9F%E7%9A%84%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>02-20</time>
-      <div class="list-group-item-title">记一次运算符优先级导致的 ROS 服务执行逻辑不符预期的问题</div>
-    </a>
-  
-    
-    <a href="/2025/02/19/hello-world/" class="list-group-item list-group-item-action">
-      <time>02-19</time>
-      <div class="list-group-item-title">Hello World</div>
-    </a>
-  
-</div>
+<article class="page-content">
+  <p>今天看 Jason Turner 的视频才发现，原来我之前用 <code>std::optional</code> 之类的容器的方法并不一定合适（怎么听起来这么像营销号）。Turner 自己也吐槽自己的视频起的很标题党，不过我看了以后觉得其实还好，而且这些容器使用最佳实践的问题我真没太想过。所以写下来记一下。</p>
+<p>比如说这样的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Container</span> &#123;<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-built_in">Container</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">x</span>(x) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function">std::optional&lt;Container&gt; <span class="hljs-title">get_value</span><span class="hljs-params">()</span> </span>&#123;<br>    std::optional&lt;Container&gt; ret;<br>    ret = <span class="hljs-built_in">Container</span>(<span class="hljs-number">42</span>);<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这中间会有一个移动构造，因为 <code>= Container(42)</code> 那里右边是个 prvalue。然后把这个 <code>ret</code> 返回出去。</p>
+<p>之前我如果简写的话，会写成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> Container&#123;<span class="hljs-number">42</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>但是 Turner 说这里还是会调用一下移动构造（隐式构造一个 <code>std::optional</code> ）。他说这样其实不是非常的 RVO 友好。</p>
+<p>我自己也拿 Compiler Explorer 试了一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asm">call std::optional&lt;LifeMonitor&gt;::optional&lt;LifeMonitor, true&gt;(LifeMonitor&amp;&amp;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs delphi">value_init -&gt; Param <span class="hljs-function"><span class="hljs-keyword">Constructor</span><span class="hljs-params">(42)</span></span><br><span class="hljs-function"><span class="hljs-title">move_of_value_init</span> -&gt; <span class="hljs-title">Move</span> <span class="hljs-title">Constructor</span> <span class="hljs-title">from</span> <span class="hljs-title">value_init</span></span><br><span class="hljs-function"><span class="hljs-title">value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br><span class="hljs-function"><span class="hljs-title">move_of_value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br></code></pre></td></tr></table></figure>
+
+<p>好吧还真是。等于说刚才两段代码是等价的。</p>
+<p>其实还是有 copy elision 的，就是最后那个隐式生成的 optional 作为返回值是被 NRVO 优化了的。但是，可能有些时候我们以为编译器优化的会更彻底一些，比如说直接在调用方的栈空间里面就地构造这个对象，从而避免这个多余的移动赋值，但是编译器实际上并没有进行这个优化。</p>
+<p>我看评论区有 Rustacean 说什么 Rust 就可以对这种东西进行比较好的优化因为默认移动云云（唉，r批）。他说的可能有一定道理，因为在语义约束更严格的时候，确实可能有利于编译器进行更激进的优化。不过比较可惜的是，他并没有给出佐证他的论断的证据。</p>
+<p>鉴于我现在还是用的 C++，所以还是回到 C++ 上来。Turner 的建议是，如果要保证 RVO 或者 NRVO 能够应用，最好写成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::optional&lt;Container&gt; ret;<br>ret.<span class="hljs-built_in">emplace</span>(<span class="hljs-number">42</span>);<br><span class="hljs-keyword">return</span> ret;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> std::optional&lt;Container&gt;&#123;<span class="hljs-number">42</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">return</span> std::<span class="hljs-built_in">optional</span>&lt;Container&gt;(std::in_place, <span class="hljs-number">42</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs delphi">value_init -&gt; Param <span class="hljs-function"><span class="hljs-keyword">Constructor</span><span class="hljs-params">(42)</span></span><br><span class="hljs-function"><span class="hljs-title">value_init</span> -&gt; <span class="hljs-title">Destructor</span></span><br></code></pre></td></tr></table></figure>
+
+<p>看汇编也没有那个移动构造了。</p>
+<p>这三种方法都可以。这样一方面能够应用 RVO&#x2F;NRVO，也能够保证 optional 里面的对象是就地构造的，没有多余的移动构造。pair&#x2F;tuple 什么的也是一个道理。</p>
+<p>评论里面还有个哥们指出了一点我觉得很有道理，他说返回值是 <code>std::optional</code> 或者 <code>std::expected</code> 这一类的东西的代码一般都有分支，比如说：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">std::optional&lt;Container&gt; <span class="hljs-title">get_value</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> std::<span class="hljs-literal">nullopt</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> std::optional&lt;Container&gt;&#123;<span class="hljs-number">42</span>&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样编译器又不能进行激进优化了，移动赋值又要冒出来。所以他建议如果没必要返回 optional 或者 expected 就不要返回它，好让编译器正常进行优化。</p>
+<p>其实这个问题并不是非常严重。我之前虽然知道这个隐式移动构造的事情，但是确实也没太往优化这方面想过，所以写下来记录一下。</p>
 
 
+  
+
+</article>
 
 
 
