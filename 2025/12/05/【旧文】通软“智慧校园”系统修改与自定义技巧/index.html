@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ico.png">
+  <link rel="icon" href="/img/ico.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="李萌">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="高中时候写的文章，现在搬过来。  说在前面：本备忘的内容均以电子班牌系统为例进行介绍。 一、插件系统0. 概论通软公司的统一开发框架支持且只支持一种基于插件的开发。如此操作似乎是有着解耦合与代码复用方面的考量（例如刷卡组件便是电子班牌与校门口刷卡门岗共用）。 在这种指导思想的引领下，通软的任何一套系统的“主程序”只能被称为是一个插件加载器，而所有的业务逻辑、UI 等等全部被拆散在了一个一个 .N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【旧文】通软“智慧校园”系统修改与自定义技巧">
+<meta property="og:url" content="https://lizi.moe/2025/12/05/%E3%80%90%E6%97%A7%E6%96%87%E3%80%91%E9%80%9A%E8%BD%AF%E2%80%9C%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E2%80%9D%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="李萌的博客">
+<meta property="og:description" content="高中时候写的文章，现在搬过来。  说在前面：本备忘的内容均以电子班牌系统为例进行介绍。 一、插件系统0. 概论通软公司的统一开发框架支持且只支持一种基于插件的开发。如此操作似乎是有着解耦合与代码复用方面的考量（例如刷卡组件便是电子班牌与校门口刷卡门岗共用）。 在这种指导思想的引领下，通软的任何一套系统的“主程序”只能被称为是一个插件加载器，而所有的业务逻辑、UI 等等全部被拆散在了一个一个 .N">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-05T14:22:44.308Z">
+<meta property="article:author" content="李萌">
+<meta property="article:tag" content="破解">
+<meta property="article:tag" content="通软系列软件">
+<meta property="article:tag" content=".Net">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【旧文】通软“智慧校园”系统修改与自定义技巧 - 李萌的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lizi.moe","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>李萌的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【旧文】通软“智慧校园”系统修改与自定义技巧"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-05 00:00" pubdate>
+          2025年12月5日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【旧文】通软“智慧校园”系统修改与自定义技巧</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>高中时候写的文章，现在搬过来。</p>
+</blockquote>
+<p><strong>说在前面：本备忘的内容均以电子班牌系统为例进行介绍。</strong></p>
+<h1 id="一、插件系统"><a href="#一、插件系统" class="headerlink" title="一、插件系统"></a>一、插件系统</h1><h2 id="0-概论"><a href="#0-概论" class="headerlink" title="0. 概论"></a>0. 概论</h2><p>通软公司的统一开发框架支持且只支持一种基于插件的开发。如此操作似乎是有着解耦合与代码复用方面的考量（例如刷卡组件便是电子班牌与校门口刷卡门岗共用）。</p>
+<p>在这种指导思想的引领下，通软的任何一套系统的“主程序”只能被称为是一个插件加载器，而所有的业务逻辑、UI 等等全部被拆散在了一个一个 .Net Framework 类库中。</p>
+<p>固然，这种设计模式有着一定的合理性，并的确实现了通软的同志们所希冀的解耦合与复用性，但是也给第三者对其系统的修改带来了极大的便利。实际上，接下来的一切修改，都是基于插件系统进行的。</p>
+<p>以下，将介绍通软的插件系统的基本内容。</p>
+<h2 id="1-一套插件的基本组成部分"><a href="#1-一套插件的基本组成部分" class="headerlink" title="1. 一套插件的基本组成部分"></a>1. 一套插件的基本组成部分</h2><p>一般说来，一个插件最少应当包含以下几个组成部分：</p>
+<ol>
+<li>至少一个 .Net Framework <code>.dll</code> 类库；</li>
+<li>一个对插件基本的结构进行描述的 <code>Mapper.xml</code> 文件；</li>
+<li>一个保存着插件配置的 <code>Config.xml</code> 文件。</li>
+</ol>
+<h3 id="a-类库"><a href="#a-类库" class="headerlink" title="a. 类库"></a>a. 类库</h3><p>见后文。</p>
+<h3 id="b-Mapper-xml"><a href="#b-Mapper-xml" class="headerlink" title="b. Mapper.xml"></a>b. Mapper.xml</h3><p><code>Mapper.xml</code> 对插件的基本内容进行了描述。以下是一个案例（<code>/GS.Terminal.SmartBoard.Logic/Mapper.xml</code>）:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Extensibility</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;urn:Chinags-Extensibility-1.0&quot;</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;智能班牌逻辑插件&quot;</span> <span class="hljs-attr">SymbolicName</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.Logic&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;3.4.2.62&quot;</span> <span class="hljs-attr">StartLevel</span>=<span class="hljs-string">&quot;41&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">License</span>&gt;</span>nX8iVjYNw97wiLmepVhiT...(略)<span class="hljs-tag">&lt;/<span class="hljs-name">License</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Activator</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.Logic.Program&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Runtime</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Assembly</span> <span class="hljs-attr">Path</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.Logic.dll&quot;</span> <span class="hljs-attr">Share</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Assembly</span> <span class="hljs-attr">Path</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.LocalDB.dll&quot;</span> <span class="hljs-attr">Share</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">Runtime</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">ObjectSpaces</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Channel</span> <span class="hljs-attr">ConnectionName</span>=<span class="hljs-string">&quot;sqlite&quot;</span> <span class="hljs-attr">ModelAssembly</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.LocalDB&quot;</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;sqlite&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ObjectSpaces</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Services</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Service</span> <span class="hljs-attr">TypeAndName</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.Logic.Core.Service&quot;</span> <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;与服务通讯实时接收推送&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Service</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Service</span> <span class="hljs-attr">TypeAndName</span>=<span class="hljs-string">&quot;GS.Terminal.SmartBoard.Logic.Core.AdministratorService&quot;</span> <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;管理员相关服务&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Service</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">Services</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">Extensibility</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里就关键的几点进行解释：</p>
+<ol>
+<li><code>Name</code> 与 <code>SymbolicName</code> 字段：前者不重要，后者<strong>必须</strong>与存储插件的文件夹名称一致。</li>
+<li><code>StartLevel</code> 字段：该字段的值越小，启动越早。建议破解插件在通软规定的“其他插件” <code>StartLevel</code> 段（≥80）启动，以避免潜在的依赖关系问题。</li>
+<li><code>License</code> 字段：插件的证书。后文会对此进行详细解释。<strong>此字段欠缺会导致插件被拒绝加载！</strong></li>
+<li><code>Activator</code> 字段：一个实现了 <code>GS.Unitive.Framework.Core.IAddonActivator</code> 接口的类。后文会对此进行详细解释。</li>
+<li><code>Runtime/Assembly</code> 字段：即 <code>.dll</code> 类库的文件名。<code>shared</code> 的真伪决定了能否在别的插件中创建该类库中某个类的实例（不重要）。</li>
+<li><code>ObjectSpaces</code> 字段：实际用途暂不明确，可能与本地数据库读写相关。</li>
+<li><code>Services</code> 字段：将类库中的某些类注册为一系列可以从其他插件中读取并调用其方法的“服务”。服务系统是插件系统中非常关键的一部分。</li>
+</ol>
+<p>如果这个文件没有正常配置，插件是无法加载的。</p>
+<h3 id="c-Config-xml"><a href="#c-Config-xml" class="headerlink" title="c. Config.xml"></a>c. Config.xml</h3><p><code>Config.xml</code> 相当于插件的配置文件。形如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Settings</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;urn:Chinags-Configuration&quot;</span> <span class="hljs-attr">AddonName</span>=<span class="hljs-string">&quot;GS.Terminal.Theme&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Dictionaries</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Dict</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;Theme&quot;</span> <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;默认主题&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">Key</span> <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;主题名称&quot;</span> <span class="hljs-attr">Choice</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;ThemeName&quot;</span> <span class="hljs-attr">Value</span>=<span class="hljs-string">&quot;Default&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Dict</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">Dictionaries</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">Settings</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><code>AddonName</code> 字段：与 <code>AddonSymbolicName</code> 一致。</li>
+<li><code>Dictionaries</code> 与 <code>Key</code>：相当于是一系列键值对。具体使用后文会解释。</li>
+</ol>
+<h2 id="2-插件中类库的具体结构"><a href="#2-插件中类库的具体结构" class="headerlink" title="2. 插件中类库的具体结构"></a>2. 插件中类库的具体结构</h2><p>尽管在反编译当中会发现通软自己的插件中有着巨大多命名空间和类，但是实际上大部分的内容都是用来实现各种业务逻辑的。一般说来，一个最基本的插件最多只需要包含以下内容：</p>
+<ol>
+<li>一个实现了 <code>GS.Unitive.Framework.Core.IAddonActivator</code> 接口的 <em>激活器</em> 类（名称不一定是这个）。该类应当在 <code>Mapper.xml</code> 的 <code>Activator</code> 字段中被注册。例如，对于命名空间 <code>MyProject.MyNamespace</code> 下一个类 <code>MyActivator</code>，应当这样写：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Activator</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;MyProject.MyNamespace.MyActivator&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>Service</code> 服务类。名称可以任取（当然为了可读性方面的考虑建议以 <code>Service</code> 结尾）。其应当在 <code>Mapper.xml</code> 的 <code>Services</code> 字段中被注册。例如，对于命名空间 <code>MyProject.MyNamespace</code> 下一个类 <code>MyService</code>，应当这样写：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Services</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Service</span> </span><br><span class="hljs-tag">    <span class="hljs-attr">TypeAndName</span>=<span class="hljs-string">&quot;MyProject.MyNamespace.MyService&quot;</span> </span><br><span class="hljs-tag">    <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;我的服务&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Service</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--其他的 Service 以此类推--&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">Services</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>注册后，就可以在别的插件调用 <code>MyService</code> 里面的方法了，详见后文。</p>
+<h2 id="3-插件内部运作与插件间交互的基本操作"><a href="#3-插件内部运作与插件间交互的基本操作" class="headerlink" title="3. 插件内部运作与插件间交互的基本操作"></a>3. 插件内部运作与插件间交互的基本操作</h2><p>主要介绍以下三点：插件的启停、插件数据相关、插件服务的调用。</p>
+<h3 id="a-插件的启停"><a href="#a-插件的启停" class="headerlink" title="a. 插件的启停"></a>a. 插件的启停</h3><p>前面说到，插件应当包含一个实现了 <code>GS.Unitive.Framework.Core.IAddonActivator</code> 接口的激活器类。该类应当实现其 <code>Start(IAddonContext)</code> 及 <code>Stop(IAddonContext)</code> 方法。这两个方法分别会在插件启动&#x2F;停止时被调用。</p>
+<p>比如这样写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System; <span class="hljs-comment">// 注：其他 .Net 模块为避免赘余不再写出。</span><br><br><span class="hljs-keyword">using</span> GS.Unitive.Framework.Core;<br><span class="hljs-keyword">using</span> GS.Unitive.Framework.Persistent;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject.MyNamespace</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyActivator</span> : <span class="hljs-title">IAddonActivator</span><br>    &#123;<br>        <span class="hljs-keyword">public</span> IAddonContext addonContext;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params">IAddonContext context</span>)</span><br>        &#123;<br>            <span class="hljs-keyword">this</span>.addonContext = context;<br>            <span class="hljs-keyword">this</span>.addonContext.Logger.Info(<span class="hljs-string">&quot;成功加载插件&quot;</span>);<br>            <span class="hljs-comment">// IAddonContext.Logger 为公用日志工具</span><br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Stop</span>(<span class="hljs-params">IAddonContext context</span>)</span><br>        &#123;<br>            <span class="hljs-comment">// 停止时执行的内容，如终止 UDP 监听等。</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样，便可以实现基本的插件启停。</p>
+<h3 id="b-插件数据相关"><a href="#b-插件数据相关" class="headerlink" title="b. 插件数据相关"></a>b. 插件数据相关</h3><p>首先介绍对插件配置的读取。</p>
+<p>假如我们的插件有这样一个配置文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Settings</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;urn:Chinags-Configuration&quot;</span> <span class="hljs-attr">AddonName</span>=<span class="hljs-string">&quot;MyProject&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">Dictionaries</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Dict</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;baseConfig&quot;</span> <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;基础配置&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">Key</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">Caption</span>=<span class="hljs-string">&quot;第一个&quot;</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">Choice</span>=<span class="hljs-string">&quot;&quot;</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;Key1&quot;</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">Value</span>=<span class="hljs-string">&quot;Value1&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Dict</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">Dictionaries</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">Settings</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>那么，想要获取 <code>baseConfig</code> 中 <code>Key1</code> 的值，便可以这样写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// addonContext : IAddonContext</span><br><span class="hljs-built_in">string</span> value1 = addonContext.DictionaryValue(<span class="hljs-string">&quot;baseConfig&quot;</span>, <span class="hljs-string">&quot;Key1&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>另外，如果没有找到 <code>Key1</code>，则会返回 <code>null</code>。</p>
+<p>然后介绍创建和读取交互式数据。</p>
+<p>交互式数据一经创建，便可由任何插件读取。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">object</span> data = somedata;<br>addonContext.IntercativeData&lt;<span class="hljs-built_in">object</span>&gt;(<span class="hljs-string">&quot;DataKey&quot;</span>, data);<br><span class="hljs-comment">// 创建。泛型尖括号里面填数据值的类型。</span><br><span class="hljs-built_in">dynamic</span> result = addonContext.IntercativeData(<span class="hljs-string">&quot;DataKey&quot;</span>);<br><span class="hljs-comment">// 读取</span><br><span class="hljs-built_in">object</span> newdata = somedata;<br>addonContext.IntercativeData&lt;<span class="hljs-built_in">object</span>&gt;(<span class="hljs-string">&quot;DataKey&quot;</span>, newdata);<br><span class="hljs-comment">// 修改。泛型尖括号里面填数据值的类型。</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="c-插件服务调用"><a href="#c-插件服务调用" class="headerlink" title="c. 插件服务调用"></a>c. 插件服务调用</h3><p>对于其他插件已经注册了的服务，可以通过以下方法进行调用：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">dynamic</span> service = <span class="hljs-keyword">this</span>.addonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.MainShell&quot;</span>, <span class="hljs-string">&quot;GS.Terminal.MainShell.Services.UIService&quot;</span>);<br><span class="hljs-comment">// 第一个参数为 AddonSymbolicName，第二个为 typeof(Service) 的字符串形式（即 Mapper.xml 中 Services/Service.TypeAndName）。</span><br><br><span class="hljs-comment">// KnownTypeName service = this.addonContext.GetFirstOrDefaultService&lt;KnownTypeName&gt;(addonSymbolicName);</span><br><span class="hljs-comment">// 在 Service 类型已知的情况下，也可以这样写。</span><br><br><span class="hljs-comment">// service.SomeMethod(); </span><br><span class="hljs-comment">// 比如这里便是用 GS.Terminal.MainShell 的相关方法注册一个管理员指令，输入后会显示一个弹窗：</span><br>service.RegistBackgroundCommand(<span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-keyword">new</span> Action(<br>    () =&gt;<br>    &#123;<br>        service.ShowPrompt(<span class="hljs-string">&quot;Fuck GS!!&quot;</span>, <span class="hljs-number">10</span>);<br>    &#125;<br>));<br></code></pre></td></tr></table></figure>
+
+<p>注意，如果指定的服务不存在，则会返回 <code>null</code>。</p>
+<h2 id="4-常用的服务"><a href="#4-常用的服务" class="headerlink" title="4. 常用的服务"></a>4. 常用的服务</h2><ul>
+<li><code>GS.Terminal.TimeLine</code> 任务计划与定时执行相关；</li>
+<li><code>GS.Terminal.GarnitureControl</code> 创建浮窗等；</li>
+<li><code>GS.Terminal.DeviceManager</code> 管理读卡器等外设；</li>
+<li><code>GS.Terminal.MainShell.</code><strong><code>Services.UIService</code></strong> 管理用户界面；</li>
+</ul>
+<h2 id="5-基本插件案例"><a href="#5-基本插件案例" class="headerlink" title="5. 基本插件案例"></a>5. 基本插件案例</h2><p>通软在很多服务中都大量使用了 <code>dynamic</code> 动态类型。以下将以读卡器使用为例介绍。</p>
+<h3 id="a-读卡器的使用"><a href="#a-读卡器的使用" class="headerlink" title="a. 读卡器的使用"></a>a. 读卡器的使用</h3><p>以下代码在刷卡时会调用 <code>DoSomething(string)</code> 函数，并传入卡号作为参数。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// IAddonContext addonContext;</span><br><span class="hljs-built_in">dynamic</span> device = addonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.DeviceManager&quot;</span>,<span class="hljs-string">&quot;GS.Terminal.DeviceManager.Service.DeviceCallControl&quot;</span>); <br><span class="hljs-comment">// 获取设备管理服务</span><br><br>deviceMan.RegistCardCallback(<br>  <span class="hljs-keyword">new</span> Action&lt;<span class="hljs-built_in">dynamic</span>&gt;(<br>    (<span class="hljs-built_in">dynamic</span> data) =&gt; <span class="hljs-comment">// 含有一个 dynamic 类型的参数 data</span><br>    &#123;<br>      <span class="hljs-built_in">string</span> cardid = data.OperaDeviceData.Message;<br>      <span class="hljs-comment">// 获取 data 的属性</span><br>      DoSomething(cardid);<br>    &#125;<br>  ) <br>  <span class="hljs-comment">// 创建一个 Action&lt;dynamic&gt; 实例，用一个委托（delegate）实例化</span><br>  <span class="hljs-comment">// 这个 Action&lt;dynamic&gt; 中的内容将会在刷卡时时被执行</span><br>); <span class="hljs-comment">// 调用 RegistCardCallback 方法</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="二、通软插件的反编译修改"><a href="#二、通软插件的反编译修改" class="headerlink" title="二、通软插件的反编译修改"></a>二、通软插件的反编译修改</h1><h2 id="0-概论-1"><a href="#0-概论-1" class="headerlink" title="0. 概论"></a>0. 概论</h2><p>尽管服务可以解决相当一部分的问题。但是仍然有一部分功能并没有被写在服务中，无法通过简单的方法进行调用，这时候就需要对通软原有的插件进行反编译修改。</p>
+<h2 id="1-基本流程案例"><a href="#1-基本流程案例" class="headerlink" title="1. 基本流程案例"></a>1. 基本流程案例</h2><p>这里以播放跑马灯进行举例说明。</p>
+<p>众所周知，通软在 <code>GS.Terminal.SmartBoard.Logic</code> 中给出了跑马灯的实现（<code>GS.Terminal.SmartBoard.Logic.Garitures.BannerMessageControl</code>）。但是，播放跑马灯的方法，并不能通过某个服务进行调用。因此，有必要通过某种的举措，将播放跑马灯的方法暴露给其他插件。</p>
+<p>考虑以下操作：</p>
+<ol>
+<li>使用 dnSpy 在 <code>GS.Terminal.SmartBoard.Logic.Core</code> 下创建一个 <code>MyCustomService</code> 类。</li>
+<li>修改 <code>GS.Terminal.SmartBoard.Logic</code> 的 <code>Mapper.xml</code>，注册这个类为一个服务。</li>
+<li>在这个类中添加以下代码：</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> GS.Terminal.SmartBoard.Logic.Garitures;<br>...<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">GS.Terminal.SmartBoard.Logic.Core</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyCustomService</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ShowShadowLantern</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> msg</span>)</span><br>        &#123;<br>            BannerMessageControl.AddBannerMsg(msg);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编译并保存。</li>
+</ol>
+<p>然后，就可以在其他插件中通过服务调用 <code>MyCustomService.ShowShadowLantern()</code> 显示跑马灯了。</p>
+<h2 id="2-特殊功能备忘：滑动页面相关"><a href="#2-特殊功能备忘：滑动页面相关" class="headerlink" title="2. 特殊功能备忘：滑动页面相关"></a>2. 特殊功能备忘：滑动页面相关</h2><p>电子班牌的滑动页面是一个非常有趣的东西。比如“班级风采”<br>一栏，又可以放图片又可以放视频，可以说有很多手脚可以动。</p>
+<p>但是，令人意外的是，不像跑马灯和“更多”栏里面的大图片，“班级风采”里面图片视频等的定时展示并非使用 <code>TimeLineTask</code>，而是另一套非常复杂（且非常屎山）的实现。</p>
+<p>这种实现方式可以归纳为 <code>VisualPublish - VisualTemplate - VisualBlock</code> 的三级结构（具体实现时还包含了大量的数据库读写）。其中：</p>
+<ul>
+<li><code>VisualPublish</code> 规定了电子班牌加载时使用的主题。</li>
+<li><code>VisualTemplate</code> 描述滑动界面的结构及属性。</li>
+<li><code>VisualBlock</code> 描述滑动页面上的元素的结构及属性。</li>
+</ul>
+<p>如果想要修改“班级风采”上的视频，考虑以下实现：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">using</span> System.Collections.Generic;<br><span class="hljs-keyword">using</span> System.Drawing;<br><span class="hljs-keyword">using</span> System.IO;<br><span class="hljs-keyword">using</span> GalaSoft.MvvmLight.Threading;<br><span class="hljs-keyword">using</span> IVisualBlock;<br><span class="hljs-keyword">using</span> SmartBoardViewModels.Models.VisualBlock;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">GS.Terminal.SmartBoard.Logic.Core</span><br>&#123;<br>    <span class="hljs-comment">// Token: 0x02000174 RID: 372</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyCustomService</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddMultiMediaVisualTemplate</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> media_json_filename</span>)</span><br>        &#123;<br>            IBlockService firstOrDefaultService = Program.AddonContext.GetFirstOrDefaultService&lt;IBlockService&gt;(<span class="hljs-string">&quot;GS.Terminal.VisualBlock&quot;</span>);<br>            <span class="hljs-comment">// 获取 VisualBlock 有关服务</span><br><br>            BlockTemplate blockTemplate = <span class="hljs-keyword">new</span> BlockTemplate();<br>            blockTemplate.TemplateName = <span class="hljs-string">&quot;ClassTemplateStyle&quot;</span>;<br>            blockTemplate.DisplayName = <span class="hljs-string">&quot;校园风采&quot;</span>;<br>            blockTemplate.Index = <span class="hljs-number">2</span>;<br>            blockTemplate.TemplateType = BlockTemplateType.Theme;<br>      <span class="hljs-comment">// 创建“班级风采” BlockTemplate，和 localData.db 中属性完全对应</span><br><br>            BaseBlock block = firstOrDefaultService.GetBlock(<span class="hljs-string">&quot;ClassMultiMedia&quot;</span>);<br>            block.Init(Program.AddonContext);<br>      <span class="hljs-comment">// 获取视频与图片控件的 VisualBlock 并初始化</span><br>      <span class="hljs-comment">// 位于 GS.Terminal.VisualBlock/Bundles/VisualBlock.dll</span><br><br>            IUpdate update = (IUpdate)block;<br>            update.LoadLocalData(media_json_filename);<br>      <span class="hljs-comment">// 加载指定 json 文件中的数据</span><br>      <span class="hljs-comment">// 具体的 json 文件结构可以通过抓包或者模仿 cache/BlockCache/&lt;((IBlock)block).TypeName&gt;_&lt;GUID&gt;.json查看</span><br><br>      <span class="hljs-comment">// 这里必须强制类型转换为 IUpdate 类型，因为 VisualBlock 的该方法继承自 IUpdate 接口</span><br><br>            blockTemplate.Blocks = <span class="hljs-keyword">new</span> List&lt;VisualBlockItem&gt;();<br>            blockTemplate.Blocks.Add(<span class="hljs-keyword">new</span> VisualBlockItem<br>            &#123;<br>                Id = Guid.NewGuid(),<br>                BlockComponent = <span class="hljs-string">&quot;班级风采&quot;</span>,<br>                BlockTypeName = ((IBlock)block).TypeName,<br>                DataSource = <span class="hljs-string">&quot;Services/SmartBoard/BlockClassMultiMedia/json&quot;</span>,<br>                Height = <span class="hljs-number">10</span>,<br>                NavTemplateName = <span class="hljs-string">&quot;&quot;</span>,<br>                Width = <span class="hljs-number">20</span>,<br>                X = <span class="hljs-number">1</span>,<br>                Y = <span class="hljs-number">1</span>,<br>        <span class="hljs-comment">// 某些时候，还有一个 int Template 属性</span><br>        <span class="hljs-comment">// 上方属性均与 localData.db 中一致</span><br>                DataContext = (BaseBlock)update<br>        <span class="hljs-comment">// 再进行一次强制类型转换</span><br>            &#125;);<br><br>            blockTemplate.Previous = Utilites.ViewModelLocator.MainPage.TemplateList[<span class="hljs-number">1</span>];<br>            blockTemplate.Next = Utilites.ViewModelLocator.MainPage.TemplateList[<span class="hljs-number">3</span>];<br>      <span class="hljs-comment">// 链表实现</span><br><br>            DispatcherHelper.RunAsync(<span class="hljs-built_in">delegate</span><br>            &#123;<br>        <span class="hljs-comment">// DispatcherHelper 为 Mvvm 的内容</span><br>        <span class="hljs-comment">// (GS.Terminal.SmartBoard.Logic.Core.)Utilites 为 GS 的杂项工具</span><br>                Utilites.ViewModelLocator.MainPage.TemplateList[<span class="hljs-number">2</span>] = blockTemplate;<br>                <span class="hljs-comment">// 替换</span><br>            &#125;);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>事实上，同样的操作也适用于其他滑动页面，只要把各种属性的值替换掉就行了。<br>当然，有的页面上可能有多个 <code>VisualBlock</code>（如首页）。</p>
+<h1 id="三、杂项"><a href="#三、杂项" class="headerlink" title="三、杂项"></a>三、杂项</h1><h2 id="1-插件签名认证"><a href="#1-插件签名认证" class="headerlink" title="1. 插件签名认证"></a>1. 插件签名认证</h2><p>前面提到，<code>Mapper.xml</code> 中的 <code>License</code> 字段必须正确配置，否则插件无法启动。根据通软的描述，所谓的插件证书只能在“通软统一开发平台”获取，但实际上并不存在这样的一个平台。对此，只能说傻逼通软。</p>
+<p>因此，如果想要加载我们自己的插件，必须想办法解决掉这个证书的问题。解决思路可以有以下两种：</p>
+<ol>
+<li>伪造证书；</li>
+<li>绕过证书检测</li>
+</ol>
+<p>以下，将分别介绍这两种思路。</p>
+<h3 id="a-伪造证书"><a href="#a-伪造证书" class="headerlink" title="a. 伪造证书"></a>a. 伪造证书</h3><p>通软的证书表面上使用了一个所谓加密狗（<code>SoftDog</code>）组件，实际上只是绕了一个弯从加密狗的 dll 文件的资源文件中获取 RSA 私钥。而通软所谓的认证，也不过只是用这个私钥对插件名称进行了一个签名而已。</p>
+<p>因此，只要提取加密狗的资源文件，便可以利用 RSA 签名轻松伪造通软的认证。</p>
+<p>考虑以下代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">using</span> System.Security.Cryptography;<br>...<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> <span class="hljs-title">Encrypt</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> addonSymbolicName</span>)</span><br>        &#123;<br>            <span class="hljs-keyword">using</span> (RSACryptoServiceProvider provider = <span class="hljs-keyword">new</span> RSACryptoServiceProvider())<br>            &#123;<br>                <span class="hljs-built_in">string</span> xmlStr = <span class="hljs-string">&quot;...&quot;</span>;<br>                provider.FromXmlString(xmlStr);<br>                RSAPKCS1SignatureFormatter formatter = <span class="hljs-keyword">new</span> RSAPKCS1SignatureFormatter(provider);<br>                formatter.SetHashAlgorithm(<span class="hljs-string">&quot;SHA1&quot;</span>);<br><br>                SHA1Managed sha1 = <span class="hljs-keyword">new</span> SHA1Managed();<br>                <span class="hljs-built_in">byte</span>[] rgbHash = sha1.ComputeHash(Encoding.ASCII.GetBytes(addonSymbolicName));<br><br>                <span class="hljs-built_in">byte</span>[] signature = formatter.CreateSignature(rgbHash);<br>                <span class="hljs-built_in">string</span> b64str = Convert.ToBase64String(signature);<br><br>                <span class="hljs-keyword">return</span> b64str;<br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样，只要输入一个插件的 <code>AddonSymbolicName</code>，便可以生成对应的认证。</p>
+<h3 id="b-绕过检测"><a href="#b-绕过检测" class="headerlink" title="b. 绕过检测"></a>b. 绕过检测</h3><p>通过对 <code>GS.Unitive.Framework.Core.</code><strong><code>LicenseValidation</code></strong> 的 <code>Verify()</code> 方法进行修改，使其返回值恒为真，以绕过通软的插件认证检测。</p>
+<p>这个方法由于过于暴力，并且已经有更加安全的平替，不建议使用。</p>
+<h2 id="2-关于-localData-db"><a href="#2-关于-localData-db" class="headerlink" title="2. 关于 localData.db"></a>2. 关于 <code>localData.db</code></h2><p>建议使用 <code>SQLiteStudio</code> 打开，格式 <code>System.Data</code>，密码一般为 <code>123</code>。</p>
+<h2 id="3-更新器无效化"><a href="#3-更新器无效化" class="headerlink" title="3. 更新器无效化"></a>3. 更新器无效化</h2><p>为了防止更新导致反编译修改的代码被覆盖，有必要对更新器 <code>AutoUpdate.exe</code> 进行无效化处理。</p>
+<p>主要处理 <code>AutoUpdate.MainViewModel</code> 的 <code>Do()</code> 方法。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Do</span>()</span><br>&#123;<br>  ...<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.getRemoteFeatureCode(text))<br>    &#123;<br>        LocalLogWriter.Write(<span class="hljs-string">&quot;无更新&quot;</span>);<br>    &#125;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样一来，即使有更新，也不会下载更新。</p>
+<h2 id="4-关于编译器生成代码的反推"><a href="#4-关于编译器生成代码的反推" class="headerlink" title="4. 关于编译器生成代码的反推"></a>4. 关于编译器生成代码的反推</h2><p>注意到通软的一些插件反编译后仍然存在大量无法进一步还原的编译器生成代码，阅读起来非常困难。以下介绍一点简单的识别法。</p>
+<h3 id="a-执行动态类型方法"><a href="#a-执行动态类型方法" class="headerlink" title="a. 执行动态类型方法"></a>a. 执行动态类型方法</h3><p>考虑以下代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// GS.Terminal.SmartBoard.Logic.Core.Startup</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Startup</span><br>&#123;<br>  ...<br>  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InitManagentWindow</span>() <span class="hljs-comment">// 通软传统艺能之拼写错误</span></span><br>  &#123;<br>    <span class="hljs-keyword">if</span> (Startup.&lt;&gt;o__6.&lt;&gt;p__0 == <span class="hljs-literal">null</span>)<br>        &#123;<br>          Startup.&lt;&gt;o__6.&lt;&gt;p__0 = CallSite&lt;Action&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">string</span>, Action&gt;&gt;.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, <span class="hljs-string">&quot;RegistBackgroundCommand&quot;</span>, <span class="hljs-comment">//方法名称在这里</span><br>          <span class="hljs-literal">null</span>, <span class="hljs-keyword">typeof</span>(Startup), <span class="hljs-keyword">new</span> CSharpArgumentInfo[]<br>          &#123;<br>            CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, <span class="hljs-literal">null</span>),<br>            CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, <span class="hljs-literal">null</span>),<br>            CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, <span class="hljs-literal">null</span>)<br>          &#125;));<br>        &#125;<br>        Startup.&lt;&gt;o__6.&lt;&gt;p__0.Target(Startup.&lt;&gt;o__6.&lt;&gt;p__0, Program.AddonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.MainShell&quot;</span>, <span class="hljs-string">&quot;GS.Terminal.MainShell.Services.UIService&quot;</span>), <span class="hljs-comment">// 包含相应方法的 dynamic 类型。在这里是 GetFirstOrDefaultService() 的返回值</span><br>        <span class="hljs-string">&quot;100000&quot;</span>, <span class="hljs-comment">// 参数 1</span><br>        <span class="hljs-built_in">delegate</span><br>        &#123;<br>          DoSomething();<br>        &#125; <span class="hljs-comment">// 参数 2，当然自己写的时候应当在 delegate 外面套一个 Action()</span><br>        <span class="hljs-comment">// 以上两个参数与 GS.Terminal.MainShell.Services.UIService.GetFirstOrDefaultService(string, Action) 一一对应。</span><br>      );<br>  &#125;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>因此，原始代码应当为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Startup</span><br>&#123;<br>  ...<br>  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InitManagentWindow</span>() <span class="hljs-comment">// 通软传统艺能之拼写错误</span></span><br>  &#123;<br>    <span class="hljs-built_in">dynamic</span> service = Program.AddonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.MainShell&quot;</span>, <span class="hljs-string">&quot;GS.Terminal.MainShell.Services.UIService&quot;</span>);<br>    service.RegistBackgroundCommand(<span class="hljs-string">&quot;100000&quot;</span>, <span class="hljs-keyword">new</span> Action(<br>      () =&gt; &#123;<br>        DoSomething();<br>      &#125;<br>    ));<br>  &#125;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="b-获取动态类型的属性"><a href="#b-获取动态类型的属性" class="headerlink" title="b. 获取动态类型的属性"></a>b. 获取动态类型的属性</h3><p>这个在刷卡器反编译出的代码处表现的尤其明显。考虑以下代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// GS.Terminal.SmartBoard.Logic.Core.LogicCore</span><br><span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LogicCore</span><br>&#123;<br>  ...<br>  <span class="hljs-function"><span class="hljs-keyword">internal</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RegistCardService</span>()</span><br>  &#123;<br>    <span class="hljs-built_in">object</span> firstOrDefaultService = Program.AddonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.DeviceManager&quot;</span>, <span class="hljs-string">&quot;GS.Terminal.DeviceManager.Service.DeviceCallControl&quot;</span>);<br>    <span class="hljs-comment">// 获取了 DeviceCallControl -&gt; dynamic，部分内部实现细节被反编译器隐藏</span><br>    ...<br>    <span class="hljs-keyword">if</span> (target(&lt;&gt;p__, LogicCore.&lt;&gt;o__1.&lt;&gt;p__0.Target(LogicCore.&lt;&gt;o__1.&lt;&gt;p__0, firstOrDefaultService, <span class="hljs-literal">null</span>)))<br>        &#123; <br>        <span class="hljs-comment">// 这里似乎是一个判断获取的服务是否是 null</span><br>                <span class="hljs-keyword">if</span> (LogicCore.&lt;&gt;o__1.&lt;&gt;p__5 == <span class="hljs-literal">null</span>)<br>                &#123;<br>                    LogicCore.&lt;&gt;o__1.&lt;&gt;p__5 = CallSite&lt;Action&lt;CallSite, <span class="hljs-built_in">object</span>, Action&lt;<span class="hljs-built_in">object</span>&gt;&gt;&gt;.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, <span class="hljs-string">&quot;RegistCardCallback&quot;</span>, <span class="hljs-literal">null</span>, <span class="hljs-keyword">typeof</span>(LogicCore), <span class="hljs-keyword">new</span> CSharpArgumentInfo[]<br>                    &#123;<br>                        CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, <span class="hljs-literal">null</span>),<br>                        CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, <span class="hljs-literal">null</span>)<br>                    &#125;));<br>          <span class="hljs-comment">// 执行 DeviceCallControl.RegistCardCallback(Action&lt;dynamic&gt;) 方法</span><br>                &#125;<br>                LogicCore.&lt;&gt;o__1.&lt;&gt;p__5.Target(LogicCore.&lt;&gt;o__1.&lt;&gt;p__5, firstOrDefaultService,<br><br>        <span class="hljs-comment">//注意，从这里开始是参数 1 即 Action&lt;dynamic&gt;！</span><br>        <span class="hljs-built_in">delegate</span>(<span class="hljs-built_in">dynamic</span> data)<br>                &#123;<br>                    LogicCore.&lt;&gt;c__DisplayClass1_0 CS$&lt;&gt;<span class="hljs-number">8</span>__locals1 = <span class="hljs-keyword">new</span> LogicCore.&lt;&gt;c__DisplayClass1_0();<br>                    LogicCore.&lt;&gt;c__DisplayClass1_0 CS$&lt;&gt;<span class="hljs-number">8</span>__locals2 = CS$&lt;&gt;<span class="hljs-number">8</span>__locals1;<br>          <span class="hljs-comment">// 创建了一个 LogicCore.&lt;&gt;c__DisplayClass1_0 的实例。</span><br>          <span class="hljs-comment">// 在源代码里，这个类应该有别的名字，并且和 LogicCore 在同一个 .cs 文件里</span><br>          <span class="hljs-comment">// 根据后面的代码发现，它至少有一个 cardNum 属性</span><br><br>                    <span class="hljs-keyword">if</span> (LogicCore.&lt;&gt;o__1.&lt;&gt;p__4 == <span class="hljs-literal">null</span>)<br>                    &#123;<br>                        LogicCore.&lt;&gt;o__1.&lt;&gt;p__4 = CallSite&lt;Func&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">string</span>&gt;&gt;.Create(Binder.Convert(CSharpBinderFlags.None, <span class="hljs-keyword">typeof</span>(<span class="hljs-built_in">string</span>), <span class="hljs-keyword">typeof</span>(LogicCore)));<br>                    &#125;<br>                    Func&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">string</span>&gt; target2 = LogicCore.&lt;&gt;o__1.&lt;&gt;p__4.Target;<br>                    CallSite &lt;&gt;p__2 = LogicCore.&lt;&gt;o__1.&lt;&gt;p__4;<br>          <span class="hljs-comment">// 作用未知</span><br><br>                    <span class="hljs-keyword">if</span> (LogicCore.&lt;&gt;o__1.&lt;&gt;p__3 == <span class="hljs-literal">null</span>)<br>                    &#123;<br>                        LogicCore.&lt;&gt;o__1.&lt;&gt;p__3 = CallSite&lt;Func&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">object</span>&gt;&gt;.Create(Binder.GetMember(CSharpBinderFlags.None, <span class="hljs-string">&quot;Message&quot;</span>, <span class="hljs-keyword">typeof</span>(LogicCore), <span class="hljs-keyword">new</span> CSharpArgumentInfo[]<br>                        &#123;<br>                            CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, <span class="hljs-literal">null</span>)<br>                        &#125;));<br>                    &#125;<br>                    Func&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">object</span>&gt; target3 = LogicCore.&lt;&gt;o__1.&lt;&gt;p__3.Target;<br>                    CallSite &lt;&gt;p__3 = LogicCore.&lt;&gt;o__1.&lt;&gt;p__3;<br>          <span class="hljs-comment">// 后获得 data.OperaDeviceData.Message 属性</span><br><br>                    <span class="hljs-keyword">if</span> (LogicCore.&lt;&gt;o__1.&lt;&gt;p__2 == <span class="hljs-literal">null</span>)<br>                    &#123;<br>                        LogicCore.&lt;&gt;o__1.&lt;&gt;p__2 = CallSite&lt;Func&lt;CallSite, <span class="hljs-built_in">object</span>, <span class="hljs-built_in">object</span>&gt;&gt;.Create(Binder.GetMember(CSharpBinderFlags.None, <span class="hljs-string">&quot;OperaDeviceData&quot;</span>, <span class="hljs-keyword">typeof</span>(LogicCore), <span class="hljs-keyword">new</span> CSharpArgumentInfo[]<br>                        &#123;<br>                            CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, <span class="hljs-literal">null</span>)<br>                        &#125;));<br>                    &#125;<br>          <span class="hljs-comment">// 先获得 data.OperaDeviceData 属性</span><br><br>          <span class="hljs-comment">// 注意！属性级别越靠前，它在编译器生成代码中的位置就越靠后！</span><br>          <span class="hljs-comment">// 具体细节仍然有必要查看源代码</span><br><br>          <span class="hljs-comment">// 例如在 GS.Terminal.DeviceManager.Service.DeviceCallControl 里，</span><br>          <span class="hljs-comment">// RegistCardCallback(Action&lt;dynamic&gt;) 方法实际上是用这个 Action&lt;dynamic&gt;</span><br>          <span class="hljs-comment">// 创建了一个事件处理器，其 EventArgs 为 DeviceEventArgs，</span><br>          <span class="hljs-comment">// DeviceEventArgs 即包含 OperaDeviceData 属性，</span><br>          <span class="hljs-comment">// OperaDeviceData 又有 Message 属性</span><br><br>                    CS$&lt;&gt;<span class="hljs-number">8</span>__locals2.cardNum = target2(&lt;&gt;p__2, target3(&lt;&gt;p__3, LogicCore.&lt;&gt;o__1.&lt;&gt;p__2.Target(LogicCore.&lt;&gt;o__1.&lt;&gt;p__2, data)));<br>          <span class="hljs-comment">// 将 data.OperaDeviceData 赋给 CS$&lt;&gt;8__locals2.cardNum</span><br><br>                    Program.AddonContext.Logger.Debug(<span class="hljs-string">&quot;读卡器读卡结果：&quot;</span> + CS$&lt;&gt;<span class="hljs-number">8</span>__locals1.cardNum, <span class="hljs-literal">null</span>);<br>      &#125;<br>      <span class="hljs-comment">// 到这里参数 1 结束！</span><br>      );<br>    &#125;<br>  &#125;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由此，可以得出，原始代码可能为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">dynamic</span> service = Program.AddonContext.GetFirstOrDefaultService(<span class="hljs-string">&quot;GS.Terminal.DeviceManager&quot;</span>, <span class="hljs-string">&quot;GS.Terminal.DeviceManager.Service.DeviceCallControl&quot;</span>);<br><span class="hljs-keyword">if</span> (service != <span class="hljs-literal">null</span>)<br>&#123;<br>  service.RegistCardCallback(<span class="hljs-keyword">new</span> Action&lt;<span class="hljs-built_in">dynamic</span>&gt;(<br>    (<span class="hljs-built_in">dynamic</span> data) =&gt; &#123;<br>      SomeClass someclass = <span class="hljs-keyword">new</span> SomeClass();<br>      someclass.cardNum = data.OperaDeviceData.Message;<br><br>      Program.AddonContext.Logger.Debug(...);<br>    &#125;<br>  ));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A0%B4%E8%A7%A3/" class="print-no-link">#破解</a>
+      
+        <a href="/tags/%E9%80%9A%E8%BD%AF%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6/" class="print-no-link">#通软系列软件</a>
+      
+        <a href="/tags/Net/" class="print-no-link">#.Net</a>
+      
+        <a href="/tags/C/" class="print-no-link">#C#</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【旧文】通软“智慧校园”系统修改与自定义技巧</div>
+      <div>https://lizi.moe/2025/12/05/【旧文】通软“智慧校园”系统修改与自定义技巧/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>李萌</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/05/%E6%88%90%E5%8A%9F%E8%A2%AB-OpenAL-%E6%B0%94%E7%AC%91%EF%BC%8C%E5%85%B6%E6%AC%A1%E6%98%AF%E8%A2%AB%E8%87%AA%E5%B7%B1%E6%B0%94%E7%AC%91/" title="成功被 OpenAL 气笑，其次是被自己气笑">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">成功被 OpenAL 气笑，其次是被自己气笑</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/05/%E3%80%90%E6%97%A7%E6%96%87%E3%80%91%E9%80%9A%E8%BD%AF%E7%94%B5%E5%AD%90%E7%8F%AD%E7%89%8C-GarnitureControl-%E4%B8%8E-VisualBlock-%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" title="【旧文】通软电子班牌 GarnitureControl 与 VisualBlock 原理详解">
+                        <span class="hidden-mobile">【旧文】通软电子班牌 GarnitureControl 与 VisualBlock 原理详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
