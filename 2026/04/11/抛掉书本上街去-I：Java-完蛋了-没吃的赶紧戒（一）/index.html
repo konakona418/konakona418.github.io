@@ -19,22 +19,26 @@
   <meta name="author" content="李萌">
   <meta name="keywords" content="">
   
-    <meta name="description" content="《四叠半神话大系》里面作为钩子的一句话是一个算命婆说的“抓住良机”。因此时常担心没有抓住良机，因此而十分恐惧，害怕我的大学生活变得跟男主一样为了之前没有做出什么决定而后悔。但是真的伸出手去抓住所谓良机的时候，良机又发挥主观能动性跑掉了。死盯着一个事情不放的时候更多的良机就在眼前溜走，最后大家都成了良机下的蛋。 想法太多，希望太少。 感觉我还是比较幸运的。虽然结果多少有点不幸了，但总的来说还是幸运的">
+    <meta name="description" content="整理自一些松散的发言。  有人说找个对象会好一点，因为一段积极向上的恋情对于改善人的精神状况有很大帮助。找个对象！——这也是很长一段时间里业务开发奉为圭臬的策略。过去的数十年内，面向对象的设计思想长期占据主导地位，其典型代表莫过于 Java 语言。 我最早学 Java 是在我十二岁前后，也就是国内互联网大厂（如阿里）用 Java 用的最多的那段时间，基本上那个时候学 Java 就是一个程序员迈向">
 <meta property="og:type" content="article">
-<meta property="og:title" content="再见中原岬">
-<meta property="og:url" content="https://lizi.moe/2026/03/18/%E5%86%8D%E8%A7%81%E4%B8%AD%E5%8E%9F%E5%B2%AC/index.html">
+<meta property="og:title" content="抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）">
+<meta property="og:url" content="https://lizi.moe/2026/04/11/%E6%8A%9B%E6%8E%89%E4%B9%A6%E6%9C%AC%E4%B8%8A%E8%A1%97%E5%8E%BB-I%EF%BC%9AJava-%E5%AE%8C%E8%9B%8B%E4%BA%86-%E6%B2%A1%E5%90%83%E7%9A%84%E8%B5%B6%E7%B4%A7%E6%88%92%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="李萌的博客">
-<meta property="og:description" content="《四叠半神话大系》里面作为钩子的一句话是一个算命婆说的“抓住良机”。因此时常担心没有抓住良机，因此而十分恐惧，害怕我的大学生活变得跟男主一样为了之前没有做出什么决定而后悔。但是真的伸出手去抓住所谓良机的时候，良机又发挥主观能动性跑掉了。死盯着一个事情不放的时候更多的良机就在眼前溜走，最后大家都成了良机下的蛋。 想法太多，希望太少。 感觉我还是比较幸运的。虽然结果多少有点不幸了，但总的来说还是幸运的">
+<meta property="og:description" content="整理自一些松散的发言。  有人说找个对象会好一点，因为一段积极向上的恋情对于改善人的精神状况有很大帮助。找个对象！——这也是很长一段时间里业务开发奉为圭臬的策略。过去的数十年内，面向对象的设计思想长期占据主导地位，其典型代表莫过于 Java 语言。 我最早学 Java 是在我十二岁前后，也就是国内互联网大厂（如阿里）用 Java 用的最多的那段时间，基本上那个时候学 Java 就是一个程序员迈向">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-03-18T15:03:40.000Z">
-<meta property="article:modified_time" content="2026-03-18T15:35:40.735Z">
+<meta property="og:image" content="https://lizi.moe/img/post/2026-04/01/mikeanton.jpg">
+<meta property="og:image" content="https://lizi.moe/img/post/2026-04/01/azumanga.jpg">
+<meta property="article:published_time" content="2026-04-11T10:32:34.000Z">
+<meta property="article:modified_time" content="2026-04-12T05:45:32.504Z">
 <meta property="article:author" content="李萌">
-<meta property="article:tag" content="日常">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="杂谈">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lizi.moe/img/post/2026-04/01/mikeanton.jpg">
   
   
   
-  <title>再见中原岬 - 李萌的博客</title>
+  <title>抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一） - 李萌的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="再见中原岬"></span>
+            <span id="subtitle" data-typed-text="抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）"></span>
           
         </div>
 
@@ -211,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-18 23:03" pubdate>
-          2026年3月18日 晚上
+        <time datetime="2026-04-11 18:32" pubdate>
+          2026年4月11日 晚上
         </time>
       </span>
     
@@ -223,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          387 字
+          1.9k 字
         
       </span>
     
@@ -234,7 +238,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -271,19 +275,38 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">再见中原岬</h1>
+            <h1 id="seo-header">抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）</h1>
             
             
               <div class="markdown-body">
                 
-                <p>《四叠半神话大系》里面作为钩子的一句话是一个算命婆说的“抓住良机”。因此时常担心没有抓住良机，因此而十分恐惧，害怕我的大学生活变得跟男主一样为了之前没有做出什么决定而后悔。但是真的伸出手去抓住所谓良机的时候，良机又发挥主观能动性跑掉了。死盯着一个事情不放的时候更多的良机就在眼前溜走，最后大家都成了良机下的蛋。</p>
-<p>想法太多，希望太少。</p>
-<p>感觉我还是比较幸运的。虽然结果多少有点不幸了，但总的来说还是幸运的。说到底总不能一直指望着中原岬能来帮我一把。尽管现在看来确实有人能遇到他的中原岬，比如我。但说实话中原岬可能也有自己的难处，也可能某一天中原岬单纯不想要继续当中原岬了，还可能中原岬完全没有意识到其对于某个人在事实上扮演了中原岬的角色。</p>
-<blockquote>
-<p>以及，我也可以坦然面对一个脆弱但还算完满的结局吗，倘若不得已而为之？</p>
+                <blockquote>
+<p>整理自一些松散的发言。</p>
 </blockquote>
-<p>看完 《欢迎加入 NHK》 的时候跑去跟中原岬同学锐评男主部分内容如上。现在看来我也要去面对这个“脆弱但还算完满”的结局了。真是回旋镖。</p>
-<p>往之不谏，来者可追。</p>
+<p>有人说找个对象会好一点，因为一段积极向上的恋情对于改善人的精神状况有很大帮助。找个对象！——这也是很长一段时间里业务开发奉为圭臬的策略。过去的数十年内，面向对象的设计思想长期占据主导地位，其典型代表莫过于 Java 语言。</p>
+<p>我最早学 Java 是在我十二岁前后，也就是国内互联网大厂（如阿里）用 Java 用的最多的那段时间，基本上那个时候学 Java 就是一个程序员迈向成功的终南捷径，网上也时常有一些诸如学 Java 年入百万之类的推文或者广告。但我并未觉得这个语言有多么魅力非凡。事实上和我当时学过的 C 和 VB 相比，它从一开始就显得又臭又长。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Helloworld</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Hello world!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然而后面我选择了微软创造的 Java 的等位替代也就是 C#，同样以 OOP 为核心思想。实际上我学 C# 的时候它同样是又臭又长，即使后面微软允许了顶层语句之类花里胡哨的特性还是如此。从我 14 岁开始，我便一直使用 C# 和 Python 作为我的首选开发语言，直到 17 岁前后学习 Rust 和 Typescript 从此在语言审美 femboy 化的路上一路狂奔为止。</p>
+<p>我承认我确实在技术审美上不具有某些人那样极高的敏感性，这种一般的敏感性导致我居然坚持使用了 C# 整整 4 年而几乎没有发现任何猫腻，直到接触设计更现代的语言。当一个人的认知水平有限的时候，他确实难以想象到他认知以外的什么可能性。在我最早学习 C# OOP 的时候，光是理解这套设计范式就花费了我极大的精力，因为在那之前我从未接触过任何设计范式，鉴定为写 C 写的。在那个时候，我以为 OOP 就是世界的全部了。因为 OOP 确实足够建模大部分人生活中遇得到的问题，什么阿猫阿狗什么各种汽车之类的，再加上各种设计模式，就差不多了。</p>
+<p>但是早在 21 世纪的第二个十年刚刚开始的时候，也就是我接触编程之前很久，就已经有人意识到了 OOP 作为一个范式极其严重的局限性。不少人意识到 OOP 并非 silver bullet，它在解决越来越复杂的问题上显得力不从心，过分啰嗦了。此外，OOP 并非一个性能友好的设计范式，尽管相当一部分情况下大部分人并不在乎这个问题。他们只需要套模板解决问题就行了。</p>
+<p>2014 年一次 cppcon，某个穿着红色夏威夷度假衬衫的胖子 Mike Acton 走到台上，发表了著名的“炮打 OOP”的演讲即 <em>Data Oriented Design and C++</em>。他给出了一种更加先进的策略，也就是所谓面向数据设计（DOD）。当然他的这次演讲也在日后反复被人提及，例如 Zig 语言的发明者 Andrew Kelley 曾经在他作一次主题相近的演讲中途，不知从何处掏出了一件一模一样的红色衬衫披在身上，会场内一度充满了快活的空气。</p>
+<p><img src="/img/post/2026-04/01/mikeanton.jpg" srcset="/img/loading.gif" lazyload alt="神秘衬衫男"></p>
+<p>我们不妨看看 DOD 的一个十分典型的应用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// AoS - Array of Structs</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mob_t</span> &#123;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">vec2f_t</span> <span class="hljs-title">pos</span>;</span><br>    <span class="hljs-type">int64_t</span> hp;<br>    <span class="hljs-comment">// ...  </span><br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mob_t</span> <span class="hljs-title">mobs</span>[<span class="hljs-title">MAX_MOBS</span>];</span><br><br><span class="hljs-comment">// SoA - Struct of Arrays</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mob_arr_t</span> &#123;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">vec2f_t</span> <span class="hljs-title">pos</span>[<span class="hljs-title">MAX_MOBS</span>];</span><br>    <span class="hljs-type">int64_t</span> hp[MAX_MOBS];<br>    <span class="hljs-comment">// ...</span><br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mob_arr_t</span> <span class="hljs-title">mobs</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p>这种设计主张使用数组之结构体（SoA）替代一般情况下大部分人会写的结构体之数组（AoS）。为什么要这样写呢？考虑以下情况。当然这个怪物可能有很多属性，也就是说这个结构体极有可能相当大，我们假设有 256 bytes。如果我们要渲染这个怪物，我们需要读取其位置数据，别的数据我们假设是不需要的。对于 AoS，每渲染一个怪物，我们就要跨越一个 256 bytes 的 stride，这几乎是四倍于一个 cache line 的大小，进一步也就导致严重的 cache miss。倘若我们的怪物很少，对于性能的影响可能并不显著。但是，倘若我们有 1000 个怪物呢？10000 个呢？在这个操作中，我们对于缓存的利用效率实际上是十分低下的，而这中间 prefetch 到 cache 中的数据甚至不是我们所需要的。相比之下，对于 SoA 方案，我们只需要跨越 8 bytes 的一个 stride，而且我们可以十分确定地说我们 prefetch 的数据几乎都是我们所需要的。而且这个对于自动向量化优化也是有好处的。至于手动向量化，你 C++ std SIMD 提案直到研究 C++26 的时候才得到通过，与此同时大伙全都写 inline asm &#x2F; compiler intrinsics 去了。</p>
+<p>写 C 其实还好，但是对于 Java 这种全是对象的语言呢？在内存里乱跳对于缓存可以说不太友好了。</p>
+<p>只需要在这个基础上更进一步，我们就可以得到目前应用于游戏开发中的 ECS 架构。ECS 架构的主张是，设计者应当使用组件的组合而非继承链来表示实体。逻辑应当是为存储于比较高效数据结构中的某一类组件而编写，同时应当是无状态的，而非对于某个具体的实体或者状态而编写，进一步实现逻辑解耦合。另外，鉴于各个组件都在内存中比较连续，不难想到它的缓存局部性是不错的。（我自己用过的 EnTT 是基于 sparse set 的，这个在它作者的博客中有介绍，这个主要是为了方便查找，但是它内部有优化来提升缓存局部性）</p>
+<p>下面是 pseudo code。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> reg = <span class="hljs-built_in">registry</span>();<br><span class="hljs-keyword">auto</span> entity = <span class="hljs-built_in">create_entity</span>();<br><span class="hljs-keyword">auto</span> transform = MobTransform::<span class="hljs-built_in">id</span>();<br>reg.<span class="hljs-built_in">emplace</span>&lt;MobTransform&gt;(entity, transform);<br><br><span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; t : reg.<span class="hljs-built_in">view</span>&lt;MobTransform&gt;()) &#123;<br>    Renderer::<span class="hljs-built_in">draw_mob</span>(t.<span class="hljs-built_in">matrix</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Unity DOTS 和 Bevy 都属于是这个范式的应用。然而很可惜，目前使用 ECS 架构的大型游戏仅限《守望先锋》等。我个人也使用过 ECS 开发过课程作业。然而由于使用方法不当，导致博采百家之短写的人模狗样，实在是令人发笑。</p>
+<p>约莫半年前，Casey Muratori 发表了一个激进的演讲，也就是 <em>The Big OOPs: An Anatomy of a 35-year Mistake</em>。这个标题起得就很激进，当然饺子醋是什么我们也不难猜到。</p>
+<p><img src="/img/post/2026-04/01/azumanga.jpg" srcset="/img/loading.gif" lazyload alt="Oh my gah!"></p>
+<p>一棒子把 OOP 打死显然是不对的。但是很可惜，现实正在逐渐验证 Muratori 这个如此激进的标题。我始终认为从来就不存在一个完美的范式，或许别的方案同样不是 silver bullet，但是我们目前看到的现实就是，OOP 真的愈发无法满足我们日趋复杂的软件架构需求了。同时，我也不禁怀疑，我们是否把一个自以为是的、狂妄的、自称“普世”的范式，抬到了一个远远不属于它的高度，并且不断地为这套范式打补丁，以此来强行维护它的“普世性”，强行为它挽尊呢？当然了，我们也可以继续滑坡谬误下去：Java 真的有那么好吗？</p>
+<p><strong>那么，Java 到底烂在哪？烂的到底是 Java 还是不负责任的程序员？</strong></p>
+<p>To be continued.</p>
 
                 
               </div>
@@ -296,7 +319,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%97%A5%E5%B8%B8/" class="print-no-link">#日常</a>
+        <a href="/tags/C/" class="print-no-link">#C++</a>
+      
+        <a href="/tags/%E6%9D%82%E8%B0%88/" class="print-no-link">#杂谈</a>
       
     </div>
   
@@ -308,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>再见中原岬</div>
-      <div>https://lizi.moe/2026/03/18/再见中原岬/</div>
+      <div>抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）</div>
+      <div>https://lizi.moe/2026/04/11/抛掉书本上街去-I：Java-完蛋了-没吃的赶紧戒（一）/</div>
     </div>
     <div class="license-meta">
       
@@ -321,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年3月18日</div>
+          <div>2026年4月11日</div>
         </div>
       
       
@@ -353,18 +378,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/11/%E6%8A%9B%E6%8E%89%E4%B9%A6%E6%9C%AC%E4%B8%8A%E8%A1%97%E5%8E%BB-I%EF%BC%9AJava-%E5%AE%8C%E8%9B%8B%E4%BA%86-%E6%B2%A1%E5%90%83%E7%9A%84%E8%B5%B6%E7%B4%A7%E6%88%92%EF%BC%88%E4%B8%80%EF%BC%89/" title="抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">抛掉书本上街去 I：Java 完蛋了 没吃的赶紧戒（一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/13/%E8%AF%95%E7%9D%80%E7%94%A8%E4%BA%86-emscripten%EF%BC%8C%E5%AE%83%E5%B9%B6%E6%B2%A1%E6%9C%89%E6%88%91%E6%83%B3%E8%B1%A1%E4%B8%AD%E7%9A%84%E9%82%A3%E4%B9%88%E5%A5%BD/" title="试着用了 emscripten，它并没有我想象中的那么好">
-                        <span class="hidden-mobile">试着用了 emscripten，它并没有我想象中的那么好</span>
+                      <a href="/2026/03/18/%E5%86%8D%E8%A7%81%E4%B8%AD%E5%8E%9F%E5%B2%AC/" title="再见中原岬">
+                        <span class="hidden-mobile">再见中原岬</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
