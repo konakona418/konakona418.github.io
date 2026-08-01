@@ -1,12 +1,14 @@
 
 :root
 {
-  --color-bg         : #ffffff;
-  --color-text       : #333333;
-  --color-muted      : #666666;
-  --color-link       : #0066cc;
-  --color-link-hover : #0055aa;
-  --color-code-bg    : #f5f5f5;
+  --color-bg         : #faf9f7;
+  --color-text       : #26221f;
+  --color-muted      : #6f6a64;
+  --color-link       : #c4000e;
+  --color-link-hover : #8a0008;
+  --color-code-bg    : #f0ede8;
+  --color-mark       : #ffd97a;
+  --color-accent     : #c4000e;
   --font-family      : "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-size        : 17px;
   --line-height      : 28px;
@@ -46,6 +48,7 @@
   --token-va         : #000000;
   --token-vs         : #4e9a06;
   --token-wa         : #8f5902;
+  --font-display     : Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
 }
 
 html
@@ -149,6 +152,38 @@ nav a
 a[aria-hidden='true']
 {
   display : none;
+}
+
+mark
+{
+  background-color : var(--color-mark);
+  color            : var(--color-text);
+}
+
+.search-input
+{
+  display          : block;
+  width            : 100%;
+  box-sizing       : border-box;
+  padding          : 8px 12px;
+  font-size        : var(--font-size);
+  background-color : var(--color-code-bg);
+  color            : var(--color-text);
+  border           : 1px solid var(--color-muted);
+  border-radius    : 4px;
+  margin-bottom    : var(--space-nav-gap);
+}
+
+.search-input:focus
+{
+  outline      : none;
+  border-color : var(--color-link);
+}
+
+input[type=search]::-webkit-search-cancel-button
+{
+  -webkit-appearance : none;
+  appearance         : none;
 }
 
 img
@@ -347,14 +382,107 @@ code span.wa
   color : var(--token-wa);
 }
 
-.tag-item
+h1
 {
-  --tag-hue : calc(190deg + var(--tag-count) * 18deg);
+  font-family : var(--font-display);
+  font-size   : calc(var(--font-size) * 2.2);
+  line-height : calc(var(--line-height) * 1.3);
 }
 
-.tag-name
+.site-name
 {
-  color : hsl(var(--tag-hue), 70%, 45%);
+  font-family    : var(--font-display);
+  font-weight    : 600;
+  letter-spacing : 0.02em;
+}
+
+.post-date
+{
+  font-family    : var(--font-display);
+  color          : var(--color-accent);
+  font-size      : 0.92em;
+  letter-spacing : 0.03em;
+  min-width      : 6.2em;
+}
+
+.post-tag
+{
+  display         : inline-block;
+  font-size       : 0.85em;
+  border          : 1px solid var(--color-accent);
+  padding         : 1px 6px;
+  color           : var(--color-accent);
+  margin-right    : 6px;
+  text-decoration : none;
+}
+
+.post-tag-sep
+{
+  display : none;
+}
+
+.post-tag:last-child
+{
+  margin-right : 0;
+}
+
+.tag-item .tag-name
+{
+  border          : 1px solid var(--color-accent);
+  padding         : 2px 10px;
+  font-family     : var(--font-display);
+  color           : var(--color-accent);
+  text-decoration : none;
+}
+
+.tag-item .tag-count
+{
+  color       : var(--color-accent);
+  font-family : var(--font-display);
+  margin-left : 8px;
+}
+
+.archive-year
+{
+  display          : inline-block;
+  font-family      : var(--font-display);
+  font-size        : calc(var(--font-size) * 2.4);
+  line-height      : 1.15;
+  background-color : var(--color-accent);
+  color            : var(--color-bg);
+  padding          : 4px 14px;
+  margin           : 0 0 12px;
+  clip-path        : polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+
+.archive-year + .post-list
+{
+  margin-top : 0;
+}
+
+.not-found
+{
+  padding-top : 2rem;
+}
+
+.not-found h1
+{
+  font-family : var(--font-display);
+  font-size   : calc(var(--font-size) * 4.5);
+  line-height : 1;
+  color       : var(--color-accent);
+  margin      : 0;
+}
+
+.not-found h1::after
+{
+  content          : "";
+  display          : block;
+  width            : 3rem;
+  height           : 4px;
+  margin-top       : 0.75rem;
+  background-color : var(--color-accent);
+  clip-path        : polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 }
 
 @media screen and (prefers-color-scheme: dark)
@@ -362,12 +490,14 @@ code span.wa
 
 :root
 {
-  --color-bg         : #1a1a1a;
-  --color-text       : #e6e6e6;
-  --color-muted      : #999999;
-  --color-link       : #6ab0f3;
-  --color-link-hover : #8cc2f5;
-  --color-code-bg    : #2d2d2d;
+  --color-bg         : #14120f;
+  --color-text       : #e8e4de;
+  --color-muted      : #98918a;
+  --color-link       : #ff5347;
+  --color-link-hover : #ff7a70;
+  --color-code-bg    : #211e1a;
+  --color-mark       : #9c7a00;
+  --color-accent     : #ff5347;
   --token-al         : #95da4c;
   --token-an         : #3f8058;
   --token-at         : #2980b9;
