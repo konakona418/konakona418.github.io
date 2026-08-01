@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lizi.moe/sitemap.xml
