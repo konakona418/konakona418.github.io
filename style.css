@@ -51,6 +51,90 @@
   --font-display     : Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
 }
 
+html[data-theme="dark"]
+{
+  --color-bg         : #14120f;
+  --color-text       : #e8e4de;
+  --color-muted      : #98918a;
+  --color-link       : #ff5347;
+  --color-link-hover : #ff7a70;
+  --color-code-bg    : #211e1a;
+  --color-mark       : #9c7a00;
+  --color-accent     : #ff5347;
+  --token-al         : #95da4c;
+  --token-an         : #3f8058;
+  --token-at         : #2980b9;
+  --token-bn         : #f67400;
+  --token-bu         : #7f8c8d;
+  --token-cf         : #fdbc4b;
+  --token-ch         : #3daee9;
+  --token-cn         : #27aeae;
+  --token-co         : #7a7c7d;
+  --token-cv         : #7f8c8d;
+  --token-do         : #a43340;
+  --token-dt         : #2980b9;
+  --token-dv         : #f67400;
+  --token-er         : #da4453;
+  --token-ex         : #0099ff;
+  --token-fl         : #f67400;
+  --token-fu         : #8e44ad;
+  --token-im         : #27ae60;
+  --token-in         : #c45b00;
+  --token-kw         : #cfcfc2;
+  --token-op         : #cfcfc2;
+  --token-ot         : #27ae60;
+  --token-pp         : #27ae60;
+  --token-re         : #2980b9;
+  --token-sc         : #3daee9;
+  --token-ss         : #da4453;
+  --token-st         : #f44f4f;
+  --token-va         : #27aeae;
+  --token-vs         : #da4453;
+  --token-wa         : #da4453;
+}
+
+html[data-theme="light"]
+{
+  --color-bg         : #faf9f7;
+  --color-text       : #26221f;
+  --color-muted      : #6f6a64;
+  --color-link       : #c4000e;
+  --color-link-hover : #8a0008;
+  --color-code-bg    : #f0ede8;
+  --color-mark       : #ffd97a;
+  --color-accent     : #c4000e;
+  --token-al         : #ef2929;
+  --token-an         : #8f5902;
+  --token-at         : #204a87;
+  --token-bn         : #0000cf;
+  --token-bu         : #204a87;
+  --token-cf         : #204a87;
+  --token-ch         : #4e9a06;
+  --token-cn         : #8f5902;
+  --token-co         : #8f5902;
+  --token-cv         : #8f5902;
+  --token-do         : #8f5902;
+  --token-dt         : #204a87;
+  --token-dv         : #0000cf;
+  --token-er         : #a40000;
+  --token-ex         : #a40000;
+  --token-fl         : #0000cf;
+  --token-fu         : #204a87;
+  --token-im         : #204a87;
+  --token-in         : #8f5902;
+  --token-kw         : #204a87;
+  --token-op         : #ce5c00;
+  --token-ot         : #8f5902;
+  --token-pp         : #8f5902;
+  --token-re         : #4e9a06;
+  --token-sc         : #ce5c00;
+  --token-ss         : #4e9a06;
+  --token-st         : #4e9a06;
+  --token-va         : #000000;
+  --token-vs         : #4e9a06;
+  --token-wa         : #8f5902;
+}
+
 html
 {
   scrollbar-gutter            : stable;
@@ -103,7 +187,24 @@ time
 
 .site-footer
 {
-  color : var(--color-muted);
+  color           : var(--color-muted);
+  display         : flex;
+  justify-content : space-between;
+  align-items     : baseline;
+}
+
+.theme-toggle
+{
+  border      : none;
+  background  : none;
+  color       : inherit;
+  font-size   : 1em;
+  padding     : 0;
+  cursor      : pointer;
+  font-family : var(--font-family);
+  line-height : var(--line-height);
+  display     : flex;
+  align-items : center;
 }
 
 code
@@ -140,13 +241,16 @@ li
 
 nav
 {
+  display       : flex;
+  flex-wrap     : wrap;
+  align-items   : baseline;
+  gap           : var(--space-list-gap) var(--space-nav-link);
   margin-bottom : var(--space-nav-gap);
 }
 
-
-nav a
+.post-desc
 {
-  margin-right : var(--space-nav-link);
+  color : var(--color-muted);
 }
 
 a[aria-hidden='true']
@@ -601,7 +705,20 @@ pre
 
 nav a
 {
-  padding : 8px 4px;
+  padding : 4px 4px;
+}
+
+nav
+{
+  gap : 0 var(--space-nav-link);
+}
+
+.site-name
+{
+  flex-basis    : 100%;
+  padding       : 0;
+  border-right  : none;
+  margin-bottom : 4px;
 }
 
 }
@@ -611,6 +728,36 @@ nav a
 .post-date
 {
   min-width : 0;
+}
+
+}
+@media print
+{
+
+html
+{
+  background-color : #ffffff;
+}
+
+body
+{
+  background-color : #ffffff;
+  color            : #000000;
+}
+
+a
+{
+  color : #000000;
+}
+
+nav
+{
+  display : none;
+}
+
+mark
+{
+  background-color : transparent;
 }
 
 }

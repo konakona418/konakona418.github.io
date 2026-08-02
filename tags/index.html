@@ -1,1 +1,27 @@
-<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>标签</title><meta property="og:title" content="标签"><meta property="og:type" content="website"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="嚯嚯嚯，夸张哦"><meta property="og:url" content="https://lizi.moe/tags/"><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a><a href="/rss/">RSS</a></nav></header><main><ul class="tag-list"><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/demo/">demo</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/getting-started/">getting-started</a><span class="tag-count">(1)</span></li></ul></main><footer class="site-footer"><p>© moe li · Generated with Burogu</p></footer></body></html>
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>标签</title><meta property="og:title" content="标签"><meta property="og:type" content="website"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="嚯嚯嚯，夸张哦"><meta property="og:url" content="https://lizi.moe/tags/"><script>document.addEventListener("DOMContentLoaded", function () {
+ var stored = localStorage.getItem("burogu-theme");
+ var button = document.createElement("button");
+ button.className = "theme-toggle";
+ button.type = "button";
+ button.setAttribute("aria-label", "Toggle dark mode");
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(stored);
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+ var footer = document.querySelector(".site-footer");
+ if (footer) { footer.appendChild(button); }
+});
+</script><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a><a href="/rss/">RSS</a></nav></header><main><ul class="tag-list"><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/demo/">demo</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/getting-started/">getting-started</a><span class="tag-count">(1)</span></li></ul></main><footer class="site-footer"><p>© moe li · Generated with Burogu</p></footer></body></html>
