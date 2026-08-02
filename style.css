@@ -981,6 +981,11 @@ mark
   display : none;
 }
 
+.theme-toggle
+{
+  display : none;
+}
+
 }
 
 /* Generated with Clay, http://fvisser.nl/clay *//* Your custom styles are appended to style.css.
