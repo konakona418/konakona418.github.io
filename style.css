@@ -49,6 +49,7 @@
   --token-vs         : #4e9a06;
   --token-wa         : #8f5902;
   --font-display     : Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+  --font-code        : ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 html[data-theme="dark"]
@@ -210,6 +211,7 @@ time
 code
 {
   background-color : var(--color-code-bg);
+  font-family      : var(--font-code);
   padding-left     : 4px;
   padding-right    : 4px;
   border-radius    : 3px 3px 3px 3px;
@@ -218,25 +220,165 @@ code
 pre
 {
   background-color : var(--color-code-bg);
-  padding          : 12px 16px 12px 16px;
+  font-family      : var(--font-code);
+  padding          : 32px 16px 12px 16px;
   border-radius    : 4px 4px 4px 4px;
   overflow-x       : scroll;
+  position         : relative;
 }
 
 
 pre code
 {
   background-color : transparent;
+  padding          : 0;
 }
 
-ul
+.code-lang
+{
+  position       : absolute;
+  top            : 10px;
+  left           : 12px;
+  font-size      : 0.8em;
+  line-height    : 1;
+  color          : var(--color-muted);
+  letter-spacing : 0.06em;
+  pointer-events : none;
+}
+
+.copy-button
+{
+  position    : absolute;
+  top         : 8px;
+  right       : 12px;
+  border      : none;
+  background  : none;
+  color       : var(--color-muted);
+  cursor      : pointer;
+  padding     : 0;
+  display     : flex;
+  align-items : center;
+}
+
+.copy-button:hover
+{
+  color : var(--color-text);
+}
+
+.post-list
 {
   list-style-type : none;
+}
+
+.tag-list
+{
+  list-style-type : none;
+}
+
+#search-results
+{
+  list-style-type : none;
+}
+
+.toc > ul
+{
+  list-style-type : none;
+}
+
+.toc
+{
+  font-size     : 0.9em;
+  margin-bottom : var(--space-nav-gap);
+  padding       : 0;
+}
+
+.toc a
+{
+  color : var(--color-muted);
+}
+
+.toc li
+{
+  padding-left : calc((var(--toc-depth) - 1) * 12px);
+}
+
+.toc .toc-level-1
+{
+  --toc-depth : 1;
+}
+
+.toc .toc-level-2
+{
+  --toc-depth : 2;
+}
+
+.toc .toc-level-3
+{
+  --toc-depth : 3;
+}
+
+.toc .toc-level-4
+{
+  --toc-depth : 4;
+}
+
+.toc .toc-level-5
+{
+  --toc-depth : 5;
+}
+
+.toc .toc-level-6
+{
+  --toc-depth : 6;
+}
+
+table
+{
+  border-collapse : collapse;
+}
+
+th
+{
+  border      : 1px solid var(--color-muted);
+  padding     : 6px 10px;
+  font-weight : 600;
+  text-align  : left;
+}
+
+td
+{
+  border  : 1px solid var(--color-muted);
+  padding : 6px 10px;
+}
+
+figcaption
+{
+  color      : var(--color-muted);
+  font-size  : 0.85em;
+  text-align : center;
+  margin-top : 4px;
+}
+
+.post-meta-time
+{
+  color : var(--color-muted);
+}
+
+.search-no-results
+{
+  color : var(--color-muted);
 }
 
 li
 {
   margin-bottom : var(--space-list-gap);
+}
+
+blockquote
+{
+  border-left  : 3px solid var(--color-muted);
+  margin       : 0 0 var(--space-list-gap);
+  padding-left : calc(var(--space-list-gap) * 2);
 }
 
 nav
@@ -251,6 +393,29 @@ nav
 .post-desc
 {
   color : var(--color-muted);
+}
+
+.post-nav
+{
+  border-top      : 1px solid var(--color-muted);
+  padding-top     : calc(var(--space-list-gap) * 2);
+  margin-top      : var(--space-nav-gap);
+  display         : flex;
+  justify-content : space-between;
+  gap             : 0 var(--space-nav-gap);
+}
+
+.post-nav-next
+{
+  margin-left : auto;
+}
+
+.post-nav-label
+{
+  display       : block;
+  color         : var(--color-muted);
+  font-size     : 0.85em;
+  margin-bottom : 2px;
 }
 
 a[aria-hidden='true']
@@ -530,6 +695,17 @@ h3
   color : var(--color-accent);
 }
 
+.post-nav a
+{
+  color           : var(--color-text);
+  text-decoration : none;
+}
+
+.post-nav a:hover
+{
+  color : var(--color-accent);
+}
+
 .post-date
 {
   font-family    : var(--font-display);
@@ -640,6 +816,31 @@ pre
   color            : var(--color-bg);
 }
 
+.post-body ul
+{
+  list-style-type : none;
+}
+
+div.post-body ul li::marker
+{
+  content : "—";
+}
+
+div.post-body ul ul li::marker
+{
+  content : "◦";
+}
+
+div.post-body ul ul ul li::marker
+{
+  content : "▪";
+}
+
+blockquote
+{
+  border-color : var(--color-text);
+}
+
 @media screen and (prefers-color-scheme: dark)
 {
 
@@ -721,6 +922,16 @@ nav
   margin-bottom : 4px;
 }
 
+.post-nav
+{
+  flex-direction : column;
+}
+
+.post-nav-next
+{
+  margin-left : 0;
+}
+
 }
 @media screen and (max-width: 600px)
 {
@@ -758,6 +969,16 @@ nav
 mark
 {
   background-color : transparent;
+}
+
+.copy-button
+{
+  display : none;
+}
+
+.code-lang
+{
+  display : none;
 }
 
 }
