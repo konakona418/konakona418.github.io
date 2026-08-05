@@ -1,0 +1,180 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>杂感 | 我们的国产2D动画……</title><meta property="og:title" content="杂感 | 我们的国产2D动画……"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="会变成，什么样子……"><meta property="og:url" content="https://lizi.moe/posts/杂感|我们的国产2D动画……/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code.sourceCode");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   pre.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  pre.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a><a href="/rss/">RSS</a></nav></header><main><article><h1>杂感 | 我们的国产2D动画……</h1><p class="post-meta"><time>2026-08-05</time><span class="post-tags"><a class="post-tag" href="/tags/杂谈/">杂谈</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/动画/">动画</a></span><span class="post-meta-time">约 9 分钟</span></p><div class="post-body"><p>前两天有人建议我去看B站新上的国产动画《记忆管理局》。</p>
+<p>其实这部的一些预告啊宣传片小短片什么的我之前倒是看过，不过看完了也没有太关注（因为觉得等到播出的时候大概率是会给我推的）。而且居然选了今年各路神仙打架（包括但不限于科学猴的《穹庐下的魔女》《攻壳机动队》和京都动画的
+<em>被寄予厚望然而爆雷的</em>
+《二十世纪电气目录》）的第三季度上线，想必资方和制作组都对它期待很高。</p>
+<p>不过前两天看动画片的兴致约等于没有，于是一直拖着。结果不出几个月前所料，B站开屏广告果然给我推广了。我看还不行吗！？</p>
+<p>于是去看了一下。</p>
+<h2 id="我看火药方糖摔跤社搞的不错">我看火药方糖摔跤社搞的不错……</h2>
+<p>作画非常精湛，我认为和大部分日本公司正面对比完全够了。动作张力和镜头设计和演出都很有想法，确实就是在炫技，而且我是真的觉得炫的挺成功的。</p>
+<p>个人感觉制作组受到 Trigger 的影响比较大。另外还有汤浅政明的风格和一种
+FLCL 的既视感（不过考虑到 Trigger 的很多成员也参与了 FLCL
+的制作也算正常？）。明快的色彩，夸张的运动表现，偶尔的夸张，整体观感还是很有活力滴。</p>
+<p>顺带一提女主角之一的人设似乎有点春原晴子的既视感。</p>
+<p>不论是一般场景的精细程度还是战斗画面的表现力和张力我觉得都是完全够的。即使不考虑制作组是第一次做原创独立长篇动画这一点，他们在这部的制作里展现出的工业能力也已经非常优秀了。</p>
+<h2
+id="我不希望再出现剧情空洞言之无物的事情不然那么多原画师的铅笔就白用了">我不希望再出现剧情空洞言之无物的事情；不然，那么多原画师的铅笔就白用了……</h2>
+<p>首先要明确一件事情，画面也好音乐也好配音也好，只是为了做好一件事情服务的。是什么事情呢？</p>
+<p><strong>很显然是讲故事。</strong></p>
+<p>首先动画不是作画集或者作品集或者角色设定集，也不是什么概念设计的展览会。动画是要来讲故事的。如果连故事都立不起来，那么投入的资源其实都很难最大限度发挥作用。</p>
+<p>本作制作组犯的最大错误就是他们完全没有意识到这一点，以至于过分沉迷展示作画而完完全全忽略了故事和叙事本身的重要性，剧情也好，设定也好都是背景板罢了。真是成也炫技，败也炫技。</p>
+<p>剧情推进混乱，叙事节奏支离破碎，人物弧光塑造欠缺，东一榔头西一棒槌，这样我怎么看？看的时候我对接下来会发生什么完全不感兴趣，我连正在发生什么都闹不明白。有人说坚持几集就好了最后豁然开朗（暂且不知道在后面四集还没出来的时候，他们是如何
+jump to this conclusion
+的），不过有没有一种可能性，要欣赏你的作画有一个前设条件是，我得先看下去你的作品；要看下去你的作品，我得先浸入你的剧情，但是你的剧情现在属于是一个
+<code>Option::None</code> 的状况，那么我到底要沉浸到什么里面？
+<strong>悲しみの海？</strong>
+结果就是，我完全看不下去，越来越想跳着看，专拣作画好的地方看，至于剧情啊设定啊什么的已经无所谓了。我是来看你们烧钱做作画
+mad
+的吗？为什么我不去看我的老学长，绵阳中学优秀破鞋毕业生腹疼爆公爵的作画
+mad 视频？（Credit：<a href="mailto:Bilibili@符腾堡公爵"
+class="email">Bilibili@符腾堡公爵</a>，永远缅怀）</p>
+<p>有人说本作的缺点在于，音乐和画面的配合不好，要是和 FLCL 一样有 The
+Pillows
+制作的无时无刻播放的牛逼的配乐托举情绪，整体表现力会提升一个层次云云。没什么问题，但是现在缺的是表现力吗？显然不是。</p>
+<p><strong>是故事呀……</strong></p>
+<p>更让我感到一言难尽的是世界观的处理方式。制作组一开场便引入了大量设定对着观众狂轰滥炸，这个组织那个组织，这个物件那个物件，就连作为核心设定的
+Bug
+人这一概念讲了半天，我还是不知道到底是要为了什么服务，最后的感觉也就是能负责一个打怪升级的非常
+cliche
+的效果。最后在我看来的效果就是，制作组造出一堆看起来名字很潮酷的设定，然后把这些东西一股脑塞给观众，再捏了一堆
+OC 让他们打架斗殴。</p>
+<p>最后这些设定我一个都没有记住，还是一头雾水。<strong>而且这还是我看了制作组提供的设定表再看的情况下，</strong>
+遑论没有看过设定表的观众了。</p>
+<p>于是乎这整个作品呈现出的效果更像是制作组在展示
+worldbuilding，孜孜不倦地介绍自己的 OC
+世界观。介绍世界观无所谓，《罗小黑战记》的很多角色设定就是源于寒木春华的员工的
+OC，《魁拔》的世界观更是不知道大到哪里去了，但是它们至少是通过故事一步步把世界观潜移默化地传达给观众的。但是这部的制作组似乎是希望观众先把他们过去短篇和设定和企划书全部学习一通，再去小红书上面找一堆他们的老粉的解读深化理解，然后他们才能开始讲故事。</p>
+<p>如果这部是一个 cult
+片，那我对读各种前置材料没有任何意见。但是很遗憾，它是一个面向大众的作品，我不是他们的粉丝，我只是一介观众，我没有先去读冗长的设定再来观看动画的责任。<strong>我是来看动画的，你们要干什么！</strong>
+我不是来看设定集的，设定的花哨和世界观的完备不能替代叙事；恰恰相反，越是复杂的世界观，越需要更优秀的剧情来支撑。如此把世界观揉成一坨软广性质的东西，然后就武断地管它叫剧情叙事，是不是有点不合适呢？</p>
+<p>类似的，隔壁 Trigger 的《Kill la
+Kill》（虽然有超展开但是而且前半段也有一种打怪升级的 deja
+vu）的设定也是随着剧情发展逐渐铺陈出来的呀，甚至战斗纤维这么一个核心设定都是有了一定的铺垫，等到角色经历推动到合适的时候，才自然而然的揭晓的。观众是要在剧情推进中逐渐理解你构造的世界，而不是先站在上帝视角理解你的世界才能看剧情。不然乐趣还剩多少呢？</p>
+<blockquote>
+<p>……而且《Kill la
+Kill》核心设定就这么一个也整出了二十几集的容量，他们整这么多核心设定是要做银河英雄传说一样的一百集大型电视剧吗？</p>
+</blockquote>
+<h2
+id="意识流是怎么一回事搞了很久也没搞清楚">意识流是怎么一回事，搞了很久也没搞清楚……</h2>
+<!-- FLCL 四畳半 Sonny Boy -->
+<p>有人声称本作的风格是意识流，是排除掉不对电波的人的。</p>
+<blockquote>
+<p>那我说鲨卷风也是意识流超级文艺逼小众逼作品，有没有懂的。要是剧情稀碎都能拿意识流来掩护了，那我说一堆烂片都是意识流了（不过本作远远不能到被称为烂片的范畴），无非大家品味低下，过去主义遗毒鉴赏不了未来主义潮酷大作，鉴定为吃意大利面吃太多导致的，赶紧去
+Plazzale Loreto
+倒挂金钩做几个卷腹锻炼核心力量大步迈进后现代。<strong>我寻思也不是人均乔伊斯
+普鲁斯特 今敏啊？</strong></p>
+</blockquote>
+<p>实验性的表达当然是应该鼓励的，但是做实验不代表彻底的混乱，<strong>特别是在（如上文提到的）本作是一部面向大众播映的作品的情况下。</strong></p>
+<p>汤浅政明监督的《四畳半》《Mind
+Game》很意识流了；夏目真悟负责编剧的《Sonny
+Boy》很电波了。但是它们都有一条观众可以抓住的主线。哪怕制作组没有事无巨细不厌其烦地解释一些细节，我们依然能知道角色为什么而前进，也能理解到艺术家通过作品最后希望传达什么样的思想。</p>
+<p>前文提到本作让我想起《FLCL》。《FLCL》它就一 6 集的
+OVA，容量比《记忆管理局》还少，也充满了大量的隐喻和跳跃和象征性的意识流的表现。但是它作为一个非常典型的
+coming-of-age 类型的故事，它的叙事是完整的。</p>
+<p>剧情一团浆糊的作品，只要拿出个意识流当免死金牌，就可以立体防御一切批评和质疑吗？那以前以后所有在叙事上一塌糊涂的作品恐怕都完全能如此滥用这个解释为自己脱罪了。</p>
+<p><strong>我缺的叙事这块谁给我补呀？</strong>
+观众总得有个什么锚点可以抓住吧。</p>
+<h2
+id="以作画绚丽为纲再到以剧情建设为中心">以作画绚丽为纲，再到以剧情建设为中心</h2>
+<p>还有 4
+集可以抢救一下，虽然大概率都已经做完了（不过考虑到这整个动画的制作前后跨度达到了令人感到惊讶的数年，后续风格变成熟也是有可能的）。如果后续在宏观的剧情上可以（不知道通过什么超级雷霆手段）把所有坑悉数填上，并顺利收束剧情，而且微观的叙事上能够做到不像现在这样一片狼藉，那我觉得也不是没有挽回的余地。</p>
+<p>然而在我看来制作组在创作思路上出现了重大偏差。他们似乎相信，只要画面表现足够绚丽夺目，观众自然会被吸引。很遗憾，我做不到不带脑子看。作画可以让我点开这个作品（开屏广告真给我吸引到了），但是如果要想观众真正记住这部作品，还是先好好打磨了剧情再说吧。</p>
+<p>国内动画产业已经不再缺少能够完成高质量画面的团队。我认为这么多年的锻炼以及和日本公司的合作下来，国内的创作者应当已经具备了和日本本土动画从业者平齐甚至比日本更胜一筹的水平。而且后面还拉来了大股东（李旎）投资，好像东西已经齐活了？我们马上就可以做出又新又好的国产2D动画了！没有什么需要做的了！是这样吗！？</p>
+<blockquote>
+<p>……文艺工作者要讲好中国故事、传播好中国声音、阐发中国精神、展现中国风貌。</p>
+</blockquote>
+<p>拿到了钱有了技术，就请充分利用这么优渥的条件好好讲故事。</p>
+<h2 id="不要总想搞个大新闻">不要总想搞个大新闻</h2>
+<p>我比较担心的是制作组这部不温不火褒贬不一，资方不愿意继续投资，他们又得回到靠接外包青黄不接的日子，再以几年的周期试错，这样就很不妙了。</p>
+<p>我比较担心的是在这之后会发生什么。原创动画本来就是一个高投入高风险长周期的事情。创作能力的积累，需要时间。问题在于，目前国产原创动画环境往往缺少允许失败的空间。</p>
+<blockquote>
+<p>日本本土倒是有制作委员会模式分摊风险，而且有成熟的业务流程，这种情况下稍微好点（尽管如此近年除了头部公司也很少有人愿意冒险）。本国目前的制作和商业化模式相对还不太成熟，但我认为本国大可不必生搬硬套日本的模式。</p>
+</blockquote>
+<p>如果制作组这部作品不温不火褒贬不一，资方不愿意继续注资，那团队可能又得回到青黄不接的日子靠接外包过活，再以几年的周期缓慢积攒资源再去试错，这对于创作者是非常不利的。叙事能力和作画的技术都是需要在不断练习中积累的，如果每一次原创的尝试都因为失利而中断，那么创作者很难成长。</p>
+<p>所以我总体还是对这部作品抱持比较开放的看法的。至少在这个国家还有人愿意去坐这个冷板凳，这种情怀是很难能可贵的。当然前提是制作组能够面对自己的问题。前文所述，国产2D动画不缺技术人才，但是有再多人才，没有会讲故事的人，最后也只能成为一个先进的外包工厂，始终跟在日本动画后面亦步亦趋，而无法形成真正具有原创能力的动画产业链，我非常不希望看到这样的局面。</p>
+<h2 id="你们怎么办">你们怎么办……</h2>
+<p>那么，国产在地2D动画的出路在哪里呢？</p>
+<p><strong>God knows…</strong></p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/博客迁移说明/">博客迁移说明</a></div></nav></article></main><footer class="site-footer"><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
