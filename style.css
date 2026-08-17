@@ -192,6 +192,26 @@ time
   display         : flex;
   justify-content : space-between;
   align-items     : baseline;
+  flex-wrap       : wrap;
+}
+
+.footer-links
+{
+  flex-basis    : 100%;
+  font-size     : calc(var(--font-size) * 0.9);
+  margin-bottom : var(--space-list-gap);
+}
+
+
+.footer-links a
+{
+  color : var(--color-muted);
+}
+
+
+.site-footer p
+{
+  margin-top : 0;
 }
 
 .theme-toggle
