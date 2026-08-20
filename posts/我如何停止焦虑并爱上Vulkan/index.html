@@ -1,0 +1,431 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>我如何停止焦虑并爱上 Vulkan</title><meta property="og:title" content="我如何停止焦虑并爱上 Vulkan"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="Mein Fuhrer…"><meta property="og:url" content="https://lizi.moe/posts/我如何停止焦虑并爱上Vulkan/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code.sourceCode");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   pre.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  pre.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>我如何停止焦虑并爱上 Vulkan</h1><p class="post-meta"><time>2026-08-20</time><span class="post-tags"><a class="post-tag" href="/tags/C++/">C++</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/图形学/">图形学</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/Vulkan/">Vulkan</a></span><span class="post-meta-time">约 18 分钟</span></p><div class="post-body"><p>过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。</p>
+<p>差不多一年前的这个时候
+<em>（另一个漫无止境的八月呀……）</em>，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。</p>
+<p>去年八月底九月初，我正式开始实施这个雄心勃勃的计划。</p>
+<p>我最早跟的是 <em>Vulkan Tutorial</em> 去学的 Vulkan 编程，但是
+<em>Tutorial</em>
+最严重的问题在于，它代码耦合程度太高，而且大部分工作都是一些 boilerplate
+的初始化工作，以至于我真正开始写这个项目的时候感到有些力不从心。因此，我换成了
+<em>Vulkan Guide</em> 进行进一步的学习。</p>
+<p><em>Guide</em>
+的一大优点在于，它会给读者一些抽象和封装上的建议，而且它使用的是 Vulkan
+1.3 API，而不是 <em>Tutorial</em> 的 1.0
+API，极大地简化了代码编写。比如说，它使用 <strong>Sync2</strong>
+同步原语，使用 <strong>Bindless Descriptor Set</strong> 来避免大量的
+descriptor 结构描述代码编写。</p>
+<blockquote>
+<p>自然，我们可以引入 glslang 或者 SPIRV-Reflect 之类的玩意来反射 spv
+文件从而自动化生成这些 descriptor。但是这样会引入过多的依赖，
+<em>Guide</em> 说到底就是个入门教程，不需要搞的这么复杂。</p>
+<p>另外，使用 Bindless Set 有一些潜在的性能收益，可以在一定程度上减少
+descriptor binding
+的开销。现在的工业级别渲染器在处理大量纹理资源的时候是要用到这个特性的。</p>
+</blockquote>
+<p>另外 <em>Guide</em> 使用了 1.3 的 <strong>Dynamic Rendering</strong>
+特性，极大减少了 Render Pass 和 Frame Buffer 的
+boilerplate，降低了编写难度。</p>
+<blockquote>
+<p>当然论灵活性，Vulkan 还有我们 <strong>大开历史倒车的 Pipeline Library
+和 Shader Object Extension</strong>。哦牛批，还有这种图形 API
+哦，绕了一大圈居然回到原地了！<strong>Steering Committee
+在赣森魔呀？怎么能走改旗易帜的邪路呢！？</strong></p>
+<p>遗憾的是，当时我还在用 Windows，我的 AMD
+显卡驱动不支持这一套骚操作，没法体验它带来的返祖 OpenGL
+般的性能损失了。不知道苏姿丰女士在忙什么。现在的 Mesa
+驱动好像是支持了，但是没啥去体验的热情了。</p>
+<p><strong>Vulkan 在我心中的完美形象正在崩塌，现在我只想不遇到
+regression……（笑）</strong></p>
+</blockquote>
+<p><em>Guide</em> 更贴近实际工程，因而使用了 <strong>Vulkan Bootstrap
+（vkb）</strong> 项目来简化 <em>Tutorial</em> 的一开始的大量 boilerplate
+的部分。</p>
+<blockquote>
+<p>我不认为大部分用户需要关心 Physical Device 如何选择，Device
+如何创建，如何启用 Extension/Feature，如何开 Validation Layer，Instance
+如何初始化等等，<strong>这些不重要！</strong>
+很多人就是一上来就被这些东西劝退了，反而没有触及到 Vulkan
+真正关键和真正需要投入精力认真学习体会的地方。初始化也就是调一下 vkb
+的事情而已。</p>
+<p>不过 Bootstrap
+确实让我在很后面栽了跟头。三个月以后进行答辩前测试运行的时候，在我室友的双显卡电脑上总是选择
+Intel 的集显而不是英伟达的独显。然后这个 Iris 的驱动还有问题会
+segfault，即使我 prefer 了独显它还是选集显。后面发现是 vkb 的选择逻辑有
+bug，不过这个 bug
+去年九月就被人修了，然而在那之前我都把依赖配置好了……</p>
+</blockquote>
+<p>另外 <em>Tutorial</em> 严重简化的一部分是内存（特别是 device
+memory）管理。我们知道小而多的内存分配效率很低性能很差，而且可能导致碎片化（自然我们可以想到用
+memory pool 或者 arena
+之类的），但是它这教程遇不到这情况，毕竟太简单了，需要的资源很少，于是也就彻底摆烂完全不教了。它直接让读者去做
+further reading 自学，然后也不给在哪里 further reading，这……相比而言
+<em>Guide</em> 就非常人性化了，它直接推荐去用 <strong>Vulkan Memory
+Allocator（vma）</strong>。vma 是个封装好的 device memory
+allocator，性能算是工业级的（至少肯定比我手写一个好），提供 Vulkan
+风格的 API 和一些基本的 C++ 抽象，非常好用和简便。</p>
+<p><em>Guide</em>
+到底只是一个教程，要是能参考现有的项目就比较好了。我参考的是一个叫做
+<strong>Elias Daler’s Bikeshed Renderer（edbr）</strong> 的实现。</p>
+<blockquote>
+<p>原作者有博客文章 <a href="https://edw.is/learning-vulkan/">How I
+learned Vulkan and wrote a small game engine with it</a>。</p>
+</blockquote>
+<p>我的目的不是一个通用
+RHI，我需要的就是一个可以很好很简便地完成到时候的期末作业的框架。而 edbr
+作为 Daler
+的个人项目也是非常简单的（虽然功能孱弱但是对于简单任务绰绰有余），我完全可以参考其实现。像什么
+bgfx 之类的架构就过于复杂了。</p>
+<p>Daler 氏的重要设计理念是：</p>
+<ol type="1">
+<li>避免过度设计，<strong>特别是在学习进行中就自作聪明地提前设计和解耦合。</strong></li>
+<li>用不到的功能就不做。</li>
+</ol>
+<p>关于第一点，我一开始就吃了这个亏。当时刚开始做的时候拆了一堆模块，最后根本用不了还要来回改，非常恶心，最后直接全部删了重新写。</p>
+<blockquote>
+<p><em>From Blinker to RISC-V</em>
+教程里面也讨论了类似的问题。因为软件工程讲究的就是一个问题拆分，模块化和解耦之类的，以至于我们把这个原则在任何情况下都奉为无可辩驳的圭臬了。但是作者提到，他一开始也把模块拆的很细碎（DEC，ALU
+什么的），结果项目反而难以组织。最后还是选择耦合到一起了，代码反而变简洁。</p>
+</blockquote>
+<p>最后的结果是一个巨大的 <code>VulkanEngine</code>
+结构体，大量的功能（包括但不限于各种初始化，渲染管线组合，surface/swapchain
+管理，内存资源管理，窗口管理，输入事件处理）耦合在其内部。这是走向另一个极端了，其实也不太合适。<strong>But
+anyway, it just works.</strong></p>
+<p>关于第二点，edbr 的设计里面体现为 <strong>它只有几个固定的
+pipeline</strong>。</p>
+<p>Vulkan 的基础 API 是 immutable
+pipeline，这我们都知道。相比之下，现代渲染引擎通常会在底层 immutable
+pipeline 之上提供动态或者半动态的 abstraction，再由 shader compiler
+根据材质的各类特征生成一堆 permutation。具体实现里自然少不了各种
+compile-time selection，根据各种材质特征排列组合出一堆 variant，再拿个
+cache 把它们管理起来，UE 的材质系统就是典型例子。这些 permutation
+得交给实习生管理，怎么交？和平中交不成就只有动荡中交，搞不好就
+permutation explosion 了。</p>
+<p>但是 edbr 是真的就几种管线状态，包括一个基础的 PBR Forward
+Pipeline，一个 CSM Pipeline 和一个用于骨骼动画的 GPU Skinning Compute
+Pipeline。而且这些管线之间的同步就是直接手写了几个了事。</p>
+<p>说到同步问题了，比较搞笑的是 <em>Guide</em> 为了简便把所有的 memory
+barrier 都设置成了一个非常 coarse-grained 的
+<code>ALL_COMMANDS</code>，我的代码也沿用了这个设计，如下：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> transitionImage<span class="op">(</span>VkCommandBuffer cmdBuffer<span class="op">,</span> VkImage image<span class="op">,</span> VkImageLayout srcLayout<span class="op">,</span> VkImageLayout dstLayout<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    VkImageMemoryBarrier2 barrier<span class="op">{};</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>sType <span class="op">=</span> VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>pNext <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>srcStageMask <span class="op">=</span> VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>srcAccessMask <span class="op">=</span> VK_ACCESS_2_MEMORY_WRITE_BIT<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>dstStageMask <span class="op">=</span> VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    barrier<span class="op">.</span>dstAccessMask <span class="op">=</span> VK_ACCESS_2_MEMORY_WRITE_BIT <span class="op">|</span> VK_ACCESS_2_MEMORY_READ_BIT<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... snip ...</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    VkDependencyInfo dependencyInfo<span class="op">{};</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... snip ...</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    vkCmdPipelineBarrier2<span class="op">(</span>cmdBuffer<span class="op">,</span> <span class="op">&amp;</span>dependencyInfo<span class="op">);</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这玩意写的确实有点简单粗暴了，dependency
+的范围明显太大太保守了，可能产生一些不必要的
+ordering。但是鉴于我的简陋使用场景就一个 queue，而且也没有一堆 Render
+Target 来回互相
+sample，没有什么并行化的余地，想必影响不大。这样写起来还简单。</p>
+<p>另一个同步的问题涉及到 Fence 和 Semaphore。Fence 主要是涉及 Host 和
+Device 之间的同步，Semaphore 主要是涉及到 Device
+内部的同步。这是一个比较粗略的 distinction。</p>
+<p>为了最大化利用硬件资源，不难想到，我们可以同时渲染多个
+frame，然后一个一个 present 到 swapchain。我当时好像是选的 3 frames in
+flight。我写了如下的数据结构管理一个 frame 的 sync primitives：</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> FrameData <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    VkCommandPool commandPool<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    VkCommandBuffer mainCommandBuffer<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    VkSemaphore imageAvailableSemaphore<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    VkSemaphore renderFinishedSemaphore<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    VkFence inFlightFence<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    DeletionQueue deletionQueue<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    VulkanDescriptorAllocatorDynamic descriptorAllocator<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<p>其中涉及 syncing 的主要是两个 Semaphore 和一个 Fence。Fence
+的作用是，同步上一次对一个 frame 的操作和当次操作。显然，如果我们在一个
+frame 尚在使用的时候就开始下一次绘制，就可能导致 race
+condition，进而导致数据完全混乱。因此在绘制的开始：</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MOE_VK_CHECK_MSG<span class="op">(</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        vkWaitForFences<span class="op">(</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="va">m_device</span><span class="op">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>currentFrame<span class="op">.</span>inFlightFence<span class="op">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                VK_TRUE<span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                VkUtils<span class="op">::</span>secsToNanoSecs<span class="op">(</span><span class="fl">1.0</span><span class="bu">f</span><span class="op">)),</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Failed to wait for fence&quot;</span><span class="op">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>MOE_VK_CHECK_MSG<span class="op">(</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        vkResetFences<span class="op">(</span><span class="va">m_device</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>currentFrame<span class="op">.</span>inFlightFence<span class="op">),</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Failed to reset fence&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>首先 wait 这个 Fence 然后在这里被阻塞（第一次能否直接 wait
+到是可以在创建 Fence 时候通过一个 bool 参数指定的，我设置成了
+<code>VK_TRUE</code>），上一次操作完毕后继续执行。在当次绘制的末尾：</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>MOE_VK_CHECK<span class="op">(</span>vkQueueSubmit2<span class="op">(</span><span class="va">m_graphicsQueue</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>submitInfo2<span class="op">,</span> currentFrame<span class="op">.</span>inFlightFence<span class="op">));</span></span></code></pre></div>
+<p>让 Command Queue 在执行完后去 signal 这个 Fence。这是 in-flight frame
+之间的同步。不过，渲染和呈现之间也需要同步，这就需要 Semaphore 了。</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>VkResult acquireResult <span class="op">=</span> vkAcquireNextImageKHR<span class="op">(</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">m_device</span><span class="op">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">m_swapchain</span><span class="op">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    VkUtils<span class="op">::</span>secsToNanoSecs<span class="op">(</span><span class="fl">1.0</span><span class="bu">f</span><span class="op">),</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    currentFrame<span class="op">.</span>imageAvailableSemaphore<span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    VK_NULL_HANDLE<span class="op">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span>swapchainImageIndex<span class="op">);</span></span></code></pre></div>
+<p>首先通过这个函数获取下一张 swapchain
+图像，获取到后我们才可以渲染，同时通知
+<code>imageAvailableSemaphore</code>：</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>VkCommandBufferSubmitInfo submitInfo <span class="op">=</span> VkInit<span class="op">::</span>commandBufferSubmitInfo<span class="op">(</span>commandBuffer<span class="op">);</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>VkSemaphoreSubmitInfo waitInfo <span class="op">=</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        VkInit<span class="op">::</span>semaphoreSubmitInfo<span class="op">(</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                currentFrame<span class="op">.</span>imageAvailableSemaphore<span class="op">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT_KHR<span class="op">);</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>VkSemaphoreSubmitInfo signalInfo <span class="op">=</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        VkInit<span class="op">::</span>semaphoreSubmitInfo<span class="op">(</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                currentFrame<span class="op">.</span>renderFinishedSemaphore<span class="op">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT<span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>VkSubmitInfo2 submitInfo2 <span class="op">=</span> VkInit<span class="op">::</span>submitInfo<span class="op">(&amp;</span>submitInfo<span class="op">,</span> <span class="op">&amp;</span>waitInfo<span class="op">,</span> <span class="op">&amp;</span>signalInfo<span class="op">);</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>MOE_VK_CHECK<span class="op">(</span>vkQueueSubmit2<span class="op">(</span><span class="va">m_graphicsQueue</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>submitInfo2<span class="op">,</span> currentFrame<span class="op">.</span>inFlightFence<span class="op">));</span></span></code></pre></div>
+<p>在提交绘制指令的时候，我们要求 Command Queue 去 wait
+<code>imageAvailableSemaphore</code>，接着才执行渲染操作；渲染完了通知
+<code>renderFinishedSemaphore</code>，然后：</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>VkPresentInfoKHR presentInfo<span class="op">{};</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// ... snip ...</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>presentInfo<span class="op">.</span>pWaitSemaphores <span class="op">=</span> <span class="op">&amp;</span>currentFrame<span class="op">.</span>renderFinishedSemaphore<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>presentInfo<span class="op">.</span>waitSemaphoreCount <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>VkResult presentResult <span class="op">=</span> vkQueuePresentKHR<span class="op">(</span><span class="va">m_graphicsQueue</span><span class="op">,</span> <span class="op">&amp;</span>presentInfo<span class="op">);</span></span></code></pre></div>
+<p>这样，驱动在渲染完毕后就可以把 swapchain 图像的内容呈现到 surface
+啦。</p>
+<p>看起来非常好！</p>
+<p>在我的电脑上（当时还是 AMD 的神秘 Windows
+驱动），这些东西都正常工作；但是我室友之一的英伟达驱动的 validation
+layer 疯狂报错。它说什么一个 Semaphore
+正在使用呢另一个地方又去用它了，不建议我这么做，还推荐我用 Timeline
+Semaphore Feature。</p>
+<p>但是 Semaphore
+是一个非常基础的特性，怎么可能会出现一个如此基本的使用场景却需要我专门启用一个
+feature 的情况呢？</p>
+<blockquote>
+<p>Timeline Semaphore 是可以被 Host 和 Device
+两边等待的，可以在一定程度上简化同步代码编写。</p>
+<p>另外，我现在 Mesa 的 validation layer 也能正常抓这个 Error 了；以前的
+proprietary driver 简直费拉不堪！</p>
+</blockquote>
+<p>排错以后我才意识到我的 swapchain image 的同步资源没有任何义务和
+in-flight frame 绑定！首先，它们的数量就完全可以不是 1:1
+的，也许我可以有 2 或者 3 个 in-flight frame，但我的 swapchain image
+完全可以只有 1 个。假设就是 2:1 的情况吧，第一帧绘制完
+<code>vkQueuePresentKHR</code> 开始等待 <code>FrameData[0]</code> 的
+<code>renderFinishedSemaphore</code>，然后很快第二帧和
+<strong>第三帧</strong> 就渲染完了，然后又调用
+<code>vkQueuePresentKHR</code> 去等待 <code>FrameData[0]</code> 的
+<code>renderFinishedSemaphore</code>，但是这时候第一帧还在等待同一个
+semaphore，于是一个 semaphore 就被用于了两次 present
+submission，这时候就出问题了。要修复我们把
+<code>renderFinishedSemaphore</code> 跟 swapchain image 的数量绑定而非
+in-flight frames 的数量绑定就可以了：</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>VkSemaphoreSubmitInfo signalInfo <span class="op">=</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        VkInit<span class="op">::</span>semaphoreSubmitInfo<span class="op">(</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="va">m_perSwapchainImageData</span><span class="op">[</span>swapchainImageIndex<span class="op">].</span>renderFinishedSemaphore<span class="op">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT<span class="op">);</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">// ... snip ...</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>presentInfo<span class="op">.</span>pWaitSemaphores <span class="op">=</span> <span class="op">&amp;</span><span class="va">m_perSwapchainImageData</span><span class="op">[</span>swapchainImageIndex<span class="op">].</span>renderFinishedSemaphore<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>presentInfo<span class="op">.</span>waitSemaphoreCount <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>VkResult presentResult <span class="op">=</span> vkQueuePresentKHR<span class="op">(</span><span class="va">m_graphicsQueue</span><span class="op">,</span> <span class="op">&amp;</span>presentInfo<span class="op">);</span></span></code></pre></div>
+<p>然后这个问题就修好了。</p>
+<p>然后就是 CSM Pipeline 的问题。我是用了个有好几个 array layer 的
+device image 来实现级联效果，然后再在别的 Pipeline 去 sample：</p>
+<pre class="slang"><code>float4 sampleTextureArrayLinear(ImageId index, float2 uv, uint layer) {
+    Texture2DArray t = u_textureArrays[NonUniformResourceIndex(index)];
+    SamplerState s = u_samplers[SAMPLER_LINEAR_ID];
+    return t.Sample(s, float3(uv, (float) layer));
+}</code></pre>
+<p>但是死活不对，后面调了半天发现是我创建的绑定到 Bindless Set 的
+ImageView 没有指定为 <code>TYPE_2D_ARRAY</code>，没法这样 sample
+否则出错。Hack 了一下就好了：</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>imageInfo<span class="op">.</span>arrayLayers <span class="op">&gt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    imageViewInfo<span class="op">.</span>subresourceRange<span class="op">.</span>baseArrayLayer <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    imageViewInfo<span class="op">.</span>subresourceRange<span class="op">.</span>layerCount <span class="op">=</span> imageInfo<span class="op">.</span>arrayLayers<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    imageViewInfo<span class="op">.</span>viewType <span class="op">=</span> VK_IMAGE_VIEW_TYPE_2D_ARRAY<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这个问题折磨了我整整两天，我差点都要爆了。要说有成就感是假的，为什么？要是就这一个问题也就罢了。一个问题解决了又来一个问题，每个问题都要耗上一两天，这谁受得了。光就
+CSM 一个模块，前后便出现了三四个怪异问题需要我去反复调试。</p>
+<blockquote>
+<p>本来以为这就是 CSM
+最后一次坑我了，结果没想到几个月后又坑我一次。最早的 shader 不是用 Slang
+而是用 GLSL 写的，结果迁移到 Slang 以后就不对了。最后发现把一个 dynamic
+indexing 改成一个 switch case 穷举就好了，我觉得是 Slang SPIR-V
+后端的问题。这都是些什么鬼！！</p>
+</blockquote>
+<p>和 edbr 的 Forward Pipeline 不同的是，我采用的是 Deferred
+Shading。我主要是参考 <em>Learn OpenGL</em>
+的原理进行的实现。我需要提供以下数据：</p>
+<ul>
+<li>mesh object 的变换矩阵</li>
+<li>此变换矩阵的逆矩阵</li>
+<li>网格顶点缓冲区的 SSBO Device Address</li>
+<li>放全局渲染信息的 SSBO Device Address</li>
+<li>网格物体的材质信息</li>
+</ul>
+<p>我的数据都是通过 Push Constants（PCS）
+传递的。但是，但是！整个管线中各阶段的 Push Constant 大小加起来不能超过
+128B，光那两个 <code>float4x4</code> 都 128B
+了，怎么办呢？首先我不能把它放到全局渲染信息的 SSBO
+去读取，它有自己的同步时机，乱动的话数据会 corrupt。我也不希望为了这个
+Pipeline 开一个 binding，要不然那么多 bindless
+代码就白写了。于是我开动脑筋，反正每个逆矩阵不一样的数据只有个
+<code>float3x3</code>，我直接把 PCS 里面 3x3 以外的地方全砍了，在 shader
+里面再补齐不就行了？这下对了。</p>
+<blockquote>
+<p>其实不一定是 128B，主要是看支持的
+<code>maxPushConstantsSize</code>。但是在我的电脑上它就是 128B。</p>
+</blockquote>
+<p>但是屏幕上没有东西，怎么回事？闹了半天是 cull mode
+的问题，直接把全屏三角形给 cull 了，关闭 culling
+就好了……怎么到处出问题。</p>
+<blockquote>
+<p>还有 Vulkan 的 NDC 和 depth 也跟 OpenGL 不一样。GL 的 depth 是
+<code>[-1, 1]</code>，Vulkan 是
+<code>[0, 1]</code>，总之是各方面的坑爹。</p>
+</blockquote>
+<p>最后我的架构是一个从加载资源到绘制完全隐式的 API。只能读取一个
+Mesh，指定变换，然后往绘制队列里面提交，最后绘制，整个流程只能用这套固定的管线。而且资源的
+lifetime 也非常不明晰，Host 和 Device 资源到区分也混乱，比如说 mesh
+读取以后所有资源都被发射到显存了，对于 Host
+这边的程序完全不可见，而且资源何时释放也难以控制，部分原因是耦合度太高了。总之是牺牲了挺多灵活性的。</p>
+<p>但是，不管怎么说，至少理论上是可以做一个完整的游戏了。做不出来怎么办？凉拌，自负
+GPA 盈亏，延毕吧！但是吾辈青年就是要和 Khronos Group
+一争高下。我才不怕泼冷水，一听 Graphics API 我就高兴，非常的
+excited。这是课程自动安排，不可能不写！</p>
+<blockquote>
+<p><strong>Mein Fuhrer, I can walk!</strong></p>
+</blockquote>
+<p>我们组最后做的是一个多人 FPS 游戏，大体上是按照 CS
+爆破模式设计的玩法。</p>
+<p>然而在答辩前测试的时候发现同一队的角色的模型动作是一模一样的（注意每队模型都一样），比如操作上一个玩家走另一个静止，那么可能两个玩家都走，或者都静止。最搞的是，如果一个玩家死了躺在地上，那么可能马上整个队的玩家全趴地上了，但是他们还能来回走动进行攻击，很有节目效果。</p>
+<p>然而此时距离我概率论考试已经不到一周，只好紧急开始复习，等到考完试答辩前再来修复。</p>
+<p>考完试后再检查。设计上我是会先走一个 compute pipeline 去进行一个
+skinning，但是这个 skinned vertex
+的数据不能把原本的数据覆盖了，所以要给它一个 buffer
+来放。然而最早我的动态数据，也就是 skinned vertex buffer 是和静态的 mesh
+data 一起管理的，导致一个模型共用一个
+buffer，最后的效果就是大家的动作都一模一样了。后面换成了一个动态扩容的独立
+buffer 就修复了。</p>
+<p>我的队友还是觉得 UI 不好看。于是我又用我的低配 Render Graph
+加了炫光的 VFX，这下他们终于满意了。</p>
+<p>然而答辩当天在场的学院的老师们对我们的游戏似乎兴致不高。其中一位老师让我们打开
+codebase
+展示一下，结果打开发现不是咖啡语言又勒令我们关掉，转头让我们展示文档，而且似乎对文档里面的错别字和标点运用过分关心了，背后原因暂且未知。</p>
+<p>我的队友觉得这多少有点傲慢了。特别是当他发现分数分配下来本组只有我刚好没法拿
+3.9
+的绩点时更是觉得他们答辩提问的时候简直满嘴跑火车，因而感到十分气愤（虽然我对此并没有什么意见，这个数字对我来说意义不大，我不太高兴的点是答辩当天没有老师跟我进行任何具有建设性的技术讨论），于是他写了一大段文本，去找学院负责管理本课程的两位老师进行申诉。值得我们欣慰的是，学院老师重视了我们的申诉，并对我们的成绩进行了重新评估。这下，我的队友终于消停了。</p>
+<p>btw，因为我一直写代码，最后不得不三天速通了概率论，最后也是风风光光取得了超美丽的绩点。</p>
+<p>所有的工作都结束以后，我并没有变得很开心或者很有成就感；事实上，在到处夸耀和经历了一阵短暂的令人目眩的狂喜后，我陷入了某种更大的虚无，这虚无感比去年八月的时候来的还要剧烈。我想，或许只要我再写一个更大的项目，我便会有真正的成就感，我便不会这么麻了，只要再写一个项目……</p>
+<p>很遗憾的是，在那之后，我并未能找到这样的一个项目来写。我意识到我整天就光顾着对着那块显示屏敲打键盘了，对自己的生活过的如何或者身边的人怎么样完全是不闻不问不管不顾，简直不能更卑琐了，但说实话我也不太清楚该从何时以何种形式做出改变。祸不单行，在那之后我又在情感上遭遇了挫折，随后其他各种破事也接踵而至。</p>
+<p>自此我就没有一天是不难受的。</p>
+<p>不过嘛，现在想来 Vulkan
+其实还是挺好玩的。那还能怎么样，继续用呗。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/杂感|我们的国产2D动画……/">杂感 | 我们的国产2D动画……</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
