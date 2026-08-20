@@ -166,9 +166,10 @@ class=&quot;sourceCode cpp&quot;&gt;&lt;code class=&quot;sourceCode cpp&quot;&gt
 &lt;span id=&quot;cb3-9&quot;&gt;&lt;a href=&quot;#cb3-9&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;MOE_VK_CHECK_MSG&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;&lt;/span&gt;
 &lt;span id=&quot;cb3-10&quot;&gt;&lt;a href=&quot;#cb3-10&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;        vkResetFences&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;va&quot;&gt;m_device&lt;/span&gt;&lt;span class=&quot;op&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;op&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;&amp;amp;&lt;/span&gt;currentFrame&lt;span class=&quot;op&quot;&gt;.&lt;/span&gt;inFlightFence&lt;span class=&quot;op&quot;&gt;),&lt;/span&gt;&lt;/span&gt;
 &lt;span id=&quot;cb3-11&quot;&gt;&lt;a href=&quot;#cb3-11&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;        &lt;span class=&quot;st&quot;&gt;&amp;quot;Failed to reset fence&amp;quot;&lt;/span&gt;&lt;span class=&quot;op&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;首先 wait 这个 Fence 然后在这里被阻塞（第一次能否直接 wait
-到是可以在创建 Fence 时候通过一个 bool 参数指定的，我设置成了
-&lt;code&gt;VK_TRUE&lt;/code&gt;），上一次操作完毕后继续执行。在当次绘制的末尾：&lt;/p&gt;
+&lt;p&gt;首先等待这个 Fence。如果这是第一次使用这个 FrameData，那么 Fence
+可以在创建时就指定为 signaled 状态（这里我设置成了 VK_TRUE），这样第一次
+vkWaitForFences 就会直接通过；之后则需要等上一轮使用这个 frame
+的工作完成后才能继续。在当次绘制的末尾：&lt;/p&gt;
 &lt;div class=&quot;sourceCode&quot; id=&quot;cb4&quot;&gt;&lt;pre
 class=&quot;sourceCode cpp&quot;&gt;&lt;code class=&quot;sourceCode cpp&quot;&gt;&lt;span id=&quot;cb4-1&quot;&gt;&lt;a href=&quot;#cb4-1&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;MOE_VK_CHECK&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;vkQueueSubmit2&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;va&quot;&gt;m_graphicsQueue&lt;/span&gt;&lt;span class=&quot;op&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;op&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;&amp;amp;&lt;/span&gt;submitInfo2&lt;span class=&quot;op&quot;&gt;,&lt;/span&gt; currentFrame&lt;span class=&quot;op&quot;&gt;.&lt;/span&gt;inFlightFence&lt;span class=&quot;op&quot;&gt;));&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;让 Command Queue 在执行完后去 signal 这个 Fence。这是 in-flight frame
@@ -217,6 +218,10 @@ class=&quot;sourceCode cpp&quot;&gt;&lt;code class=&quot;sourceCode cpp&quot;&gt
 layer 疯狂报错。它说什么一个 Semaphore
 正在使用呢另一个地方又去用它了，不建议我这么做，还推荐我用 Timeline
 Semaphore Feature。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里的错误指的是
+&lt;code&gt;VUID-vkQueueSubmit-pSignalSemaphores-00067&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;但是 Semaphore
 是一个非常基础的特性，怎么可能会出现一个如此基本的使用场景却需要我专门启用一个
 feature 的情况呢？&lt;/p&gt;
@@ -228,17 +233,25 @@ proprietary driver 简直费拉不堪！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;排错以后我才意识到我的 swapchain image 的同步资源没有任何义务和
 in-flight frame 绑定！首先，它们的数量就完全可以不是 1:1
-的，也许我可以有 2 或者 3 个 in-flight frame，但我的 swapchain image
-完全可以只有 1 个。假设就是 2:1 的情况吧，第一帧绘制完
-&lt;code&gt;vkQueuePresentKHR&lt;/code&gt; 开始等待 &lt;code&gt;FrameData[0]&lt;/code&gt; 的
-&lt;code&gt;renderFinishedSemaphore&lt;/code&gt;，然后很快第二帧和
-&lt;strong&gt;第三帧&lt;/strong&gt; 就渲染完了，然后又调用
-&lt;code&gt;vkQueuePresentKHR&lt;/code&gt; 去等待 &lt;code&gt;FrameData[0]&lt;/code&gt; 的
-&lt;code&gt;renderFinishedSemaphore&lt;/code&gt;，但是这时候第一帧还在等待同一个
-semaphore，于是一个 semaphore 就被用于了两次 present
-submission，这时候就出问题了。要修复我们把
-&lt;code&gt;renderFinishedSemaphore&lt;/code&gt; 跟 swapchain image 的数量绑定而非
-in-flight frames 的数量绑定就可以了：&lt;/p&gt;
+的，也许我可以有 2 个 in-flight frame，但我的 swapchain image 完全可以有
+3 个。但即使就是 1:1 的数量也可能出问题！假如说都是 2 个吧。渲染时候获取
+in-flight frame 的序列可能是 &lt;code&gt;0, 1, 0, 1, ...&lt;/code&gt;，但是
+swapchain image 在 present 完毕后就绪的序列完全可能是
+&lt;code&gt;0 1 1 0 ...&lt;/code&gt;，实际情况如何是取决于驱动那边的情况的！在第三次渲染结束后试图使用的是
+&lt;code&gt;FrameData[0]&lt;/code&gt; 的
+&lt;code&gt;renderFinishedSemaphore&lt;/code&gt;，但是驱动那边这个 semaphore
+仍然被第一次渲染结束后的 presentation 阶段占用，这时候再去
+&lt;code&gt;vkQueuePresentKHR&lt;/code&gt; 就会复用一个被占用的
+semaphore，导致报错。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参阅：&lt;a
+href=&quot;https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html&quot;
+class=&quot;uri&quot;&gt;https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;要修复我们把 &lt;code&gt;renderFinishedSemaphore&lt;/code&gt; 跟 swapchain image
+的绑定而非 in-flight frames 的绑定，把它从 &lt;code&gt;FrameData&lt;/code&gt;
+解耦出去，从而避免因为 in-flight frame 和 swapchain
+两者循环周期或者单纯的序列不同导致的 semaphore 冲突：&lt;/p&gt;
 &lt;div class=&quot;sourceCode&quot; id=&quot;cb8&quot;&gt;&lt;pre
 class=&quot;sourceCode cpp&quot;&gt;&lt;code class=&quot;sourceCode cpp&quot;&gt;&lt;span id=&quot;cb8-1&quot;&gt;&lt;a href=&quot;#cb8-1&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;VkSemaphoreSubmitInfo signalInfo &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt;&lt;/span&gt;
 &lt;span id=&quot;cb8-2&quot;&gt;&lt;a href=&quot;#cb8-2&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;        VkInit&lt;span class=&quot;op&quot;&gt;::&lt;/span&gt;semaphoreSubmitInfo&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;&lt;/span&gt;
