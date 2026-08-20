@@ -1,4 +1,4 @@
-<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>我如何停止焦虑并爱上 Vulkan</title><meta property="og:title" content="我如何停止焦虑并爱上 Vulkan"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="Mein Fuhrer…"><meta property="og:url" content="https://lizi.moe/posts/我如何停止焦虑并爱上Vulkan/"><script>(function () {
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>我如何停止焦虑并爱上 Vulkan</title><meta property="og:title" content="我如何停止焦虑并爱上 Vulkan"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="Mein Fuhrer…"><meta property="og:url" content="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"><script>(function () {
  var stored = localStorage.getItem("burogu-theme");
  if (stored === "dark" || stored === "light") {
   document.documentElement.setAttribute("data-theme", stored);
@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
  var blocks = document.querySelectorAll("pre > code.sourceCode");
  blocks.forEach(function (code) {
   var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
   var lang = null;
   code.className.split(/\s+/).forEach(function (cls) {
    if (cls !== "sourceCode" && lang === null) { lang = cls; }
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
    var label = document.createElement("span");
    label.className = "code-lang";
    label.textContent = langNames[lang] || lang;
-   pre.appendChild(label);
+   wrapper.appendChild(label);
   }
   var button = document.createElement("button");
   button.className = "copy-button";
@@ -79,10 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fail();
    }
   });
-  pre.appendChild(button);
+  wrapper.appendChild(button);
  });
 });
-</script><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>我如何停止焦虑并爱上 Vulkan</h1><p class="post-meta"><time>2026-08-20</time><span class="post-tags"><a class="post-tag" href="/tags/C++/">C++</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/图形学/">图形学</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/Vulkan/">Vulkan</a></span><span class="post-meta-time">约 18 分钟</span></p><div class="post-body"><p>过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+</script><link rel="stylesheet" href="/style.css?v=3ae2513e"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>我如何停止焦虑并爱上 Vulkan</h1><p class="post-meta"><time>2026-08-20</time><span class="post-tags"><a class="post-tag" href="/tags/C++/">C++</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/图形学/">图形学</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/Vulkan/">Vulkan</a></span><span class="post-meta-time">约 18 分钟</span></p><div class="post-body"><p>过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
 masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。</p>
 <p>差不多一年前的这个时候
 <em>（另一个漫无止境的八月呀……）</em>，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。</p>
@@ -428,4 +432,4 @@ codebase
 <p>很遗憾的是，在那之后，我并未能找到这样的一个项目来写。我意识到我整天就光顾着对着那块显示屏敲打键盘了，对自己的生活过的如何或者身边的人怎么样完全是不闻不问不管不顾，简直不能更卑琐了，但说实话我也不太清楚该从何时以何种形式做出改变。祸不单行，在那之后我又在情感上遭遇了挫折，随后其他各种破事也接踵而至。</p>
 <p>自此我就没有一天是不难受的。</p>
 <p>不过嘛，现在想来 Vulkan
-其实还是挺好玩的。那还能怎么样，继续用呗。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/杂感|我们的国产2D动画……/">杂感 | 我们的国产2D动画……</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
+其实还是挺好玩的。那还能怎么样，继续用呗。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/The-Future-of-Chinese-Anime/">杂感 | 我们的国产2D动画……</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>

@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
  var blocks = document.querySelectorAll("pre > code.sourceCode");
  blocks.forEach(function (code) {
   var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
   var lang = null;
   code.className.split(/\s+/).forEach(function (cls) {
    if (cls !== "sourceCode" && lang === null) { lang = cls; }
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
    var label = document.createElement("span");
    label.className = "code-lang";
    label.textContent = langNames[lang] || lang;
-   pre.appendChild(label);
+   wrapper.appendChild(label);
   }
   var button = document.createElement("button");
   button.className = "copy-button";
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fail();
    }
   });
-  pre.appendChild(button);
+  wrapper.appendChild(button);
  });
 });
-</script><link rel="stylesheet" href="/style.css"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><ul class="tag-list"><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/C++/">C++</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/Vulkan/">Vulkan</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/demo/">demo</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/getting-started/">getting-started</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/动画/">动画</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/图形学/">图形学</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/杂谈/">杂谈</a><span class="tag-count">(1)</span></li></ul></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
+</script><link rel="stylesheet" href="/style.css?v=3ae2513e"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><ul class="tag-list"><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/C++/">C++</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/Vulkan/">Vulkan</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/动画/">动画</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/图形学/">图形学</a><span class="tag-count">(1)</span></li><li class="tag-item" style="--tag-count: 1"><a class="tag-name" href="/tags/杂谈/">杂谈</a><span class="tag-count">(1)</span></li></ul></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
