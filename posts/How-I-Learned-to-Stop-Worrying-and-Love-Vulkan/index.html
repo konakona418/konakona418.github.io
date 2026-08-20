@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
  var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
  var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
  var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
- var blocks = document.querySelectorAll("pre > code.sourceCode");
+ var blocks = document.querySelectorAll("pre > code");
  blocks.forEach(function (code) {
   var pre = code.parentElement;
   var wrapper = document.createElement("div");
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   wrapper.appendChild(button);
  });
 });
-</script><link rel="stylesheet" href="/style.css?v=3ae2513e"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>我如何停止焦虑并爱上 Vulkan</h1><p class="post-meta"><time>2026-08-20</time><span class="post-tags"><a class="post-tag" href="/tags/C++/">C++</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/图形学/">图形学</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/Vulkan/">Vulkan</a></span><span class="post-meta-time">约 18 分钟</span></p><div class="post-body"><p>过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+</script><link rel="stylesheet" href="/style.css?v=b300bded"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>我如何停止焦虑并爱上 Vulkan</h1><p class="post-meta"><time>2026-08-20</time><span class="post-tags"><a class="post-tag" href="/tags/C++/">C++</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/图形学/">图形学</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/Vulkan/">Vulkan</a></span><span class="post-meta-time">约 18 分钟</span></p><div class="post-body"><p>过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
 masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。</p>
 <p>差不多一年前的这个时候
 <em>（另一个漫无止境的八月呀……）</em>，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。</p>

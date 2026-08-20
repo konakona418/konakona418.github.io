@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
  var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
  var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
  var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
- var blocks = document.querySelectorAll("pre > code.sourceCode");
+ var blocks = document.querySelectorAll("pre > code");
  blocks.forEach(function (code) {
   var pre = code.parentElement;
   var wrapper = document.createElement("div");
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   wrapper.appendChild(button);
  });
 });
-</script><link rel="stylesheet" href="/style.css?v=3ae2513e"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><div class="post-body"><h1 id="关于">关于</h1>
+</script><link rel="stylesheet" href="/style.css?v=b300bded"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><div class="post-body"><h1 id="关于">关于</h1>
 <p>你好。</p>
 <p>因为觉得都大三了还用 Hexo
 太没慧根了，所以趁暑假换成了自用的博客框架。</p>
