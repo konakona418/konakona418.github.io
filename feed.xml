@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-20</updated><author><name>moe li</name></author><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer…</summary><content type="html">&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-21</updated><author><name>moe li</name></author><entry><title>关于软件学院寒假项目的若干反思</title><link rel="alternate" href="https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/"></link><id>https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/</id><updated>2026-08-21</updated><category term="杂谈"></category><summary>好了，花点时间去讨论计算机科学有趣的难题，不再讨论这件事情了。</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;今年 ICLR，哈工大学大胜，西工大学惨败！哈工大发表论文 83
+篇，西工大发表论文 8 篇！是谁负责？羞也不羞！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于软件学院的若干政策，我其实是不太感兴趣的。自从他们两年三回爆改保研/推免政策和综测加分政策以后我就决定，&lt;strong&gt;凡是学院的决策，我都坚决不管&lt;/strong&gt;。虽然他们每搞一个政策就要蚕食一点我的利益，但是温水煮青蛙煮了这么久以后我人已经彻底麻了，大家一起开开心心安乐死也未尝不可，happy
+coding life 大大方方耍起嘛，&lt;em&gt;New Game!&lt;/em&gt;
+耍起嘛，&lt;em&gt;斯特拉的魔法&lt;/em&gt;
+耍起嘛，虽然有传言说哈酱当年画斯特拉的魔法的时候是想要写超级 BE
+的，可惜被编辑拴了未能实施，编辑这次好心办好事了。可惜你软 5:1
+的男女比例注定了搞乐队的不是少女，少女不会搞乐队，至于人民群众喜闻乐见的
+les
+桥段更是想都别想。西安市冬天下沙子下土干燥不行，皮肤疯狂开裂东非大裂谷说是，甘油是什么东西不知道，已经被烘干机般的空气当路边一条一脚踢死了，夏天疯狂暴晒进行轰轰烈烈的地面大烧烤，小冰期晚期的抽象气候外加杜撰出来的厄尔尼诺现象是这样的，怎么你不服气？忆昔开元全盛日，小邑犹藏万家室，唐代气象条件你在哪……陕西这里不是大饼泡大肉汤就是大面条，吃了以后前凸后翘这一块，致敬传奇匈牙利老哥欧尔班的黄金分割螺线大胃袋，而且脸上噗噗冒油，洗都洗不掉，这时候就要推荐我们的
+xx 至尊洗面奶了，请注意内容包含医疗建议注意甄别，但是 xx
+至尊洗面奶到底是不如我的异维A胶囊，虽然肝功疯狂爆炸但是至少是不冒油了，顺便以后酒桌不去嗯造烈酒的理由又多了一条，连吃带拿好舒服呀。虽然但是这么近那么美周末请到杀人放火长安县，来了就别想走了，大家都别想做图灵派，谁说计算机大类都是
+flooded by femboy 的，没看见啊？我 dress 项目 star 了 6
+年了还不止，删库跑路共患难了，当时你们都跑到哪里去了？陕西老大爷说米脂婆姨绥德汉，有人说感觉不如米脂汉，我说你是真的牛批。扯远了，总之只要学院不要跳脸我，我一般不管他们干些什么。&lt;/p&gt;
+&lt;p&gt;今年寒假的时候他们后知后觉意识到整个学院的学生根本写不来代码，
+&lt;strong&gt;all in LLM 是这样的，你们才发现吗？&lt;/strong&gt;
+加上郑院长在他的号称 100% 抬头率的软件工程课喜提 &amp;lt;30%
+的到课率以后急火攻心，紧急召开全体教师大会，决定大搞特搞代码编写运动，
+&lt;strong&gt;争取一个寒假赶交超电。&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;宋代帝王有经筵讲读：有单日，亦有双日，有早讲，亦有晚讲！自端午至中秋，共一百天。自冬至至来岁春分，亦有九十天！
+&lt;strong&gt;我们学生躲在游戏屋，不觉得羞愧！？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不思科研之极至，立不朽之功。
+&lt;strong&gt;躲在家中玩耍游戏，置一流学问于不顾！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;——Yau&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;随后，学院成立专项工作组推进各项工作有序进行，同时督导题目命制，要求题目始终反映学院
+&lt;strong&gt;力图培养能编码，会开源，讲文明，树新风的新时代计算机专业学生&lt;/strong&gt;
+的根本要求。此外为保证公平还限制了 LLM
+的使用，特别是在文档编写中的使用。 &lt;strong&gt;虽然通知和作业要求文档也是
+LLM
+slop，但是他们批判性使用，到底和我们无底线无下限无理论指导无政治挂帅的使用是有本质区别的。&lt;/strong&gt;
+姜文在《阳光灿烂的日子》里面借某位龙套的台词说的很明白了：“这是大毒草，小孩子不要看！”这可以说是句句在理，一句顶一万句——
+&lt;strong&gt;这是 LLM，小孩子不要用！&lt;/strong&gt;
+虽然大家都荷尔蒙水平已经是成年人的水平了，但是本质上说到底还是小孩子呀。随后各项要求马上印发给辅导员，向
+24/25 级同学传达学习。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不愿意做寒假项目的同学，不用来参加，
+&lt;strong&gt;你们不会受到任何處分!&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;学院最初的要求是 &lt;strong&gt;人人要参与，班班有成果，&lt;/strong&gt; 要我们
+&lt;strong&gt;下定决心，不怕牺牲，排除万难，争取胜利。&lt;/strong&gt;
+然而通知一发，24
+级同学一片哗然，原来你们都不准备让大家过好年了，还要做作业哦！进来都一年多了，大家都是老油条了，学院的行为模式摸得门清，就是不做还能奈他何？25
+级的同学 &lt;strong&gt;刚到西安，不熟地方，&lt;/strong&gt;
+学院一通软硬兼施，双管齐下，两手都抓，两手都硬，他们便纷纷为了保研评优踊跃报名。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;得分最高的，奖一块华为手表。——Yau&lt;/p&gt;
+&lt;p&gt;一等奖今年将获得 5000 元，二等奖 1000 元，……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;卧槽，软院分钱！？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;……最后果然还是没有顶住诱惑呀。&lt;/p&gt;
+&lt;p&gt;可供选择的项目配置是这样的：&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;cJSON / HTTP server&lt;/li&gt;
+&lt;li&gt;Lua Runtime / Redis&lt;/li&gt;
+&lt;li&gt;LLVM (clang-tidy)&lt;/li&gt;
+&lt;li&gt;大模型应用相关&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中，Tier 1 主要供 25 级选择；Tier 2 供 24 级；Tier 3 供 25
+拔尖班；Tier 4 供 24 拔尖班。&lt;/p&gt;
+&lt;p&gt;看起来很全面不是吗？
+可是，他们面对的是一帮代码能力极差（至少他们如此认为）的学生；
+&lt;strong&gt;他们怎么会认为这些人前脚还在拿 LLM
+写代码，后脚就能够独立手工开发大型工程项目了？&lt;/strong&gt; 21st Century
+Schizoid Man 是这样的。特别是 25 拔尖班的项目，
+&lt;strong&gt;让一群编译原理没学过的学生去搞 LLVM？认真的吗？&lt;/strong&gt;
+我确实不太明白，学生突然学会写代码这件事是在任务中途哪个地方发生的。虽然我也主张任务导向学习，
+&lt;strong&gt;但是布置任务的时候显然是要考虑到学生的实际水平的呀。&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;后续就学院如何解决不会编译原理（及 C++）一事询问了 25
+级学弟。他的回答是，学院让他们设法自学。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我和我的队友选了 Lua Runtime。然后还能怎么样，做呗。&lt;/p&gt;
+&lt;p&gt;学院本来的要求是开学即答辩并评分，
+&lt;strong&gt;本组在开学前即超额完成任务，反倒是学院的答辩安排一拖再拖，反复愆延，也不知道在等谁。&lt;/strong&gt;
+一直拖到了本学期几乎到了半期才开始匆忙组织答辩。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大概知道自己无耻，从头到尾，秘密行动，直到答辩了，都没有告诉过我！
+&lt;strong&gt;已经到了无耻的地步。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而且答辩仅给 5 分钟。至于 5
+分钟可以深入介绍什么技术，我也不知道。最后出来的结果也是令人啧啧称奇。饼画的很大，组织上完全就是和稀泥，不公开不透明。后续我现场质询负责工作的老师也是一问就是，我提出的质询意见学院全都考虑到了，
+&lt;strong&gt;但是怎么实际的组织情况表现出来不像这样呢！？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例如，我问到，学院有没有准备统一的评分标准，
+&lt;strong&gt;特别是针对答辩这种主观性较强的环节。&lt;/strong&gt;
+学院老师表示有评分标准，并向我展示了评分细则。然而，细则上面的各项指标并未在答辩
+QA 环节中体现，在场评委只是随机问一些乱七八糟的问题，
+&lt;strong&gt;甚至其中一位评委似乎混淆了我们报告中提到的 x86 物理寄存器和 SSA
+虚拟寄存器，围绕这一问题反复追问，双方在这个实际上根本不存在的分歧上浪费了大量时间。&lt;/strong&gt;
+此外，按照评分标准的要求，每一评分项应当独立打分，然而在学院老师
+&lt;strong&gt;破例&lt;/strong&gt;
+向我展示的最终打分表上面，几位评委根本没有针对评分项打分，而是大笔一挥直接写一个数字了事。&lt;/p&gt;
+&lt;p&gt;另外，本次作业还有一项相当重要的评分标准即 &lt;strong&gt;要求 RIIR&lt;/strong&gt;
+，分数占比高达
+30%。本组对此是保质保量完成了的。至于其他组的实际完成情况，我不知道；问学院老师，对方也没有正面回应。由于所有项目的代码最终都没有公开，我们自然也无从验证。&lt;/p&gt;
+&lt;p&gt;不过这么重要的一项评分要求，到底在最终评分中发挥了多大作用，也只有作为组织方的学院自己知道了。&lt;/p&gt;
+&lt;p&gt;最后本组拿了 1000 块钱。至于拿 5000 的都是什么怪物我也不知道，
+&lt;strong&gt;因为学院老师婉拒了我关于开放所有组 codebase 以供大家 peer review
+的请求。毕竟，如果这个项目最终评价的是代码能力，那么看看代码本来应该是一件再自然不过的事情。&lt;/strong&gt;
+当然，RIIR 任务的实际完成情况，我们也就不得而知了。&lt;/p&gt;
+&lt;p&gt;另外，拔尖班项目的排名几乎全部排在后面，这让我感到无比困惑。这些项目本身的学习成本显然远高于
+cJSON 一类基础任务，甚至有些学生此前连编译原理和 C++ 都没有系统学习过。
+&lt;strong&gt;那么，在最终评分时，学院究竟是如何处理不同项目之间的巨大难度差异的？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果完全按照最终完成度横向比较，那么高难度项目天然需要承担更高的学习成本；但如果任务难度根本不进入评价体系，我也不知道为什么要把它们设计成不同的
+Tier。质询学院老师时候我也提及了此问题，对方称答辩前的初审有做分数归一化，但是并无赋分。至于答辩的复审的打分策略呢？对方对此未作正面回答。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;你们就是这么对待学院最希望往优秀人才培养的一批学生的吗？&lt;/strong&gt;
+说实话，他们做的有点过分了。&lt;/p&gt;
+&lt;p&gt;本学期又搞了个什么开源贡献纳入综测，然后找了包括我在内的几号人去开会。我本来准备去质疑这个方案的，
+&lt;strong&gt;即使这是软院两年来唯一一个确实利好我的政策。&lt;/strong&gt;
+结果讨论了半天我才反应过来，原来他们早就决定实施了，叫我们过去大概只是征求一下意见。搞半天我反对了个寂寞，只能说给他们提几个建设性意见，但愿最后别搞的太抽象就行了……&lt;/p&gt;
+&lt;p&gt;反正也不知道这个寒假作业到底有没有起到解决学生写不来代码问题的作用。好吧，至少钱是拿到了，没啥损失。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer…</summary><content type="html">&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
 masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。&lt;/p&gt;
 &lt;p&gt;差不多一年前的这个时候
 &lt;em&gt;（另一个漫无止境的八月呀……）&lt;/em&gt;，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。&lt;/p&gt;
@@ -249,9 +363,9 @@ href=&quot;https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html&q
 class=&quot;uri&quot;&gt;https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;要修复我们把 &lt;code&gt;renderFinishedSemaphore&lt;/code&gt; 跟 swapchain image
-的绑定而非 in-flight frames 的绑定，把它从 &lt;code&gt;FrameData&lt;/code&gt;
+绑定而非 in-flight frames 绑定，把它从 &lt;code&gt;FrameData&lt;/code&gt;
 解耦出去，从而避免因为 in-flight frame 和 swapchain
-两者循环周期或者单纯的序列不同导致的 semaphore 冲突：&lt;/p&gt;
+两者循环周期或者单纯的就绪序列不同导致的 semaphore 冲突：&lt;/p&gt;
 &lt;div class=&quot;sourceCode&quot; id=&quot;cb8&quot;&gt;&lt;pre
 class=&quot;sourceCode cpp&quot;&gt;&lt;code class=&quot;sourceCode cpp&quot;&gt;&lt;span id=&quot;cb8-1&quot;&gt;&lt;a href=&quot;#cb8-1&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;VkSemaphoreSubmitInfo signalInfo &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt;&lt;/span&gt;
 &lt;span id=&quot;cb8-2&quot;&gt;&lt;a href=&quot;#cb8-2&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;        VkInit&lt;span class=&quot;op&quot;&gt;::&lt;/span&gt;semaphoreSubmitInfo&lt;span class=&quot;op&quot;&gt;(&lt;/span&gt;&lt;/span&gt;
@@ -349,15 +463,15 @@ buffer 就修复了。&lt;/p&gt;
 &lt;p&gt;然而答辩当天在场的学院的老师们对我们的游戏似乎兴致不高。其中一位老师让我们打开
 codebase
 展示一下，结果打开发现不是咖啡语言又勒令我们关掉，转头让我们展示文档，而且似乎对文档里面的错别字和标点运用过分关心了，背后原因暂且未知。&lt;/p&gt;
-&lt;p&gt;我的队友觉得这多少有点傲慢了。特别是当他发现分数分配下来本组只有我刚好没法拿
+&lt;p&gt;我的队友之一觉得这多少有点傲慢了。他觉得他们答辩提问的问题和我们做出来的产品毫无关联，简直满嘴跑火车，因而感到十分气愤，特别是当他发现分数分配下来本组只有我刚好没法拿
 3.9
-的绩点时更是觉得他们答辩提问的时候简直满嘴跑火车，因而感到十分气愤（虽然我对此并没有什么意见，这个数字对我来说意义不大，我不太高兴的点是答辩当天没有老师跟我进行任何具有建设性的技术讨论），于是他写了一大段文本，去找学院负责管理本课程的两位老师进行申诉。值得我们欣慰的是，学院老师重视了我们的申诉，并对我们的成绩进行了重新评估。这下，我的队友终于消停了。&lt;/p&gt;
+的绩点时（虽然我对此并没有什么意见，这个数字对我来说意义不大，我不太高兴的点是答辩当天没有老师跟我进行任何具有建设性的技术讨论），于是他写了一大段文本，去找学院负责管理本课程的两位老师进行申诉。值得我们欣慰的是，学院老师重视了我们的申诉，并对我们的成绩进行了重新评估。这下，我的队友终于消停了。&lt;/p&gt;
 &lt;p&gt;btw，因为我一直写代码，最后不得不三天速通了概率论，最后也是风风光光取得了超美丽的绩点。&lt;/p&gt;
 &lt;p&gt;所有的工作都结束以后，我并没有变得很开心或者很有成就感；事实上，在到处夸耀和经历了一阵短暂的令人目眩的狂喜后，我陷入了某种更大的虚无，这虚无感比去年八月的时候来的还要剧烈。我想，或许只要我再写一个更大的项目，我便会有真正的成就感，我便不会这么麻了，只要再写一个项目……&lt;/p&gt;
 &lt;p&gt;很遗憾的是，在那之后，我并未能找到这样的一个项目来写。我意识到我整天就光顾着对着那块显示屏敲打键盘了，对自己的生活过的如何或者身边的人怎么样完全是不闻不问不管不顾，简直不能更卑琐了，但说实话我也不太清楚该从何时以何种形式做出改变。祸不单行，在那之后我又在情感上遭遇了挫折，随后其他各种破事也接踵而至。&lt;/p&gt;
 &lt;p&gt;自此我就没有一天是不难受的。&lt;/p&gt;
 &lt;p&gt;不过嘛，现在想来 Vulkan
-其实还是挺好玩的。那还能怎么样，继续用呗。&lt;/p&gt;</content></entry><entry><title>杂感 | 我们的国产2D动画……</title><link rel="alternate" href="https://lizi.moe/posts/The-Future-of-Chinese-Anime/"></link><id>https://lizi.moe/posts/The-Future-of-Chinese-Anime/</id><updated>2026-08-05</updated><category term="杂谈"></category><category term="动画"></category><summary>会变成，什么样子……</summary><content type="html">&lt;p&gt;前两天有人建议我去看B站新上的国产动画《记忆管理局》。&lt;/p&gt;
+其实还是挺好玩的。那还能怎么样，继续用呗。&lt;/p&gt;</content></entry><entry><title>我们的国产2D动画……</title><link rel="alternate" href="https://lizi.moe/posts/The-Future-of-Chinese-Anime/"></link><id>https://lizi.moe/posts/The-Future-of-Chinese-Anime/</id><updated>2026-08-05</updated><category term="杂谈"></category><category term="动画"></category><summary>会变成，什么样子……</summary><content type="html">&lt;p&gt;前两天有人建议我去看B站新上的国产动画《记忆管理局》。&lt;/p&gt;
 &lt;p&gt;其实这部的一些预告啊宣传片小短片什么的我之前倒是看过，不过看完了也没有太关注（因为觉得等到播出的时候大概率是会给我推的）。而且居然选了今年各路神仙打架（包括但不限于科学猴的《穹庐下的魔女》《攻壳机动队》和京都动画的
 &lt;em&gt;被寄予厚望然而爆雷的&lt;/em&gt;
 《二十世纪电气目录》）的第三季度上线，想必资方和制作组都对它期待很高。&lt;/p&gt;

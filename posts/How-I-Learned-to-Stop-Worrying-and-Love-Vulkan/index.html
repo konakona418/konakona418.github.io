@@ -337,9 +337,9 @@ href="https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html"
 class="uri">https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html</a></p>
 </blockquote>
 <p>要修复我们把 <code>renderFinishedSemaphore</code> 跟 swapchain image
-的绑定而非 in-flight frames 的绑定，把它从 <code>FrameData</code>
+绑定而非 in-flight frames 绑定，把它从 <code>FrameData</code>
 解耦出去，从而避免因为 in-flight frame 和 swapchain
-两者循环周期或者单纯的序列不同导致的 semaphore 冲突：</p>
+两者循环周期或者单纯的就绪序列不同导致的 semaphore 冲突：</p>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>VkSemaphoreSubmitInfo signalInfo <span class="op">=</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        VkInit<span class="op">::</span>semaphoreSubmitInfo<span class="op">(</span></span>
@@ -437,12 +437,12 @@ buffer 就修复了。</p>
 <p>然而答辩当天在场的学院的老师们对我们的游戏似乎兴致不高。其中一位老师让我们打开
 codebase
 展示一下，结果打开发现不是咖啡语言又勒令我们关掉，转头让我们展示文档，而且似乎对文档里面的错别字和标点运用过分关心了，背后原因暂且未知。</p>
-<p>我的队友觉得这多少有点傲慢了。特别是当他发现分数分配下来本组只有我刚好没法拿
+<p>我的队友之一觉得这多少有点傲慢了。他觉得他们答辩提问的问题和我们做出来的产品毫无关联，简直满嘴跑火车，因而感到十分气愤，特别是当他发现分数分配下来本组只有我刚好没法拿
 3.9
-的绩点时更是觉得他们答辩提问的时候简直满嘴跑火车，因而感到十分气愤（虽然我对此并没有什么意见，这个数字对我来说意义不大，我不太高兴的点是答辩当天没有老师跟我进行任何具有建设性的技术讨论），于是他写了一大段文本，去找学院负责管理本课程的两位老师进行申诉。值得我们欣慰的是，学院老师重视了我们的申诉，并对我们的成绩进行了重新评估。这下，我的队友终于消停了。</p>
+的绩点时（虽然我对此并没有什么意见，这个数字对我来说意义不大，我不太高兴的点是答辩当天没有老师跟我进行任何具有建设性的技术讨论），于是他写了一大段文本，去找学院负责管理本课程的两位老师进行申诉。值得我们欣慰的是，学院老师重视了我们的申诉，并对我们的成绩进行了重新评估。这下，我的队友终于消停了。</p>
 <p>btw，因为我一直写代码，最后不得不三天速通了概率论，最后也是风风光光取得了超美丽的绩点。</p>
 <p>所有的工作都结束以后，我并没有变得很开心或者很有成就感；事实上，在到处夸耀和经历了一阵短暂的令人目眩的狂喜后，我陷入了某种更大的虚无，这虚无感比去年八月的时候来的还要剧烈。我想，或许只要我再写一个更大的项目，我便会有真正的成就感，我便不会这么麻了，只要再写一个项目……</p>
 <p>很遗憾的是，在那之后，我并未能找到这样的一个项目来写。我意识到我整天就光顾着对着那块显示屏敲打键盘了，对自己的生活过的如何或者身边的人怎么样完全是不闻不问不管不顾，简直不能更卑琐了，但说实话我也不太清楚该从何时以何种形式做出改变。祸不单行，在那之后我又在情感上遭遇了挫折，随后其他各种破事也接踵而至。</p>
 <p>自此我就没有一天是不难受的。</p>
 <p>不过嘛，现在想来 Vulkan
-其实还是挺好玩的。那还能怎么样，继续用呗。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/The-Future-of-Chinese-Anime/">杂感 | 我们的国产2D动画……</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
+其实还是挺好玩的。那还能怎么样，继续用呗。</p></div><nav class="post-nav"><div class="post-nav-prev"><span class="post-nav-label">上一篇</span><a href="/posts/Reflections-on-NWPU-SSW-Winter-Project/">关于软件学院寒假项目的若干反思</a></div><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/The-Future-of-Chinese-Anime/">我们的国产2D动画……</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
