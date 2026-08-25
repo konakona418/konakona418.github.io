@@ -1,0 +1,403 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>发射电波中，少话</title><meta property="og:title" content="发射电波中，少话"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="关于「相対性理論」的若干“理论”"><meta property="og:url" content="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   wrapper.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  wrapper.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css?v=d0d42c58"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>发射电波中，少话</h1><p class="post-meta"><time>2026-08-25</time><span class="post-tags"><a class="post-tag" href="/tags/杂谈/">杂谈</a></span><span class="post-meta-time">约 36 分钟</span></p><div class="post-body"><p><strong>tl;dr:</strong> why don’t you just copy-paste this into a
+chatbot and ask it to summarize for you?</p>
+<hr />
+<p><strong>按：我发现我用中文写作的时候经常写的过快，导致文本时常严重欠考虑；所以试着换成了英文，从而强行拖慢我的写作速度，看看有没有什么变化。</strong></p>
+<p>This article is my comments and analysis on a certain band.</p>
+<p>About half a year ago, I ran into a Japanese band named 相対性理論
+(Soutaiseiriron), while I was haphazardly looking for something to
+listen to on a drive. The first song I encountered was スマトラ警備隊
+(<em>Sumatra Keibitai</em>) from the EP シフォン主義 (Chiffon
+Capitalism).</p>
+<p>I’ve been learning Japanese for a while, so chances are that I can
+understand - at least part of - the lyrics. But <em>Sumatra
+Keibitai</em> was something different. The arrangement was thoughtfully
+calculated and meticulous, while the vocal was intriguing (though hardly
+provocative, at least in any conventional sense; we’ll jump back to this
+topic later). But what about the lyrics? Honestly, at first glance, to
+me, it seemed like complete nonsense, or at least something that lacks
+even a basic degree of referential plausibility. Thus, it’s hard for me
+to merely piece things together.</p>
+<blockquote>
+<p>やってきた恐竜　街破壊</p>
+<p>迎え撃つわたし　サイキック</p>
+</blockquote>
+<p>The beginning was quite perplexing. It seemed to be inspired by plots
+of some stereotyped anime. But that did not last long:</p>
+<blockquote>
+<p>太平洋　大西洋　ここ一体何平洋よ</p>
+<p><strong>盗んだわたしの記憶をかえして</strong></p>
+<p><strong>CIA KGB FBIに (CENSORED) の陰謀よ</strong></p>
+<p><strong>誰か　わたしを逃がして</strong></p>
+</blockquote>
+<p>My first reaction was like <em>wait, what?</em> I initially wondered
+whether I had misunderstood the lyrics, and looked them up just to make
+sure. Perhaps I found the reason why the censor-bots are complaining
+about this song.</p>
+<p>What initially resembles the daydream of a sleepy girl suddenly takes
+a sharp turn and gives way to something closer to some rather radical
+political proclamation. <em>Give back my stolen memories! Conspiracy!
+Anybody please set me free!</em></p>
+<p>Yes, it <em>is</em> tempting to dismiss all of this as pure semantic
+incoherence and leave it at that; but that was perhaps too easy an
+answer. This interpretation <em>can</em> explain my confusion, but not
+my <em>real</em> experience. On the contrary, I was actually becoming
+increasingly aware of the lyrics. The acronyms, the half-rhymes, the
+abrupt shift in imagery, the strange juxtaposition of political paranoia
+with rest of the song. The words themselves were not uncomprehensible. I
+knew what all the individual phrases were; what I could not immediately
+understand was what these things were doing together in a <em>bigger
+picture</em>. Calling them total nonsense, then, merely suggest the
+failure of interpretation. It did not explain why, even before I can
+make any scrutable sense of them, I had already begun to perceive them
+as something more than fractured pieces of information. It’s possible
+that, meaning is <em>not</em> absent. It’s just not the first problem
+the song asks us to solve.</p>
+<p>This distinction reminds me of Hiroki Azuma’s thesis on the so-called
+<em>database model</em> after several unsuccessful attempts to assemble
+a <em>bigger picture</em>. Azuma proposed that, <em>once upon a time
+<del>in a distant galaxy</del></em>, individual works can be understood
+in relation to a deeper narrative or ideological construction that
+preceded them. By encountering the elements visible on the surface of
+the work, consumers could, in principle, gain access to this
+pre-existing larger totality; under the database model, however, what
+consumers face might instead be collections of identifiable and
+individually consumable fragments that can be extracted, combined,
+reorganized or even tweaked without being first confined to a singular
+and authoritative narrative, through which they - consumers -
+autonomously organize the fragments corresponding to their own
+understanding and form a <em>false</em> substitution for the <em>big
+narrative</em> (i.e. aforementioned <em>bigger picture</em>). This is,
+of course, not saying that the songs of Soutaiseiriron are direct
+illustrations of Azuma’s theory, nor that their lyrics somehow
+constitutes a literal database <del>or some high-dimensional vector
+space</del>. What I’m trying to convey - by introducing an analogous
+structure from his arguments - is that, <em>what if</em>, in this case,
+<em>individual elements can precede totality</em>. What if, the listener
+come across recognizable fragments first, and is then forced into
+putting together a graspable whole which remains contingent but perhaps
+provisional? Here, the signifier arrives immediately, when I hear it,
+recognize it and eventually decode its literal meaning; what arrives
+later - if it arrives at all - is a relatively stable account of its
+relations with other signifiers around it. That is to say, signification
+may unfold asynchronously, and I’ll refer to this temporal mismatch or
+asymmetry, somewhat loosely, as <em>deferred semiosis</em>.</p>
+<p>上海an (<em>Shanghai An</em>) from the album <em>TOWN AGE</em> offers
+a useful variation on explaining this theory. Its opening does not
+initially resist comprehension through the same degree of abrupt
+semantic discontinuity <em>vis-à-vis</em> <em>Sumatra Keibitai</em>.
+There is, at the beginning, at least <em>seemingly</em>, a relatively
+concrete and <del>mentally</del> stable narrator, a certain place and a
+sequence of events that do possess chronological integrity:</p>
+<blockquote>
+<p>上海について20分</p>
+<p>一体ここはどこだろう？</p>
+<p>荷物も見当たらないし</p>
+<p>切符もどこだかわからない</p>
+<p><strong>万歳させられてるけど</strong></p>
+<p><strong>一体どういうことだろう？</strong></p>
+<p>一つも見に覚えがないし</p>
+<p>にっちもさっちもいかなくて</p>
+</blockquote>
+<p>Apparently, this is much easier to follow. If you’ve ever arrived at
+an airport, it won’t be tough to gain a sense of intimacy. The narrator
+cannot find their luggage, has lost track of their ticket, and appears
+to have become entangled in some <em>ritual</em> they do not understand;
+everything is in a total mess. I found it quite easy to project my own
+experiences arriving in Europe this summer onto the scene. And the most
+interesting part (from my perspective, which I highlighted in bold), the
+narrator is somehow requested to perform something described as
+<em>banzai</em>, which a listener with average knowlege of Japanese
+culture <del>and modern history</del> won’t be unaquainted with - to
+raise their arms while shouting the phrase <em>banzai</em>, and perhaps
+some other gesture that the lyric itself leaves unspecified. For reasons
+I cannot fully reconstruct, this reminds me, however vaguely, the
+tedious airport security procedures here. Perhaps that’s what the lyrics
+are trying to convey; or perhaps it’s not, and this is just my
+overreading. The crucial point, however, is that the lyrics themself
+<em>do not</em> settle the question for me with a plain answer. It does
+not explicitly identify the situation I’ve constructed, nor does it
+coerce me into accepting any particular explanation.</p>
+<p>But neither does this mean that the text permits any possible
+interpretation; its fragments impose certain constraints while failing
+to determine a definitive account of what has taken place. The listener
+does not invent meanings out of void; instead, the song exhibits an
+<em>arranged</em> and <em>curated</em> collection of intelligible
+elements whose underlying relationships still remain at least
+<em>partially</em> undetermined, and the listener’s task - perhaps even
+a <em>compulsion</em> - is to glue them, orchestrate them, make them
+cohere, and thereby constructing a provisional totality. Still, it would
+be doubious and misleading to conclude that <em>Sumatra Keibitai</em>
+and <em>Shanghai An</em> arrive at interpretive instability via mutually
+exclusive routes; <em>Shanghai An</em> itself soon becomes increasingly
+difficult to stabilize, when its apparently coherent narrative at the
+beginning is interrupted by stuff like repeated phrases, wordplay,
+unexplained figures and progressively uncertain relations between
+events. The distinction, then, is not that one lyric is fragmented while
+the other is not; no such sharp contradiction lies here. Rather, they
+spread stability and instability across their respective structures.</p>
+<p>Under this explanation, <em>Sumatra Keibitai</em> makes the
+instability of its fragments perceptible almost immediately;
+<em>Shanghai An</em>, on the other hand, initially offers the listener a
+<em>narrative foothold</em>, before gradually revealing that this
+foothold is insufficient to organize things that follows.</p>
+<p>At this point, another set of organizing principles begins to emerge
+alongside the narrative one.</p>
+<blockquote>
+<p>いちにの <strong>サンハイ</strong></p>
+</blockquote>
+<p>This phrase can either be heard as <em>1, 2, 3, go!</em>, yet
+サンハイ simutaneously overlaps with 上海. Until this point, Shanghai
+has primarily served as the <em>signifier</em> of a certain place where
+the narrator has supposedly arrive and remain unable to properly locate
+themselves; here, however, it briefly ceases to function <em>only</em>
+as a geographical name and becomes available as a sequence of smaller
+phonetic units that can be segmented differently. Therefore, this line,
+by allowing two different semantic paths to occupy an identical phonetic
+space, introduced explanatory ambiguity, leaving more capacity for
+listener interpretation, also inserting a pun into an otherwise stable
+narrative.</p>
+<p>The following repetitions intensify this shift in narrative as
+well:</p>
+<blockquote>
+<p>お命ちょうだいしましょうか？ 水先案内しましょうか？ x2</p>
+</blockquote>
+<p>Read in isolation, these lines invite radically different
+interpretation depending on the provisional situation the listener has
+constructed. To me, this can sound almost ritualistic, even
+<em>cult-like</em>; with a different frame, however, the same exaggrated
+language may appear theatrical, absurdist, and even - as mentioned by a
+few critic reviews I’ve read or watched before - somehow romantic. But
+still, none of these readings is directly guaranteed by the lyric
+itself, as explained in the previous analysis.</p>
+<p>Semantically, these propositions have few reason to be placed
+together; nevertheless, their juxtaposition places them within the same
+recurring grammar frame:</p>
+<blockquote>
+<p>～しましょうか？</p>
+</blockquote>
+<p>The same pattern returns near the end of the song:</p>
+<blockquote>
+<p>お命ちょうだいしましょうか？ 水先案内しましょうか？ x2</p>
+<p>美味しい話をしましょうか？ もう一つオマケしましょうか？ x2</p>
+</blockquote>
+<p>Again, the propositions themselves are only loosely related to some
+extent. What establishes continuity between them is therefore merely the
+repetition of a common syntactic form, rather than presence of a
+concrete - or at least predictable - narrative progression to some
+degree, as we typically see in numerous popular songs. This repetitive
+form allows the phrases with semantic differences coexist in a formal
+structure that repeatedly treats them as variations of the same pattern,
+and perceived by the listener as a bundled whole. Thus, <em>Shanghai
+An</em> demonstrates additional principles of organization by using
+phonetic or syntactic techniques that coexists with, and eventually
+destabilize and disrupts, the narrative foothold offered at its
+beginning.</p>
+<p>夏の黄金比 (<em>Natsu no Ougonhi</em>), from <em>Chiffon
+Capitalism</em>, pushes this tendency even further, providing
+particularly revealing examples for these newly introduced principles,
+when repetition begins to dominate the lyric arragement and draws more
+attention to the material existence of language itself.</p>
+<blockquote>
+<p>コントレックス箱買い</p>
+<p>コントレックス <strong>はこはこはこ買い</strong></p>
+<p>コントレックス箱買い</p>
+<p>コントレックス</p>
+</blockquote>
+<p>At the beginning, コントレックス箱買い can be processed as an
+ordinary proposition, at least a fragment of one. But repetition (in
+bold) quickly alters its internal equilibrium. 箱, or はこ does not
+cease to mean a box; yet, through repetition, it becomes perceptually
+available as something more than its basic lexical meaning, with its
+recurrance also highlighting its <em>phonetic texture</em>.</p>
+<p>We can see similar occurences of this technique in 四角革命
+(<em>Shikaku Kakumei</em>) from the album ハイファイ新書 (<em>Hi-fi
+Anatomia</em>).</p>
+<blockquote>
+<p><strong>四角カクカク革命</strong> 前夜の</p>
+<p><strong>長いあいあい間の</strong> ロマンス</p>
+<p><strong>近いカイカイ開戦</strong> 前夜に</p>
+<p><strong>やってくるくる車</strong> の行列</p>
+</blockquote>
+<p><em>The alignment is primarily there to make the recurring phonetic
+structure visible. I also happen to think it looks nicer this
+way.</em></p>
+<p>Here, the progression of lyrics is organized just as strongly by
+phonetic recurrence as by semantic continuity. Sound therfore begins to
+operate as a principle capable of connecting and grouping otherwise
+distinct words together.</p>
+<p>Here, despite not being completely cancelled, simply the semantic
+function of the word no longer exhausts things that the listeners are
+able to perceive. A peculiar doubling therefore arises, where the word
+still serves its purpose of signification, while simultaneously becoming
+a flexible and manipulable piece of acoustic material which can be
+disassembled, modified, resegmented, reiterated, or reorganized, in a
+way almost analogous to <em>audio samples</em>.</p>
+<p>This distinction of semantic function of text and its materiality is
+not exclusive to music. It reminds me of a comparable relationship in a
+very different medium: the textual interludes frequently appeared in
+animation works directed by Akiyuki Shinbo, particularly in 物語
+(<em>Monogatari Series</em>) and さよなら絶望先生 (<em>Sayonara,
+Zetsubou-Sensei Series</em>). In <em>Monogatari</em>, for instance,
+Shinbo introduced numerous interludes consisting of a monochromatic
+background and some text which varies in length - sometimes merely a few
+characters like a concise description of character or events that just
+occurred; sometimes lengthy, like a excerpt from the original novel or
+the anime script. This takes a step further in <em>Sayonara,
+Zetsubou-Sensei</em>, where not only the interludes but also the
+background art consists of random text about some trending memes,
+celebrities or political sarcasm in Japan. Such technique might
+originate from the Japanese comic strips, or <em>manga</em>, and is
+futher developed alongside the increasingly experiments on typography,
+still-images and other non-animated materials, by collected efforts of
+the staff from SHAFT, including director Shinbo and animator Oishi
+Tatsuya, at the crossroad of the traditional and computer-assisted
+animation production in 2000s. There are still a lot of things to
+discuss about Shinbo’s styles, but as the topic of this blog is not
+anime case study, its better to prevent more prolixities on this
+subject. The crucial part is, the interludes, unlike these in
+conventional movies or animations, often appears too briefly which only
+allows a quick browsing under ordinary viewing conditions (e.g. watching
+the anime airing on TV). This does not render the text in these
+interludes completely meaningless; on the contrary, the viewers are
+actually acutely aware that they <em>are</em> reading some meaningful
+text even without sufficient time to decode it completely. However, its
+the the perception of typography, typesetting, the visual contrast and
+the sudden interruption from moving image that arrives before the
+semantic decoding of the text. In such moments, the visual property of
+text or character (expecially the CJK characters) as some <em>graphic
+material</em>, seems to coexist, or even precede its semantic functions.
+Drawing this back to our original analysis, <em>Natsu no Ougonhi</em>
+suggests an acoustic analogue - the phonetic properties of the word,
+previously concluded as a <em>sample</em>, might become perceptually
+salient before its purpose to signify a certain meaning.</p>
+<p>This raises another interesting question. If the lyrics are not only
+semantic propositions but also phonetic material, what is the major
+factor that determines in which form this material will reach the
+listener? Apparently, it is the voice. As for lyrics of Soutaiseiriron,
+they arrive through Yakushimaru Etsuko’s voice.</p>
+<p>Her vocal might be described as <em>flat, deadpan and
+indifferent</em> in the first place. Indeed, compared with many popular
+vocalists whose performances rely on conspicuous changes in intensity,
+pharsing, vocal color, etc. that guide the listener toward a relatively
+recognizable emotional response, Yakushimaru often seems to
+<em>withhold</em> such guidance. However, such comments, despite not
+completely unsubstantiated, are ultimately insufficient. They risk
+reducing a remarkably variable vocal performance to the absence of
+something that, in fact, often exists. 救心 (<em>Kyu-Shin</em>), for
+instance, is lively, playful, and almost exuberant. A more useful
+description is that her vocal delivery does not necessarily arrange
+affect into a familiar trajectory of accumulation, climax, and release,
+thus partially redistributes the burden of emotional interpretation to
+the listener. Namely, instead of determining in advance how particular
+pharses ought to be felt, her delivery frequently leaves a considerable
+distance between <em>what is being said</em> and <em>how it is
+eventually felt</em>. The stablization of meaning might not be the only
+thing that can arrive asynchronously; sentimental effects, too, may also
+remain temporarily unresolved.</p>
+<hr />
+<p>Previously, I mentioned something called <em>big narrative</em> or
+<em>bigger picture</em>, and I failed in the pursuit for it. From the
+above analysis, we can say that this bigger picture does not always
+precede perception. In some cases it emerges only through perception
+itself. This does not mean that every interpretation is equally valid,
+nor that the listener invent random meanings out of nothing. The
+fragments still impose constraints. The lyrics, sound, vocal delivery
+and cultural references all delimit what can plausibly be heard. The
+listener, then, is neither a passive receiver nor an entirely free
+author. They occupy a position somewhere in between assembling relations
+between fragments, revising provisional interpretations, and bringing
+their own experiences to bear on what they hear. Without the listener’s
+participation, at least some of these relations may remain temporarily
+unsettled.</p>
+<p>So where, after all this, are my actual comments on the band? Well,
+perhaps I would prefer to leave that conclusion temporarily unsettled,
+too.</p>
+<p>以上。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/Reflections-on-NWPU-SSW-Winter-Project/">关于软件学院寒假项目的若干反思</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>

@@ -1,4 +1,318 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-21</updated><author><name>moe li</name></author><entry><title>关于软件学院寒假项目的若干反思</title><link rel="alternate" href="https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/"></link><id>https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/</id><updated>2026-08-21</updated><category term="杂谈"></category><summary>好了，花点时间去讨论计算机科学有趣的难题，不再讨论这件事情了。</summary><content type="html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-25</updated><author><name>moe li</name></author><entry><title>发射电波中，少话</title><link rel="alternate" href="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"></link><id>https://lizi.moe/posts/Analysis-on-Soutaiseiriron/</id><updated>2026-08-25</updated><category term="杂谈"></category><summary>关于「相対性理論」的若干“理论”</summary><content type="html">&lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; why don’t you just copy-paste this into a
+chatbot and ask it to summarize for you?&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;按：我发现我用中文写作的时候经常写的过快，导致文本时常严重欠考虑；所以试着换成了英文，从而强行拖慢我的写作速度，看看有没有什么变化。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This article is my comments and analysis on a certain band.&lt;/p&gt;
+&lt;p&gt;About half a year ago, I ran into a Japanese band named 相対性理論
+(Soutaiseiriron), while I was haphazardly looking for something to
+listen to on a drive. The first song I encountered was スマトラ警備隊
+(&lt;em&gt;Sumatra Keibitai&lt;/em&gt;) from the EP シフォン主義 (Chiffon
+Capitalism).&lt;/p&gt;
+&lt;p&gt;I’ve been learning Japanese for a while, so chances are that I can
+understand - at least part of - the lyrics. But &lt;em&gt;Sumatra
+Keibitai&lt;/em&gt; was something different. The arrangement was thoughtfully
+calculated and meticulous, while the vocal was intriguing (though hardly
+provocative, at least in any conventional sense; we’ll jump back to this
+topic later). But what about the lyrics? Honestly, at first glance, to
+me, it seemed like complete nonsense, or at least something that lacks
+even a basic degree of referential plausibility. Thus, it’s hard for me
+to merely piece things together.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;やってきた恐竜　街破壊&lt;/p&gt;
+&lt;p&gt;迎え撃つわたし　サイキック&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The beginning was quite perplexing. It seemed to be inspired by plots
+of some stereotyped anime. But that did not last long:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;太平洋　大西洋　ここ一体何平洋よ&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;盗んだわたしの記憶をかえして&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CIA KGB FBIに (CENSORED) の陰謀よ&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;誰か　わたしを逃がして&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;My first reaction was like &lt;em&gt;wait, what?&lt;/em&gt; I initially wondered
+whether I had misunderstood the lyrics, and looked them up just to make
+sure. Perhaps I found the reason why the censor-bots are complaining
+about this song.&lt;/p&gt;
+&lt;p&gt;What initially resembles the daydream of a sleepy girl suddenly takes
+a sharp turn and gives way to something closer to some rather radical
+political proclamation. &lt;em&gt;Give back my stolen memories! Conspiracy!
+Anybody please set me free!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Yes, it &lt;em&gt;is&lt;/em&gt; tempting to dismiss all of this as pure semantic
+incoherence and leave it at that; but that was perhaps too easy an
+answer. This interpretation &lt;em&gt;can&lt;/em&gt; explain my confusion, but not
+my &lt;em&gt;real&lt;/em&gt; experience. On the contrary, I was actually becoming
+increasingly aware of the lyrics. The acronyms, the half-rhymes, the
+abrupt shift in imagery, the strange juxtaposition of political paranoia
+with rest of the song. The words themselves were not uncomprehensible. I
+knew what all the individual phrases were; what I could not immediately
+understand was what these things were doing together in a &lt;em&gt;bigger
+picture&lt;/em&gt;. Calling them total nonsense, then, merely suggest the
+failure of interpretation. It did not explain why, even before I can
+make any scrutable sense of them, I had already begun to perceive them
+as something more than fractured pieces of information. It’s possible
+that, meaning is &lt;em&gt;not&lt;/em&gt; absent. It’s just not the first problem
+the song asks us to solve.&lt;/p&gt;
+&lt;p&gt;This distinction reminds me of Hiroki Azuma’s thesis on the so-called
+&lt;em&gt;database model&lt;/em&gt; after several unsuccessful attempts to assemble
+a &lt;em&gt;bigger picture&lt;/em&gt;. Azuma proposed that, &lt;em&gt;once upon a time
+&lt;del&gt;in a distant galaxy&lt;/del&gt;&lt;/em&gt;, individual works can be understood
+in relation to a deeper narrative or ideological construction that
+preceded them. By encountering the elements visible on the surface of
+the work, consumers could, in principle, gain access to this
+pre-existing larger totality; under the database model, however, what
+consumers face might instead be collections of identifiable and
+individually consumable fragments that can be extracted, combined,
+reorganized or even tweaked without being first confined to a singular
+and authoritative narrative, through which they - consumers -
+autonomously organize the fragments corresponding to their own
+understanding and form a &lt;em&gt;false&lt;/em&gt; substitution for the &lt;em&gt;big
+narrative&lt;/em&gt; (i.e. aforementioned &lt;em&gt;bigger picture&lt;/em&gt;). This is,
+of course, not saying that the songs of Soutaiseiriron are direct
+illustrations of Azuma’s theory, nor that their lyrics somehow
+constitutes a literal database &lt;del&gt;or some high-dimensional vector
+space&lt;/del&gt;. What I’m trying to convey - by introducing an analogous
+structure from his arguments - is that, &lt;em&gt;what if&lt;/em&gt;, in this case,
+&lt;em&gt;individual elements can precede totality&lt;/em&gt;. What if, the listener
+come across recognizable fragments first, and is then forced into
+putting together a graspable whole which remains contingent but perhaps
+provisional? Here, the signifier arrives immediately, when I hear it,
+recognize it and eventually decode its literal meaning; what arrives
+later - if it arrives at all - is a relatively stable account of its
+relations with other signifiers around it. That is to say, signification
+may unfold asynchronously, and I’ll refer to this temporal mismatch or
+asymmetry, somewhat loosely, as &lt;em&gt;deferred semiosis&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;上海an (&lt;em&gt;Shanghai An&lt;/em&gt;) from the album &lt;em&gt;TOWN AGE&lt;/em&gt; offers
+a useful variation on explaining this theory. Its opening does not
+initially resist comprehension through the same degree of abrupt
+semantic discontinuity &lt;em&gt;vis-à-vis&lt;/em&gt; &lt;em&gt;Sumatra Keibitai&lt;/em&gt;.
+There is, at the beginning, at least &lt;em&gt;seemingly&lt;/em&gt;, a relatively
+concrete and &lt;del&gt;mentally&lt;/del&gt; stable narrator, a certain place and a
+sequence of events that do possess chronological integrity:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上海について20分&lt;/p&gt;
+&lt;p&gt;一体ここはどこだろう？&lt;/p&gt;
+&lt;p&gt;荷物も見当たらないし&lt;/p&gt;
+&lt;p&gt;切符もどこだかわからない&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;万歳させられてるけど&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一体どういうことだろう？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一つも見に覚えがないし&lt;/p&gt;
+&lt;p&gt;にっちもさっちもいかなくて&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Apparently, this is much easier to follow. If you’ve ever arrived at
+an airport, it won’t be tough to gain a sense of intimacy. The narrator
+cannot find their luggage, has lost track of their ticket, and appears
+to have become entangled in some &lt;em&gt;ritual&lt;/em&gt; they do not understand;
+everything is in a total mess. I found it quite easy to project my own
+experiences arriving in Europe this summer onto the scene. And the most
+interesting part (from my perspective, which I highlighted in bold), the
+narrator is somehow requested to perform something described as
+&lt;em&gt;banzai&lt;/em&gt;, which a listener with average knowlege of Japanese
+culture &lt;del&gt;and modern history&lt;/del&gt; won’t be unaquainted with - to
+raise their arms while shouting the phrase &lt;em&gt;banzai&lt;/em&gt;, and perhaps
+some other gesture that the lyric itself leaves unspecified. For reasons
+I cannot fully reconstruct, this reminds me, however vaguely, the
+tedious airport security procedures here. Perhaps that’s what the lyrics
+are trying to convey; or perhaps it’s not, and this is just my
+overreading. The crucial point, however, is that the lyrics themself
+&lt;em&gt;do not&lt;/em&gt; settle the question for me with a plain answer. It does
+not explicitly identify the situation I’ve constructed, nor does it
+coerce me into accepting any particular explanation.&lt;/p&gt;
+&lt;p&gt;But neither does this mean that the text permits any possible
+interpretation; its fragments impose certain constraints while failing
+to determine a definitive account of what has taken place. The listener
+does not invent meanings out of void; instead, the song exhibits an
+&lt;em&gt;arranged&lt;/em&gt; and &lt;em&gt;curated&lt;/em&gt; collection of intelligible
+elements whose underlying relationships still remain at least
+&lt;em&gt;partially&lt;/em&gt; undetermined, and the listener’s task - perhaps even
+a &lt;em&gt;compulsion&lt;/em&gt; - is to glue them, orchestrate them, make them
+cohere, and thereby constructing a provisional totality. Still, it would
+be doubious and misleading to conclude that &lt;em&gt;Sumatra Keibitai&lt;/em&gt;
+and &lt;em&gt;Shanghai An&lt;/em&gt; arrive at interpretive instability via mutually
+exclusive routes; &lt;em&gt;Shanghai An&lt;/em&gt; itself soon becomes increasingly
+difficult to stabilize, when its apparently coherent narrative at the
+beginning is interrupted by stuff like repeated phrases, wordplay,
+unexplained figures and progressively uncertain relations between
+events. The distinction, then, is not that one lyric is fragmented while
+the other is not; no such sharp contradiction lies here. Rather, they
+spread stability and instability across their respective structures.&lt;/p&gt;
+&lt;p&gt;Under this explanation, &lt;em&gt;Sumatra Keibitai&lt;/em&gt; makes the
+instability of its fragments perceptible almost immediately;
+&lt;em&gt;Shanghai An&lt;/em&gt;, on the other hand, initially offers the listener a
+&lt;em&gt;narrative foothold&lt;/em&gt;, before gradually revealing that this
+foothold is insufficient to organize things that follows.&lt;/p&gt;
+&lt;p&gt;At this point, another set of organizing principles begins to emerge
+alongside the narrative one.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;いちにの &lt;strong&gt;サンハイ&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This phrase can either be heard as &lt;em&gt;1, 2, 3, go!&lt;/em&gt;, yet
+サンハイ simutaneously overlaps with 上海. Until this point, Shanghai
+has primarily served as the &lt;em&gt;signifier&lt;/em&gt; of a certain place where
+the narrator has supposedly arrive and remain unable to properly locate
+themselves; here, however, it briefly ceases to function &lt;em&gt;only&lt;/em&gt;
+as a geographical name and becomes available as a sequence of smaller
+phonetic units that can be segmented differently. Therefore, this line,
+by allowing two different semantic paths to occupy an identical phonetic
+space, introduced explanatory ambiguity, leaving more capacity for
+listener interpretation, also inserting a pun into an otherwise stable
+narrative.&lt;/p&gt;
+&lt;p&gt;The following repetitions intensify this shift in narrative as
+well:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;お命ちょうだいしましょうか？ 水先案内しましょうか？ x2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Read in isolation, these lines invite radically different
+interpretation depending on the provisional situation the listener has
+constructed. To me, this can sound almost ritualistic, even
+&lt;em&gt;cult-like&lt;/em&gt;; with a different frame, however, the same exaggrated
+language may appear theatrical, absurdist, and even - as mentioned by a
+few critic reviews I’ve read or watched before - somehow romantic. But
+still, none of these readings is directly guaranteed by the lyric
+itself, as explained in the previous analysis.&lt;/p&gt;
+&lt;p&gt;Semantically, these propositions have few reason to be placed
+together; nevertheless, their juxtaposition places them within the same
+recurring grammar frame:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;～しましょうか？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The same pattern returns near the end of the song:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;お命ちょうだいしましょうか？ 水先案内しましょうか？ x2&lt;/p&gt;
+&lt;p&gt;美味しい話をしましょうか？ もう一つオマケしましょうか？ x2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Again, the propositions themselves are only loosely related to some
+extent. What establishes continuity between them is therefore merely the
+repetition of a common syntactic form, rather than presence of a
+concrete - or at least predictable - narrative progression to some
+degree, as we typically see in numerous popular songs. This repetitive
+form allows the phrases with semantic differences coexist in a formal
+structure that repeatedly treats them as variations of the same pattern,
+and perceived by the listener as a bundled whole. Thus, &lt;em&gt;Shanghai
+An&lt;/em&gt; demonstrates additional principles of organization by using
+phonetic or syntactic techniques that coexists with, and eventually
+destabilize and disrupts, the narrative foothold offered at its
+beginning.&lt;/p&gt;
+&lt;p&gt;夏の黄金比 (&lt;em&gt;Natsu no Ougonhi&lt;/em&gt;), from &lt;em&gt;Chiffon
+Capitalism&lt;/em&gt;, pushes this tendency even further, providing
+particularly revealing examples for these newly introduced principles,
+when repetition begins to dominate the lyric arragement and draws more
+attention to the material existence of language itself.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;コントレックス箱買い&lt;/p&gt;
+&lt;p&gt;コントレックス &lt;strong&gt;はこはこはこ買い&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;コントレックス箱買い&lt;/p&gt;
+&lt;p&gt;コントレックス&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At the beginning, コントレックス箱買い can be processed as an
+ordinary proposition, at least a fragment of one. But repetition (in
+bold) quickly alters its internal equilibrium. 箱, or はこ does not
+cease to mean a box; yet, through repetition, it becomes perceptually
+available as something more than its basic lexical meaning, with its
+recurrance also highlighting its &lt;em&gt;phonetic texture&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;We can see similar occurences of this technique in 四角革命
+(&lt;em&gt;Shikaku Kakumei&lt;/em&gt;) from the album ハイファイ新書 (&lt;em&gt;Hi-fi
+Anatomia&lt;/em&gt;).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;四角カクカク革命&lt;/strong&gt; 前夜の&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;長いあいあい間の&lt;/strong&gt; ロマンス&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;近いカイカイ開戦&lt;/strong&gt; 前夜に&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;やってくるくる車&lt;/strong&gt; の行列&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;The alignment is primarily there to make the recurring phonetic
+structure visible. I also happen to think it looks nicer this
+way.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Here, the progression of lyrics is organized just as strongly by
+phonetic recurrence as by semantic continuity. Sound therfore begins to
+operate as a principle capable of connecting and grouping otherwise
+distinct words together.&lt;/p&gt;
+&lt;p&gt;Here, despite not being completely cancelled, simply the semantic
+function of the word no longer exhausts things that the listeners are
+able to perceive. A peculiar doubling therefore arises, where the word
+still serves its purpose of signification, while simultaneously becoming
+a flexible and manipulable piece of acoustic material which can be
+disassembled, modified, resegmented, reiterated, or reorganized, in a
+way almost analogous to &lt;em&gt;audio samples&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This distinction of semantic function of text and its materiality is
+not exclusive to music. It reminds me of a comparable relationship in a
+very different medium: the textual interludes frequently appeared in
+animation works directed by Akiyuki Shinbo, particularly in 物語
+(&lt;em&gt;Monogatari Series&lt;/em&gt;) and さよなら絶望先生 (&lt;em&gt;Sayonara,
+Zetsubou-Sensei Series&lt;/em&gt;). In &lt;em&gt;Monogatari&lt;/em&gt;, for instance,
+Shinbo introduced numerous interludes consisting of a monochromatic
+background and some text which varies in length - sometimes merely a few
+characters like a concise description of character or events that just
+occurred; sometimes lengthy, like a excerpt from the original novel or
+the anime script. This takes a step further in &lt;em&gt;Sayonara,
+Zetsubou-Sensei&lt;/em&gt;, where not only the interludes but also the
+background art consists of random text about some trending memes,
+celebrities or political sarcasm in Japan. Such technique might
+originate from the Japanese comic strips, or &lt;em&gt;manga&lt;/em&gt;, and is
+futher developed alongside the increasingly experiments on typography,
+still-images and other non-animated materials, by collected efforts of
+the staff from SHAFT, including director Shinbo and animator Oishi
+Tatsuya, at the crossroad of the traditional and computer-assisted
+animation production in 2000s. There are still a lot of things to
+discuss about Shinbo’s styles, but as the topic of this blog is not
+anime case study, its better to prevent more prolixities on this
+subject. The crucial part is, the interludes, unlike these in
+conventional movies or animations, often appears too briefly which only
+allows a quick browsing under ordinary viewing conditions (e.g. watching
+the anime airing on TV). This does not render the text in these
+interludes completely meaningless; on the contrary, the viewers are
+actually acutely aware that they &lt;em&gt;are&lt;/em&gt; reading some meaningful
+text even without sufficient time to decode it completely. However, its
+the the perception of typography, typesetting, the visual contrast and
+the sudden interruption from moving image that arrives before the
+semantic decoding of the text. In such moments, the visual property of
+text or character (expecially the CJK characters) as some &lt;em&gt;graphic
+material&lt;/em&gt;, seems to coexist, or even precede its semantic functions.
+Drawing this back to our original analysis, &lt;em&gt;Natsu no Ougonhi&lt;/em&gt;
+suggests an acoustic analogue - the phonetic properties of the word,
+previously concluded as a &lt;em&gt;sample&lt;/em&gt;, might become perceptually
+salient before its purpose to signify a certain meaning.&lt;/p&gt;
+&lt;p&gt;This raises another interesting question. If the lyrics are not only
+semantic propositions but also phonetic material, what is the major
+factor that determines in which form this material will reach the
+listener? Apparently, it is the voice. As for lyrics of Soutaiseiriron,
+they arrive through Yakushimaru Etsuko’s voice.&lt;/p&gt;
+&lt;p&gt;Her vocal might be described as &lt;em&gt;flat, deadpan and
+indifferent&lt;/em&gt; in the first place. Indeed, compared with many popular
+vocalists whose performances rely on conspicuous changes in intensity,
+pharsing, vocal color, etc. that guide the listener toward a relatively
+recognizable emotional response, Yakushimaru often seems to
+&lt;em&gt;withhold&lt;/em&gt; such guidance. However, such comments, despite not
+completely unsubstantiated, are ultimately insufficient. They risk
+reducing a remarkably variable vocal performance to the absence of
+something that, in fact, often exists. 救心 (&lt;em&gt;Kyu-Shin&lt;/em&gt;), for
+instance, is lively, playful, and almost exuberant. A more useful
+description is that her vocal delivery does not necessarily arrange
+affect into a familiar trajectory of accumulation, climax, and release,
+thus partially redistributes the burden of emotional interpretation to
+the listener. Namely, instead of determining in advance how particular
+pharses ought to be felt, her delivery frequently leaves a considerable
+distance between &lt;em&gt;what is being said&lt;/em&gt; and &lt;em&gt;how it is
+eventually felt&lt;/em&gt;. The stablization of meaning might not be the only
+thing that can arrive asynchronously; sentimental effects, too, may also
+remain temporarily unresolved.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Previously, I mentioned something called &lt;em&gt;big narrative&lt;/em&gt; or
+&lt;em&gt;bigger picture&lt;/em&gt;, and I failed in the pursuit for it. From the
+above analysis, we can say that this bigger picture does not always
+precede perception. In some cases it emerges only through perception
+itself. This does not mean that every interpretation is equally valid,
+nor that the listener invent random meanings out of nothing. The
+fragments still impose constraints. The lyrics, sound, vocal delivery
+and cultural references all delimit what can plausibly be heard. The
+listener, then, is neither a passive receiver nor an entirely free
+author. They occupy a position somewhere in between assembling relations
+between fragments, revising provisional interpretations, and bringing
+their own experiences to bear on what they hear. Without the listener’s
+participation, at least some of these relations may remain temporarily
+unsettled.&lt;/p&gt;
+&lt;p&gt;So where, after all this, are my actual comments on the band? Well,
+perhaps I would prefer to leave that conclusion temporarily unsettled,
+too.&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>关于软件学院寒假项目的若干反思</title><link rel="alternate" href="https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/"></link><id>https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/</id><updated>2026-08-21</updated><category term="杂谈"></category><summary>好了，花点时间去讨论计算机科学有趣的难题，不再讨论这件事情了。</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;今年 ICLR，哈工大学大胜，西工大学惨败！哈工大发表论文 83
 篇，西工大发表论文 8 篇！是谁负责？羞也不羞！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -112,7 +426,7 @@ Tier。质询学院老师时候我也提及了此问题，对方称答辩前的�
 &lt;strong&gt;即使这是软院两年来唯一一个确实利好我的政策。&lt;/strong&gt;
 结果讨论了半天我才反应过来，原来他们早就决定实施了，叫我们过去大概只是征求一下意见。搞半天我反对了个寂寞，只能说给他们提几个建设性意见，但愿最后别搞的太抽象就行了……&lt;/p&gt;
 &lt;p&gt;反正也不知道这个寒假作业到底有没有起到解决学生写不来代码问题的作用。好吧，至少钱是拿到了，没啥损失。&lt;/p&gt;
-&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer…</summary><content type="html">&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer, I can walk!</summary><content type="html">&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
 masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。&lt;/p&gt;
 &lt;p&gt;差不多一年前的这个时候
 &lt;em&gt;（另一个漫无止境的八月呀……）&lt;/em&gt;，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。&lt;/p&gt;
