@@ -10,6 +10,8 @@
   --color-mark       : #ffd97a;
   --color-accent     : #c4000e;
   --font-family      : Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+  --font-ja          : "Hiragino Mincho", "Yu Mincho", "Noto Serif JP", "Noto Serif CJK JP", serif;
+  --font-hant        : "Songti TC", "PMingLiU", "Noto Serif TC", "Noto Serif CJK TC", serif;
   --font-size        : 17px;
   --line-height      : 28px;
   --content-width    : 800px;
@@ -158,6 +160,31 @@ body
   color            : var(--color-text);
   background-color : var(--color-bg);
   overflow-wrap    : anywhere;
+}
+
+:lang(ja)
+{
+  font-family : var(--font-ja);
+}
+
+:lang(zh-Hant)
+{
+  font-family : var(--font-hant);
+}
+
+:lang(zh-TW)
+{
+  font-family : var(--font-hant);
+}
+
+:lang(zh-HK)
+{
+  font-family : var(--font-hant);
+}
+
+:lang(zh-MO)
+{
+  font-family : var(--font-hant);
 }
 
 a
@@ -437,9 +464,15 @@ nav
   gap             : 0 var(--space-nav-gap);
 }
 
+.post-nav-prev
+{
+  min-width : 0;
+}
+
 .post-nav-next
 {
   margin-left : auto;
+  min-width   : 0;
 }
 
 .post-nav-label
@@ -448,6 +481,11 @@ nav
   color         : var(--color-muted);
   font-size     : 0.85em;
   margin-bottom : 2px;
+}
+
+.post-nav-next .post-nav-label
+{
+  text-align : right;
 }
 
 a[aria-hidden='true']
@@ -962,6 +1000,11 @@ nav
 .post-nav-next
 {
   margin-left : 0;
+}
+
+.post-nav-next .post-nav-label
+{
+  text-align : left;
 }
 
 }
