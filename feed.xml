@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-25</updated><author><name>moe li</name></author><entry><title>发射电波中，少话</title><link rel="alternate" href="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"></link><id>https://lizi.moe/posts/Analysis-on-Soutaiseiriron/</id><updated>2026-08-25</updated><category term="杂谈"></category><summary>关于「相対性理論」的若干“理论”</summary><content type="html">&lt;p&gt;&lt;strong&gt;按：我发现我用中文写作的时候经常写的过快，导致文本时常严重欠考虑；所以试着换成了英文，从而强行拖慢我的写作速度，看看有没有什么变化。&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-25</updated><author><name>moe li</name></author><entry><title>发射电波中，少话</title><link rel="alternate" href="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"></link><id>https://lizi.moe/posts/Analysis-on-Soutaiseiriron/</id><updated>2026-08-25</updated><category term="杂谈"></category><summary>关于「相対性理論」的若干“理论”</summary><content type="html">&lt;!-- digest: e1a492d5 --&gt;
+&lt;p&gt;&lt;strong&gt;按：我发现我用中文写作的时候经常写的过快，导致文本时常严重欠考虑；所以试着换成了英文，从而强行拖慢我的写作速度，看看有没有什么变化。&lt;/strong&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; This article is my comments and analysis on a
 certain band.&lt;/p&gt;
@@ -334,7 +335,8 @@ unsettled.&lt;/p&gt;
 &lt;p&gt;So where, after all this, are my actual comments on the band? Well,
 perhaps I would prefer to leave that conclusion temporarily unsettled,
 too.&lt;/p&gt;
-&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>关于软件学院寒假项目的若干反思</title><link rel="alternate" href="https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/"></link><id>https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/</id><updated>2026-08-21</updated><category term="杂谈"></category><summary>好了，花点时间去讨论计算机科学有趣的难题，不再讨论这件事情了。</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>关于软件学院寒假项目的若干反思</title><link rel="alternate" href="https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/"></link><id>https://lizi.moe/posts/Reflections-on-NWPU-SSW-Winter-Project/</id><updated>2026-08-21</updated><category term="杂谈"></category><summary>好了，花点时间去讨论计算机科学有趣的难题，不再讨论这件事情了。</summary><content type="html">&lt;!-- digest: 97a7e864 --&gt;
+&lt;blockquote&gt;
 &lt;p&gt;今年 ICLR，哈工大学大胜，西工大学惨败！哈工大发表论文 83
 篇，西工大发表论文 8 篇！是谁负责？羞也不羞！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -448,7 +450,8 @@ Tier。质询学院老师时候我也提及了此问题，对方称答辩前的�
 &lt;strong&gt;即使这是软院两年来唯一一个确实利好我的政策。&lt;/strong&gt;
 结果讨论了半天我才反应过来，原来他们早就决定实施了，叫我们过去大概只是征求一下意见。搞半天我反对了个寂寞，只能说给他们提几个建设性意见，但愿最后别搞的太抽象就行了……&lt;/p&gt;
 &lt;p&gt;反正也不知道这个寒假作业到底有没有起到解决学生写不来代码问题的作用。好吧，至少钱是拿到了，没啥损失。&lt;/p&gt;
-&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer, I can walk!</summary><content type="html">&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>我如何停止焦虑并爱上 Vulkan</title><link rel="alternate" href="https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/"></link><id>https://lizi.moe/posts/How-I-Learned-to-Stop-Worrying-and-Love-Vulkan/</id><updated>2026-08-20</updated><category term="C++"></category><category term="图形学"></category><category term="Vulkan"></category><summary>Mein Fuhrer, I can walk!</summary><content type="html">&lt;!-- digest: 9e1ebd91 --&gt;
+&lt;p&gt;过去的两年里面，我总是十分急切地想要去证明一些什么事情，因而孜孜不倦地乐此不疲地投身于各种堪称自虐式的项目里面。这并不意味着我是个
 masochist，大概只是越来越激烈的就业和学业竞争使我愈发偏执了吧。&lt;/p&gt;
 &lt;p&gt;差不多一年前的这个时候
 &lt;em&gt;（另一个漫无止境的八月呀……）&lt;/em&gt;，我下了一个大愿心，那便是要在大二写出一个自己的图形引擎。一个原因是我当时陷入了某种虚无，非常想要寻找一点事情来做然后从中获得一点方向感；其次是，要是这个东西做出来了，学院期末时候有一门小组作业可以直接套，届时会比较方便，而且可以留足时间给期末复习。&lt;/p&gt;
@@ -807,7 +810,8 @@ codebase
 &lt;p&gt;很遗憾的是，在那之后，我并未能找到这样的一个项目来写。我意识到我整天就光顾着对着那块显示屏敲打键盘了，对自己的生活过的如何或者身边的人怎么样完全是不闻不问不管不顾，简直不能更卑琐了，但说实话我也不太清楚该从何时以何种形式做出改变。祸不单行，在那之后我又在情感上遭遇了挫折，随后其他各种破事也接踵而至。&lt;/p&gt;
 &lt;p&gt;自此我就没有一天是不难受的。&lt;/p&gt;
 &lt;p&gt;不过嘛，现在想来 Vulkan
-其实还是挺好玩的。那还能怎么样，继续用呗。&lt;/p&gt;</content></entry><entry><title>我们的国产2D动画……</title><link rel="alternate" href="https://lizi.moe/posts/The-Future-of-Chinese-Anime/"></link><id>https://lizi.moe/posts/The-Future-of-Chinese-Anime/</id><updated>2026-08-05</updated><category term="杂谈"></category><category term="动画"></category><summary>会变成，什么样子……</summary><content type="html">&lt;p&gt;前两天有人建议我去看B站新上的国产动画《记忆管理局》。&lt;/p&gt;
+其实还是挺好玩的。那还能怎么样，继续用呗。&lt;/p&gt;</content></entry><entry><title>我们的国产2D动画……</title><link rel="alternate" href="https://lizi.moe/posts/The-Future-of-Chinese-Anime/"></link><id>https://lizi.moe/posts/The-Future-of-Chinese-Anime/</id><updated>2026-08-05</updated><category term="杂谈"></category><category term="动画"></category><summary>会变成，什么样子……</summary><content type="html">&lt;!-- digest: 3306d94b --&gt;
+&lt;p&gt;前两天有人建议我去看B站新上的国产动画《记忆管理局》。&lt;/p&gt;
 &lt;p&gt;其实这部的一些预告啊宣传片小短片什么的我之前倒是看过，不过看完了也没有太关注（因为觉得等到播出的时候大概率是会给我推的）。而且居然选了今年各路神仙打架（包括但不限于科学猴的《穹庐下的魔女》《攻壳机动队》和京都动画的
 &lt;em&gt;被寄予厚望然而爆雷的&lt;/em&gt;
 《二十世纪电气目录》）的第三季度上线，想必资方和制作组都对它期待很高。&lt;/p&gt;
@@ -909,7 +913,8 @@ id=&quot;以作画绚丽为纲再到以剧情建设为中心&quot;&gt;以作画�
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;无论如何，饭要一口口吃，路要一步步走。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;期待以后更多国内艺术家创作出更佳优秀的作品。&lt;/p&gt;
-&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>博客迁移说明</title><link rel="alternate" href="https://lizi.moe/posts/Notes-on-Blog-Migration/"></link><id>https://lizi.moe/posts/Notes-on-Blog-Migration/</id><updated>2026-08-01</updated><summary>乔迁新居，可喜可贺。</summary><content type="html">&lt;p&gt;终于决定不用 Hexo 了，于是用又新又好的 dsv4-flash
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>博客迁移说明</title><link rel="alternate" href="https://lizi.moe/posts/Notes-on-Blog-Migration/"></link><id>https://lizi.moe/posts/Notes-on-Blog-Migration/</id><updated>2026-08-01</updated><summary>乔迁新居，可喜可贺。</summary><content type="html">&lt;!-- digest: 8c4dcb5c --&gt;
+&lt;p&gt;终于决定不用 Hexo 了，于是用又新又好的 dsv4-flash
 拿蛤丝壳写了个自用的博客框架。毕竟我一直都是国模的坚定支持者呀。&lt;/p&gt;
 &lt;p&gt;本来想要把之前写的东西往这里迁移一部分，结果发现当初刷系统的时候备份那些
 Markdown 的硬盘放学校里了。没办法，改天吧。&lt;/p&gt;</content></entry></feed>
