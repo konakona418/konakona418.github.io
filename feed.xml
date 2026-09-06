@@ -1,4 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-08-25</updated><author><name>moe li</name></author><entry><title>发射电波中，少话</title><link rel="alternate" href="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"></link><id>https://lizi.moe/posts/Analysis-on-Soutaiseiriron/</id><updated>2026-08-25</updated><category term="杂谈"></category><summary>关于「相対性理論」的若干“理论”</summary><content type="html">&lt;!-- digest: e1a492d5 --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-09-04</updated><author><name>moe li</name></author><entry><title>为什么我建议每个软院男大为了综测买一条裙子</title><link rel="alternate" href="https://lizi.moe/posts/Why-I-Suggest-Every-SSW-Male-Student-Buy-A-Dress/"></link><id>https://lizi.moe/posts/Why-I-Suggest-Every-SSW-Male-Student-Buy-A-Dress/</id><updated>2026-09-04</updated><category term="杂谈"></category><summary>内容包含医疗建议</summary><content type="html">&lt;!-- digest: ce61e63c --&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/img/ce61e63c/6cee6e92.jpg&quot;
+alt=&quot;What’s life without whimsey?&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;What’s life without whimsey?&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;本文提出一种全新理论：女装事实上对保研有好处。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;爱死亡与机器人&quot;&gt;爱，死亡与机器人&lt;/h3&gt;
+&lt;p&gt;一个非常著名的程序员笑话是说，穿上女装可以显著提高程序员的编程和
+debug
+能力。这个笑话似乎罔顾了女性程序员每天都穿女装的事实，而目前的研究并未在男性程序员和女性程序员的编码能力之间发现显著的区别（人人喊打的小红书炒作王
+LofiSu
+除外。当然，能够骗人骗的天衣无缝也是某种能力了，《猫鼠游戏》说是）。不过这个笑话似乎可以部分解释为什么大部分人会选择把
+LLM 拟人化为一些女性形象，如著名的 DeepSeek
+鲸鱼娘。自然，我们完全可以使用斎藤环在《战斗美少女的精神分析》中提出的菲勒斯少女之理论来解释这种倾向，就好像很多玩二游的会对女角色叫妈妈一样（呃呃）。据此，我们也可以非常不负责任地提出一种假说，即这种对穿着女性化服饰的具有女性化的特征的
+LLM
+拟人化角色的崇拜和前文提到的笑话本身来自一个心理学结构，也就是这种对于菲勒斯少女的崇拜。特别是，在这个笑话的起源可能是一部分极其优秀的程序员的确是具有女性化特征的男性（或者本来就是女性），从而导致了大众对程序员产生了某种刻板印象的情况下。一种对于强大的，神秘的，少女般的存在的崇拜。不过，有必要指出的是，同样没有研究证明女装的确对程序员编程能力有好处。&lt;/p&gt;
+&lt;h3
+id=&quot;怎么办我们水综测中的迫切问题&quot;&gt;怎么办？（我们水综测中的迫切问题）&lt;/h3&gt;
+&lt;p&gt;如果我们暂且接受前述理论，那么问题就变得非常简单了。即，程序员之所以崇拜女性化的强大存在，是因为女装与威能巨大的程序员之间存在某种尚未被充分认识的相关性。当然，这个笑话的理论主要主张的是女装和在工作岗位的突出表现的相关性。笔者十分好奇，女装是否和在保研上的优胜也有类似的尚未充分探明的相关性。&lt;/p&gt;
+&lt;p&gt;在此笔者先不加解释地将《关于印发〈西北工业大学软件学院本科生综合测评实施细则（2026版）〉的通知》附录
+5 备注 5 的内容辑录如下：&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;开源项目影响力分级表（最多计分 1 项，且 5
+个观测点数值须同时满足最低限）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;项目等级&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;Star&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;Fork&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;Watch&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;Issue&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;PR&lt;/th&gt;
+&lt;th style=&quot;text-align: right;&quot;&gt;分值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1-开源项目-基本价值&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥50&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥10&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥10&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥15&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥10&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2-开源项目-可用工具&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥300&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥50&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥15&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥60&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥30&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3-开源项目-解决痛点&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥800&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥120&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥30&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥160&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥60&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4-开源项目-成熟工具&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥3000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥450&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥100&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥500&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥250&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5-开源项目-细分前列&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥8000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥1000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥300&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥1200&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥600&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6-开源项目-领域标杆&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥20000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥2500&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥600&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥3200&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥1500&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;90&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7-开源项目-行业标准&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥50000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥5000&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥900&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥7500&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;≥3500&lt;/td&gt;
+&lt;td style=&quot;text-align: right;&quot;&gt;120&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;p&gt;也就是说，学院正在努力把开源贡献转化为绩效指标。只要我们设法把女装和这套量化指标桥接起来，我们就可以证明文章开头的结论了，即女装对保研有好处！&lt;/p&gt;
+&lt;h3 id=&quot;三天不女装赶不上阿斯托尔福&quot;&gt;三天不女装，赶不上阿斯托尔福&lt;/h3&gt;
+&lt;p&gt;问题来了，有没有一个项目，Star
+数非常多，而且对一群代码能力可能并不怎么样的汉语母语者男大贡献者非常友好呢？当然有！请看
+VCR。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://github.com/Cute-Dress/Dress&quot;
+class=&quot;uri&quot;&gt;http://github.com/Cute-Dress/Dress&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其数据如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Star  2841
+Fork  414
+Watch 19
+Issue 20
+PR    415
+
+Collected on 04/09/2026 20:30 UTC+8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时我们惊喜地发现，此项目完全符合学院对开源项目的定义，而且除了
+Watch
+以外，其余指标甚至都已经达到了相当高的档次。唯一的问题是这个项目到底是干什么的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;答曰：上传女装照片。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;鉴于学院似乎并没有对贡献的项目的用途进行规定，如此看来女装确实能加综测，虽然只有
+10
+分。但是蚊子再小也是肉，既然能加综测，那就是对保研有好处，只要思想不滑坡，办法总比困难多。我才不怕水综测，一听优绩主义我就高兴。三大赛算什么水综测，无非混几个比赛，做几个
+PPT；GitHub 贡献才叫水综测，有 PR 有 Review，听说还有
+CI。你们都不跟我走，我就重上圭峰山，重新穿女装！软院学生连作弊都不怕，还怕穿女装？坚持女装一百年不变，一直穿到全员保研为止！&lt;/p&gt;
+&lt;h3 id=&quot;穿越无尽的海洋前往月球&quot;&gt;穿越无尽的海洋前往月球&lt;/h3&gt;
+&lt;p&gt;我想吃饭了。&lt;/p&gt;
+&lt;p&gt;为什么这个学校到处都是海？到了晚上以后，工地给我的感觉就像海一样。当然我说的不是这里的海，而且西安没有海。但是北京就有海，而且云南大理也有海。月球上也有海，什么静海之类的海，我在这里指的也就是月球上的海。只有西安没有海。输麻了西安。晚上的时候越过学校里面无数的海洋就能到月球，海上飘着长得像打桩机的桅杆帆船，再然后就到了红沙发鸡公煲，吃一锅加腐竹加魔芋加贡菜加土豆的。而且，还要喝上几瓶上面画着吴京的大窑。我不喜欢喝大窑，但是他们说冰柜里面只剩下大窑了，我没得选。可是我去之前他们给我说什么饮料都有。我讨厌他们。&lt;/p&gt;
+&lt;p&gt;这样无比无聊的生活似乎先天就有一种永续性，也许参加工作之后的生活也会如此这般的无聊。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是你比谁都清楚，现在的生活是没法一直持续下去的，不是吗？&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I’m steady, calm. I slept well, no bad dreams. I am active and
+engaged…&lt;/p&gt;
+&lt;p&gt;— Maj. Roy McBride, &lt;em&gt;Ad Astra (2019)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;哥几个我简直想退出咯！&lt;/p&gt;
+&lt;h3 id=&quot;主義主義大好き&quot;&gt;&lt;span lang=&quot;ja&quot;&gt;主義主義大好き&lt;/span&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;几个月搞不清楚的东西，女装大佬一 PR 就清楚了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我不禁好奇，要是我真的去穿一件女装然后给 Dress 提
+PR，再光明正大地拿去申请综测会怎么样。&lt;/p&gt;
+&lt;p&gt;想必会有人因此大发雷霆，也许最后连班委那一环都过不去。老同志们也不好惹，你惹他，他便要跳出来骂娘。至少上次某编程项目答辩的时候有个人死活说我们报告是
+AI 写的，我怀疑只是因为我们用的
+Markdown。事实就是零个人在意这个报告到底是不是 AI
+写的，这件事情只取决于老同志的个人意志（即他们看你顺不顺眼），是不以客观事实为转移的。故而老同志们也是十五个吊桶打水七上八下，对我们的评价也是褒贬不一。&lt;/p&gt;
+&lt;p&gt;但问题在于，穿女装提交 PR
+然后去申请综测加分实际上不会违反任何一条加分规则。首先没有校规规定不能穿女装，GitHub
+没有禁止给 Dress 提 PR，且 Dress 也收这些
+PR，而综测加分（如果完全按照文件执行的话）只看数据不看别的。那有人肯定要扯什么含金量的问题。但话又说回来了，什么是含金量，含金量是谁规定的？含金量可以量化吗？一个
+core fix 和一个 doc typo fix
+的含金量一样吗？和女装照片的含金量一样吗？答案是
+&lt;strong&gt;他们不知道&lt;/strong&gt;
+才搞了个这个只看数据不看别的规则。那么按照这个规则来搞的话，
+&lt;strong&gt;女装照片就是可以得 10 分。&lt;/strong&gt; 不然这个规则就是搞笑。&lt;/p&gt;
+&lt;p&gt;于是就产生了一个非常幽默的局面。一方面要是他们不允许这个 PR
+算综测加分那么他们就是吃书；但是另一方面要是允许这个 PR
+算综测加分那有人的面子怕是挂不住，而那显然不是提交 PR
+的人的面子——在他决定如此做的时候，便已经不需要所谓面子这种东西了。正如意大利学者乔治·阿甘本所指出的，这种极其滑稽的完全基于严肃的规则的非严肃性与规则的并置事实上构成了一种对综测体系的
+&lt;strong&gt;亵渎&lt;/strong&gt; （profanation）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;没有办法，因为学院不听我们的，但却听夕摩的。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;在世界中心呼唤绩效主义的野兽&quot;&gt;在世界中心呼唤绩效主义的野兽&lt;/h3&gt;
+&lt;p&gt;说起来之前学院要求我们绑定一个什么太乙平台，要统计学院学生参与开源贡献的情况，好去评国家示范性软件学院，说是别的学校也在用这个评。我一看域名是个
+top，主页连移动端适配都没有，GitHub oauth 用的 app key
+还是一个测试用的，给我吓到了，绑定是不可能的，这辈子都不可能绑定的。&lt;/p&gt;
+&lt;p&gt;我说你要搞开源就开源嘛，搞个什么多校联合行动？&lt;/p&gt;
+&lt;h3 id=&quot;南国再见南国&quot;&gt;南国再见，南国&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RMS is …&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Dead, alive, dead, alive&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;— &lt;span lang=&quot;ja&quot;&gt;天天天国地獄国&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;哦对了，根据你院这个政策，Linux Kernel 贡献理论上一分都拿不到。Linus
+有什么厉害的？来我们院他也一样保不了研！&lt;/p&gt;
+&lt;p&gt;这下盼软归它公平了；一碗水端平，一视同仁，不也挺好么。反正在绩效主义跟前
+Linus 和女装大佬都是平等的，达标就是有分数，不达标就没有。当然，这不是说
+这些指标完全没有意义（虽然目前看来在 OpenClaw 这种 slop 都能拿一堆 Star
+的情况下我不好说）。但是先下一个指标，再让所有人的开源活动必须屈从于这个指标，达到指标就是好孩子，达不到指标就乡毋宁西开，是否有点不合适我就想问了。明明是要制定一个鼓励学生去搞开源的政策，最后制定出来的东西却反过来处处辖制学生。那我只能说这个比软著还不如了，软著卡含金量可没有他们卡的这么想当然张口就来肆无忌惮。以后大家都去给一堆大项目提
+slop PR，改改 typo
+然后学院宣布我们在开源活动上的胜利，最后大家都很开心。&lt;/p&gt;
+&lt;p&gt;是吗？&lt;/p&gt;
+&lt;p&gt;那当然是了。大家都有事情要忙，要卷绩点，要卷综测，要卷科研，要卷实习。请问开源贡献在这些面前算个什么？分拿到就行了，之后怎么办没人在乎。&lt;/p&gt;
+&lt;p&gt;只是， &lt;strong&gt;不为无益之事，何以遣有涯之生。&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>发射电波中，少话</title><link rel="alternate" href="https://lizi.moe/posts/Analysis-on-Soutaiseiriron/"></link><id>https://lizi.moe/posts/Analysis-on-Soutaiseiriron/</id><updated>2026-08-25</updated><category term="杂谈"></category><summary>关于「相対性理論」的若干“理论”</summary><content type="html">&lt;!-- digest: e1a492d5 --&gt;
 &lt;p&gt;&lt;strong&gt;按：我发现我用中文写作的时候经常写的过快，导致文本时常严重欠考虑；所以试着换成了英文，从而强行拖慢我的写作速度，看看有没有什么变化。&lt;/strong&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; This article is my comments and analysis on a

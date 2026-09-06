@@ -1,0 +1,274 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>为什么我建议每个软院男大为了综测买一条裙子</title><meta property="og:title" content="为什么我建议每个软院男大为了综测买一条裙子"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="内容包含医疗建议"><meta property="og:url" content="https://lizi.moe/posts/Why-I-Suggest-Every-SSW-Male-Student-Buy-A-Dress/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   wrapper.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  wrapper.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css?v=8cba4b1e"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>为什么我建议每个软院男大为了综测买一条裙子</h1><p class="post-meta"><time>2026-09-04</time><span class="post-tags"><a class="post-tag" href="/tags/杂谈/">杂谈</a></span><span class="post-meta-time">约 8 分钟</span></p><div class="post-body"><!-- digest: ce61e63c -->
+<figure>
+<img src="/img/ce61e63c/6cee6e92.jpg"
+alt="What’s life without whimsey?" />
+<figcaption aria-hidden="true">What’s life without whimsey?</figcaption>
+</figure>
+<p><strong>本文提出一种全新理论：女装事实上对保研有好处。</strong></p>
+<h3 id="爱死亡与机器人">爱，死亡与机器人</h3>
+<p>一个非常著名的程序员笑话是说，穿上女装可以显著提高程序员的编程和
+debug
+能力。这个笑话似乎罔顾了女性程序员每天都穿女装的事实，而目前的研究并未在男性程序员和女性程序员的编码能力之间发现显著的区别（人人喊打的小红书炒作王
+LofiSu
+除外。当然，能够骗人骗的天衣无缝也是某种能力了，《猫鼠游戏》说是）。不过这个笑话似乎可以部分解释为什么大部分人会选择把
+LLM 拟人化为一些女性形象，如著名的 DeepSeek
+鲸鱼娘。自然，我们完全可以使用斎藤环在《战斗美少女的精神分析》中提出的菲勒斯少女之理论来解释这种倾向，就好像很多玩二游的会对女角色叫妈妈一样（呃呃）。据此，我们也可以非常不负责任地提出一种假说，即这种对穿着女性化服饰的具有女性化的特征的
+LLM
+拟人化角色的崇拜和前文提到的笑话本身来自一个心理学结构，也就是这种对于菲勒斯少女的崇拜。特别是，在这个笑话的起源可能是一部分极其优秀的程序员的确是具有女性化特征的男性（或者本来就是女性），从而导致了大众对程序员产生了某种刻板印象的情况下。一种对于强大的，神秘的，少女般的存在的崇拜。不过，有必要指出的是，同样没有研究证明女装的确对程序员编程能力有好处。</p>
+<h3
+id="怎么办我们水综测中的迫切问题">怎么办？（我们水综测中的迫切问题）</h3>
+<p>如果我们暂且接受前述理论，那么问题就变得非常简单了。即，程序员之所以崇拜女性化的强大存在，是因为女装与威能巨大的程序员之间存在某种尚未被充分认识的相关性。当然，这个笑话的理论主要主张的是女装和在工作岗位的突出表现的相关性。笔者十分好奇，女装是否和在保研上的优胜也有类似的尚未充分探明的相关性。</p>
+<p>在此笔者先不加解释地将《关于印发〈西北工业大学软件学院本科生综合测评实施细则（2026版）〉的通知》附录
+5 备注 5 的内容辑录如下：</p>
+<hr />
+<p>开源项目影响力分级表（最多计分 1 项，且 5
+个观测点数值须同时满足最低限）</p>
+<table>
+<thead>
+<tr>
+<th>项目等级</th>
+<th style="text-align: right;">Star</th>
+<th style="text-align: right;">Fork</th>
+<th style="text-align: right;">Watch</th>
+<th style="text-align: right;">Issue</th>
+<th style="text-align: right;">PR</th>
+<th style="text-align: right;">分值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-开源项目-基本价值</td>
+<td style="text-align: right;">≥50</td>
+<td style="text-align: right;">≥10</td>
+<td style="text-align: right;">≥10</td>
+<td style="text-align: right;">≥15</td>
+<td style="text-align: right;">≥10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>2-开源项目-可用工具</td>
+<td style="text-align: right;">≥300</td>
+<td style="text-align: right;">≥50</td>
+<td style="text-align: right;">≥15</td>
+<td style="text-align: right;">≥60</td>
+<td style="text-align: right;">≥30</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>3-开源项目-解决痛点</td>
+<td style="text-align: right;">≥800</td>
+<td style="text-align: right;">≥120</td>
+<td style="text-align: right;">≥30</td>
+<td style="text-align: right;">≥160</td>
+<td style="text-align: right;">≥60</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr>
+<td>4-开源项目-成熟工具</td>
+<td style="text-align: right;">≥3000</td>
+<td style="text-align: right;">≥450</td>
+<td style="text-align: right;">≥100</td>
+<td style="text-align: right;">≥500</td>
+<td style="text-align: right;">≥250</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>5-开源项目-细分前列</td>
+<td style="text-align: right;">≥8000</td>
+<td style="text-align: right;">≥1000</td>
+<td style="text-align: right;">≥300</td>
+<td style="text-align: right;">≥1200</td>
+<td style="text-align: right;">≥600</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr>
+<td>6-开源项目-领域标杆</td>
+<td style="text-align: right;">≥20000</td>
+<td style="text-align: right;">≥2500</td>
+<td style="text-align: right;">≥600</td>
+<td style="text-align: right;">≥3200</td>
+<td style="text-align: right;">≥1500</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr>
+<td>7-开源项目-行业标准</td>
+<td style="text-align: right;">≥50000</td>
+<td style="text-align: right;">≥5000</td>
+<td style="text-align: right;">≥900</td>
+<td style="text-align: right;">≥7500</td>
+<td style="text-align: right;">≥3500</td>
+<td style="text-align: right;">120</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>也就是说，学院正在努力把开源贡献转化为绩效指标。只要我们设法把女装和这套量化指标桥接起来，我们就可以证明文章开头的结论了，即女装对保研有好处！</p>
+<h3 id="三天不女装赶不上阿斯托尔福">三天不女装，赶不上阿斯托尔福</h3>
+<p>问题来了，有没有一个项目，Star
+数非常多，而且对一群代码能力可能并不怎么样的汉语母语者男大贡献者非常友好呢？当然有！请看
+VCR。</p>
+<p><a href="http://github.com/Cute-Dress/Dress"
+class="uri">http://github.com/Cute-Dress/Dress</a></p>
+<p>其数据如下：</p>
+<pre><code>Star  2841
+Fork  414
+Watch 19
+Issue 20
+PR    415
+
+Collected on 04/09/2026 20:30 UTC+8</code></pre>
+<p>此时我们惊喜地发现，此项目完全符合学院对开源项目的定义，而且除了
+Watch
+以外，其余指标甚至都已经达到了相当高的档次。唯一的问题是这个项目到底是干什么的。</p>
+<p><strong>答曰：上传女装照片。</strong></p>
+<p>鉴于学院似乎并没有对贡献的项目的用途进行规定，如此看来女装确实能加综测，虽然只有
+10
+分。但是蚊子再小也是肉，既然能加综测，那就是对保研有好处，只要思想不滑坡，办法总比困难多。我才不怕水综测，一听优绩主义我就高兴。三大赛算什么水综测，无非混几个比赛，做几个
+PPT；GitHub 贡献才叫水综测，有 PR 有 Review，听说还有
+CI。你们都不跟我走，我就重上圭峰山，重新穿女装！软院学生连作弊都不怕，还怕穿女装？坚持女装一百年不变，一直穿到全员保研为止！</p>
+<h3 id="穿越无尽的海洋前往月球">穿越无尽的海洋前往月球</h3>
+<p>我想吃饭了。</p>
+<p>为什么这个学校到处都是海？到了晚上以后，工地给我的感觉就像海一样。当然我说的不是这里的海，而且西安没有海。但是北京就有海，而且云南大理也有海。月球上也有海，什么静海之类的海，我在这里指的也就是月球上的海。只有西安没有海。输麻了西安。晚上的时候越过学校里面无数的海洋就能到月球，海上飘着长得像打桩机的桅杆帆船，再然后就到了红沙发鸡公煲，吃一锅加腐竹加魔芋加贡菜加土豆的。而且，还要喝上几瓶上面画着吴京的大窑。我不喜欢喝大窑，但是他们说冰柜里面只剩下大窑了，我没得选。可是我去之前他们给我说什么饮料都有。我讨厌他们。</p>
+<p>这样无比无聊的生活似乎先天就有一种永续性，也许参加工作之后的生活也会如此这般的无聊。</p>
+<p><strong>但是你比谁都清楚，现在的生活是没法一直持续下去的，不是吗？</strong></p>
+<blockquote>
+<p>I’m steady, calm. I slept well, no bad dreams. I am active and
+engaged…</p>
+<p>— Maj. Roy McBride, <em>Ad Astra (2019)</em></p>
+</blockquote>
+<p>哥几个我简直想退出咯！</p>
+<h3 id="主義主義大好き"><span lang="ja">主義主義大好き</span></h3>
+<blockquote>
+<p>几个月搞不清楚的东西，女装大佬一 PR 就清楚了。</p>
+</blockquote>
+<p>我不禁好奇，要是我真的去穿一件女装然后给 Dress 提
+PR，再光明正大地拿去申请综测会怎么样。</p>
+<p>想必会有人因此大发雷霆，也许最后连班委那一环都过不去。老同志们也不好惹，你惹他，他便要跳出来骂娘。至少上次某编程项目答辩的时候有个人死活说我们报告是
+AI 写的，我怀疑只是因为我们用的
+Markdown。事实就是零个人在意这个报告到底是不是 AI
+写的，这件事情只取决于老同志的个人意志（即他们看你顺不顺眼），是不以客观事实为转移的。故而老同志们也是十五个吊桶打水七上八下，对我们的评价也是褒贬不一。</p>
+<p>但问题在于，穿女装提交 PR
+然后去申请综测加分实际上不会违反任何一条加分规则。首先没有校规规定不能穿女装，GitHub
+没有禁止给 Dress 提 PR，且 Dress 也收这些
+PR，而综测加分（如果完全按照文件执行的话）只看数据不看别的。那有人肯定要扯什么含金量的问题。但话又说回来了，什么是含金量，含金量是谁规定的？含金量可以量化吗？一个
+core fix 和一个 doc typo fix
+的含金量一样吗？和女装照片的含金量一样吗？答案是
+<strong>他们不知道</strong>
+才搞了个这个只看数据不看别的规则。那么按照这个规则来搞的话，
+<strong>女装照片就是可以得 10 分。</strong> 不然这个规则就是搞笑。</p>
+<p>于是就产生了一个非常幽默的局面。一方面要是他们不允许这个 PR
+算综测加分那么他们就是吃书；但是另一方面要是允许这个 PR
+算综测加分那有人的面子怕是挂不住，而那显然不是提交 PR
+的人的面子——在他决定如此做的时候，便已经不需要所谓面子这种东西了。正如意大利学者乔治·阿甘本所指出的，这种极其滑稽的完全基于严肃的规则的非严肃性与规则的并置事实上构成了一种对综测体系的
+<strong>亵渎</strong> （profanation）。</p>
+<p><strong>没有办法，因为学院不听我们的，但却听夕摩的。</strong></p>
+<h3 id="在世界中心呼唤绩效主义的野兽">在世界中心呼唤绩效主义的野兽</h3>
+<p>说起来之前学院要求我们绑定一个什么太乙平台，要统计学院学生参与开源贡献的情况，好去评国家示范性软件学院，说是别的学校也在用这个评。我一看域名是个
+top，主页连移动端适配都没有，GitHub oauth 用的 app key
+还是一个测试用的，给我吓到了，绑定是不可能的，这辈子都不可能绑定的。</p>
+<p>我说你要搞开源就开源嘛，搞个什么多校联合行动？</p>
+<h3 id="南国再见南国">南国再见，南国</h3>
+<blockquote>
+<p>RMS is …</p>
+<p><em>Dead, alive, dead, alive</em></p>
+<p>— <span lang="ja">天天天国地獄国</span></p>
+</blockquote>
+<p>哦对了，根据你院这个政策，Linux Kernel 贡献理论上一分都拿不到。Linus
+有什么厉害的？来我们院他也一样保不了研！</p>
+<p>这下盼软归它公平了；一碗水端平，一视同仁，不也挺好么。反正在绩效主义跟前
+Linus 和女装大佬都是平等的，达标就是有分数，不达标就没有。当然，这不是说
+这些指标完全没有意义（虽然目前看来在 OpenClaw 这种 slop 都能拿一堆 Star
+的情况下我不好说）。但是先下一个指标，再让所有人的开源活动必须屈从于这个指标，达到指标就是好孩子，达不到指标就乡毋宁西开，是否有点不合适我就想问了。明明是要制定一个鼓励学生去搞开源的政策，最后制定出来的东西却反过来处处辖制学生。那我只能说这个比软著还不如了，软著卡含金量可没有他们卡的这么想当然张口就来肆无忌惮。以后大家都去给一堆大项目提
+slop PR，改改 typo
+然后学院宣布我们在开源活动上的胜利，最后大家都很开心。</p>
+<p>是吗？</p>
+<p>那当然是了。大家都有事情要忙，要卷绩点，要卷综测，要卷科研，要卷实习。请问开源贡献在这些面前算个什么？分拿到就行了，之后怎么办没人在乎。</p>
+<p>只是， <strong>不为无益之事，何以遣有涯之生。</strong></p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/Analysis-on-Soutaiseiriron/">发射电波中，少话</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
