@@ -1,0 +1,151 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>少男终末旅行</title><meta property="og:title" content="少男终末旅行"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="如何开展 nerd 友好型的旅游活动"><meta property="og:url" content="https://lizi.moe/posts/Boys-Last-Tour/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   wrapper.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  wrapper.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css?v=7e751afd"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>少男终末旅行</h1><p class="post-meta"><time>2026-09-13</time><span class="post-tags"><a class="post-tag" href="/tags/杂谈，生活/">杂谈，生活</a></span><span class="post-meta-time">约 5 分钟</span></p><div class="post-body"><!-- digest: 243178bc -->
+<h3 id="我爱成都">我爱成都</h3>
+<p>五一节的时候和同学去成都玩了三天。成都！全四川乃至全西南的心脏，西部小北京！
+<del>绵阳！西部小衡水！</del>
+去成都那肯定看什么武侯祠杜甫草堂文殊院大熊猫逛太古里春熙路环球中心呀。周边还有都江堰还有新开放的张献忠江口沉银博物馆，温江还有很多好吃的，远点还能看三星堆之类的东西。那么问题来了，我们这三天一定过得很充实吧？</p>
+<p><strong>我们连滨寿司都没有吃！！</strong></p>
+<p>我是觉得如果几个人旅游已经懒到了去滨寿司排队打发时间都不乐意的话，那这几个人真的是懒得出奇或者多少有什么特异功能在的。</p>
+<blockquote>
+<p>我的老乡兼气功师严新就有特异功能，至少他如此声称。不过我暂未发现我和严新之间除了同属
+Homo Sapiens 外还有什么亲缘关系。</p>
+</blockquote>
+<p>于是每天都在酒店躺着耍电脑，要么就是外卖一堆酒在酒店喝。总之就是除了最后一天和网友逛了宜家看了小鲨鱼抱枕和在环球中心吃了顿饭以外没有干任何事情。本来说可以在负一楼打舞萌
+DX 的但是我说 DX 不如
+VK，所以他们最后放弃了这个计划。而且环球中心设计的很蠢，是一个巨大的开放空间还有穹顶，于是就在里面疯狂烧烤，制冷完全就是杯水车薪，根本不凉快。</p>
+<h3 id="现代视觉文化研究会">现代视觉文化研究会</h3>
+<p>其实你知道吗，漫展并不适合我们这种 nerd
+去。我国并没有日本那样的同人志文化，所以漫展更多的是一个 cosplay
+和卖一些周边的场合，换言之，中国的漫展更接近一种
+<strong>社交活动</strong> 而非
+<strong>学术活动</strong>。不过我不是想要制造一种二分，因为这两者只是各有侧重，而且这里的社交活动和学术活动的定义显然不是良基的，我只是借此简单阐释一下前文“不适合……”的原因。这里用良基这个词只是因为它放在这比较莫名其妙，没有抽象代数学上的意思。</p>
+<p>怎么办？想要解决问题，得先建模问题。我们完全可以使用一个有限状态机（FSM）来建模我们在这一案例中表现出的行为模式。</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">transfer ::</span> <span class="dt">TravelState</span> <span class="ot">-&gt;</span> <span class="dt">TravelState</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>transfer 去哪里 <span class="ot">=</span> 都行</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>transfer 都行 <span class="ot">=</span> 不太想去</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>transfer 不太想去 <span class="ot">=</span> 躺起</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>transfer 躺起 <span class="ot">=</span> 去哪里</span></code></pre></div>
+<p>也就是说只可能在这个里面永远循环下去了，如何破局？</p>
+<h3
+id="通往奴役之路威权主义的旅行计划编排法">通往奴役之路——威权主义的旅行计划编排法</h3>
+<p>In this blog post, we propose a novel orchestration methodology of
+travel plans, namely the <em>Authoritarian Travel Planning</em> (ATP),
+and it has nothing to do with adenosine triphosphate, which also
+abbreviates as ATP. However, as we don’t have any degree in
+biochemistry, we’d rather stop being talkative on the adenosine
+stuff.</p>
+<p>We suggest that, an ideal travel plan which accomodates nerds’ needs
+should satisfy:</p>
+<ol type="1">
+<li>pre-designed</li>
+<li>lengthy</li>
+<li>non-cancelable</li>
+</ol>
+<p>Pre-designed means that the plan is – and can be – designed before
+the trip and should not be altered except for unexpected bad conditions
+(e.g. extreme weather).</p>
+<p>Lengthy means that the plan needs to cost more than 8h per day.</p>
+<p>Non-cancelable means that the plan cannot be cancelled mid-term, and
+this constraint must be posed by the activity itself rather than some
+rules.</p>
+<p>我立刻能想到的一个方案是徒步。徒步计划主要就是一个路线，路线往往是固定的；一些中档路线的徒步往往要很久；徒步不可能走一半取消。所以综上，徒步是最好的
+nerd 旅游活动！</p>
+<h3 id="宜家俱乐部">宜家俱乐部</h3>
+<p>感觉不如宜家。</p>
+<p>宜家是一个非常后资本主义的景观，在这里，消费者可以参观游览各类以
+<strong>景观</strong>（spectacle）
+形式呈现给他们的一系列家居场景（如居伊·德波在《景观社会》一书中阐释的理论），在中途享受从货架上自动长出来的肉丸土豆泥和冰淇淋冰饮料，并在结束后在巨大整齐排列如法西斯纪念碑式（monumental）的大型仓储中由工作人员取下或由快递发送至家中，并在结束后享用冰淇淋与热狗。而在家中拼装的过程给作为小资产者的消费者一种虚妄的劳动之幻象（illusion）。而且宜家营造出的另一个景观是，消费者自以为在这个过程中是自由的，即自由这个概念本身作为一种可观赏或者消费的产品：他们可以选择游览或者不游览一些景观，挑选或者不挑选一些商品。甚至于，他们可以通过宜家提供的一些捷径（shortcut）快速地在不同展厅之间穿梭，制造出人为的断裂。但是他们在这个过程中并非
+<strong>自觉</strong>
+（self-aware）的。例如，他们往往不被允许倒着行进：楼层之间的电梯断绝了这种可能性。即，消费者完全是也不得不被这种资本主义的大型仓储设施牵著鼻子走，这似乎对我们的社会结构构成了一个奇怪的隐喻，也就是</p>
+<blockquote>
+<p>注意！这里有语词的断裂（字面意义上的）。</p>
+</blockquote>
+<p>好了，我编不下去了，总之我同学在成都宜家答应回去以后去西安的宜家买小鲨鱼送我，到现在他还是没有买，气煞我也。</p></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/Long-March-from-Changan-to-Youyi/">从长安校区骑车到了友谊校区</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>

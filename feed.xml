@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-09-12</updated><author><name>moe li</name></author><entry><title>从长安校区骑车到了友谊校区</title><link rel="alternate" href="https://lizi.moe/posts/Long-March-from-Changan-to-Youyi/"></link><id>https://lizi.moe/posts/Long-March-from-Changan-to-Youyi/</id><updated>2026-09-12</updated><category term="生活"></category><summary>雄关漫道真如铁，而今迈步从头越</summary><content type="html">&lt;!-- digest: 98013bf3 --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-09-13</updated><author><name>moe li</name></author><entry><title>少男终末旅行</title><link rel="alternate" href="https://lizi.moe/posts/Boys-Last-Tour/"></link><id>https://lizi.moe/posts/Boys-Last-Tour/</id><updated>2026-09-13</updated><category term="杂谈，生活"></category><summary>如何开展 nerd 友好型的旅游活动</summary><content type="html">&lt;!-- digest: 243178bc --&gt;
+&lt;h3 id=&quot;我爱成都&quot;&gt;我爱成都&lt;/h3&gt;
+&lt;p&gt;五一节的时候和同学去成都玩了三天。成都！全四川乃至全西南的心脏，西部小北京！
+&lt;del&gt;绵阳！西部小衡水！&lt;/del&gt;
+去成都那肯定看什么武侯祠杜甫草堂文殊院大熊猫逛太古里春熙路环球中心呀。周边还有都江堰还有新开放的张献忠江口沉银博物馆，温江还有很多好吃的，远点还能看三星堆之类的东西。那么问题来了，我们这三天一定过得很充实吧？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我们连滨寿司都没有吃！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我是觉得如果几个人旅游已经懒到了去滨寿司排队打发时间都不乐意的话，那这几个人真的是懒得出奇或者多少有什么特异功能在的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的老乡兼气功师严新就有特异功能，至少他如此声称。不过我暂未发现我和严新之间除了同属
+Homo Sapiens 外还有什么亲缘关系。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;于是每天都在酒店躺着耍电脑，要么就是外卖一堆酒在酒店喝。总之就是除了最后一天和网友逛了宜家看了小鲨鱼抱枕和在环球中心吃了顿饭以外没有干任何事情。本来说可以在负一楼打舞萌
+DX 的但是我说 DX 不如
+VK，所以他们最后放弃了这个计划。而且环球中心设计的很蠢，是一个巨大的开放空间还有穹顶，于是就在里面疯狂烧烤，制冷完全就是杯水车薪，根本不凉快。&lt;/p&gt;
+&lt;h3 id=&quot;现代视觉文化研究会&quot;&gt;现代视觉文化研究会&lt;/h3&gt;
+&lt;p&gt;其实你知道吗，漫展并不适合我们这种 nerd
+去。我国并没有日本那样的同人志文化，所以漫展更多的是一个 cosplay
+和卖一些周边的场合，换言之，中国的漫展更接近一种
+&lt;strong&gt;社交活动&lt;/strong&gt; 而非
+&lt;strong&gt;学术活动&lt;/strong&gt;。不过我不是想要制造一种二分，因为这两者只是各有侧重，而且这里的社交活动和学术活动的定义显然不是良基的，我只是借此简单阐释一下前文“不适合……”的原因。这里用良基这个词只是因为它放在这比较莫名其妙，没有抽象代数学上的意思。&lt;/p&gt;
+&lt;p&gt;怎么办？想要解决问题，得先建模问题。我们完全可以使用一个有限状态机（FSM）来建模我们在这一案例中表现出的行为模式。&lt;/p&gt;
+&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre
+class=&quot;sourceCode haskell&quot;&gt;&lt;code class=&quot;sourceCode haskell&quot;&gt;&lt;span id=&quot;cb1-1&quot;&gt;&lt;a href=&quot;#cb1-1&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;ot&quot;&gt;transfer ::&lt;/span&gt; &lt;span class=&quot;dt&quot;&gt;TravelState&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;dt&quot;&gt;TravelState&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb1-2&quot;&gt;&lt;a href=&quot;#cb1-2&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;transfer 去哪里 &lt;span class=&quot;ot&quot;&gt;=&lt;/span&gt; 都行&lt;/span&gt;
+&lt;span id=&quot;cb1-3&quot;&gt;&lt;a href=&quot;#cb1-3&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;transfer 都行 &lt;span class=&quot;ot&quot;&gt;=&lt;/span&gt; 不太想去&lt;/span&gt;
+&lt;span id=&quot;cb1-4&quot;&gt;&lt;a href=&quot;#cb1-4&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;transfer 不太想去 &lt;span class=&quot;ot&quot;&gt;=&lt;/span&gt; 躺起&lt;/span&gt;
+&lt;span id=&quot;cb1-5&quot;&gt;&lt;a href=&quot;#cb1-5&quot; aria-hidden=&quot;true&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;transfer 躺起 &lt;span class=&quot;ot&quot;&gt;=&lt;/span&gt; 去哪里&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;也就是说只可能在这个里面永远循环下去了，如何破局？&lt;/p&gt;
+&lt;h3
+id=&quot;通往奴役之路威权主义的旅行计划编排法&quot;&gt;通往奴役之路——威权主义的旅行计划编排法&lt;/h3&gt;
+&lt;p&gt;In this blog post, we propose a novel orchestration methodology of
+travel plans, namely the &lt;em&gt;Authoritarian Travel Planning&lt;/em&gt; (ATP),
+and it has nothing to do with adenosine triphosphate, which also
+abbreviates as ATP. However, as we don’t have any degree in
+biochemistry, we’d rather stop being talkative on the adenosine
+stuff.&lt;/p&gt;
+&lt;p&gt;We suggest that, an ideal travel plan which accomodates nerds’ needs
+should satisfy:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;pre-designed&lt;/li&gt;
+&lt;li&gt;lengthy&lt;/li&gt;
+&lt;li&gt;non-cancelable&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pre-designed means that the plan is – and can be – designed before
+the trip and should not be altered except for unexpected bad conditions
+(e.g. extreme weather).&lt;/p&gt;
+&lt;p&gt;Lengthy means that the plan needs to cost more than 8h per day.&lt;/p&gt;
+&lt;p&gt;Non-cancelable means that the plan cannot be cancelled mid-term, and
+this constraint must be posed by the activity itself rather than some
+rules.&lt;/p&gt;
+&lt;p&gt;我立刻能想到的一个方案是徒步。徒步计划主要就是一个路线，路线往往是固定的；一些中档路线的徒步往往要很久；徒步不可能走一半取消。所以综上，徒步是最好的
+nerd 旅游活动！&lt;/p&gt;
+&lt;h3 id=&quot;宜家俱乐部&quot;&gt;宜家俱乐部&lt;/h3&gt;
+&lt;p&gt;感觉不如宜家。&lt;/p&gt;
+&lt;p&gt;宜家是一个非常后资本主义的景观，在这里，消费者可以参观游览各类以
+&lt;strong&gt;景观&lt;/strong&gt;（spectacle）
+形式呈现给他们的一系列家居场景（如居伊·德波在《景观社会》一书中阐释的理论），在中途享受从货架上自动长出来的肉丸土豆泥和冰淇淋冰饮料，并在结束后在巨大整齐排列如法西斯纪念碑式（monumental）的大型仓储中由工作人员取下或由快递发送至家中，并在结束后享用冰淇淋与热狗。而在家中拼装的过程给作为小资产者的消费者一种虚妄的劳动之幻象（illusion）。而且宜家营造出的另一个景观是，消费者自以为在这个过程中是自由的，即自由这个概念本身作为一种可观赏或者消费的产品：他们可以选择游览或者不游览一些景观，挑选或者不挑选一些商品。甚至于，他们可以通过宜家提供的一些捷径（shortcut）快速地在不同展厅之间穿梭，制造出人为的断裂。但是他们在这个过程中并非
+&lt;strong&gt;自觉&lt;/strong&gt;
+（self-aware）的。例如，他们往往不被允许倒着行进：楼层之间的电梯断绝了这种可能性。即，消费者完全是也不得不被这种资本主义的大型仓储设施牵著鼻子走，这似乎对我们的社会结构构成了一个奇怪的隐喻，也就是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意！这里有语词的断裂（字面意义上的）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;好了，我编不下去了，总之我同学在成都宜家答应回去以后去西安的宜家买小鲨鱼送我，到现在他还是没有买，气煞我也。&lt;/p&gt;</content></entry><entry><title>从长安校区骑车到了友谊校区</title><link rel="alternate" href="https://lizi.moe/posts/Long-March-from-Changan-to-Youyi/"></link><id>https://lizi.moe/posts/Long-March-from-Changan-to-Youyi/</id><updated>2026-09-12</updated><category term="生活"></category><summary>雄关漫道真如铁，而今迈步从头越</summary><content type="html">&lt;!-- digest: 98013bf3 --&gt;
 &lt;p&gt;骑了三十多公里哈啰单车，给我累麻了。&lt;/p&gt;
 &lt;p&gt;大致路线是从学校往关中环线到西太路到太白南路。途中经过沣河，另外往太平峪口方向绕了一下，太平峪即现今西太公路的讫点；而老的所谓西太公路讫点似乎是现今太乙宫镇一带，有包茂高速的一个入口。网络地图上还看到一个什么藤原豆腐店，不知道怎么回事。&lt;/p&gt;
 &lt;p&gt;结束以后和同学吃了云南菜并喝了酒，虽然医生叫我不要喝酒。&lt;/p&gt;</content></entry><entry><title>再见绝望陕西</title><link rel="alternate" href="https://lizi.moe/posts/Sayonara-Zetsubou-Shaanxi/"></link><id>https://lizi.moe/posts/Sayonara-Zetsubou-Shaanxi/</id><updated>2026-09-09</updated><category term="杂谈"></category><category term="烹饪"></category><summary>很显然，本文标题系《再见！绝望先生》的谐音梗</summary><content type="html">&lt;!-- digest: 29f2a689 --&gt;
