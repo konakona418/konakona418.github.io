@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-09-13</updated><author><name>moe li</name></author><entry><title>少男终末旅行</title><link rel="alternate" href="https://lizi.moe/posts/Boys-Last-Tour/"></link><id>https://lizi.moe/posts/Boys-Last-Tour/</id><updated>2026-09-13</updated><category term="杂谈"></category><category term="生活"></category><summary>如何开展 nerd 友好型的旅游活动</summary><content type="html">&lt;!-- digest: 243178bc --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>李萌的博客</title><link rel="alternate" href="https://lizi.moe/"></link><id>https://lizi.moe/</id><updated>2026-09-15</updated><author><name>moe li</name></author><entry><title>夏天的终结</title><link rel="alternate" href="https://lizi.moe/posts/Endless-Summers-End/"></link><id>https://lizi.moe/posts/Endless-Summers-End/</id><updated>2026-09-15</updated><category term="杂谈"></category><category term="生活"></category><summary>好了好了，这下好了</summary><content type="html">&lt;!-- digest: 9e5c7737 --&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/img/9e5c7737/990116b2.jpg&quot; alt=&quot;好想死啊好想死&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;好想死啊好想死&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h3 id=&quot;马塞尔杜尚和他的泉&quot;&gt;马塞尔·杜尚和他的《泉》&lt;/h3&gt;
+&lt;p&gt;我上大学以后写的第一个项目是什么来着？&lt;/p&gt;
+&lt;p&gt;那个时候 LLM 还远没有现在发达，我感觉当时 ChatGPT
+都有点笨笨的感觉，充其量只能算是个有问必答的助理；没两年 LLM
+就已经发展成了这个样子，属实令人讶异，现在我都不需要写代码，只用给 GPT
+派任务就行了。有时候自作聪明干预它，反而会整出事情来。当时刚进竞赛基地，那时候人型组还有点钱，虽然是流放厕所旁边，每天都闻那个臭不可闻的味道，时不时就飘来缕缕暗香。但是毕竟经费到底是有的，马桶味就忍了吧；这两年倒是搬到宽敞明亮干净整洁的办公室里面了，和团委的为人民服务的诸公位列一栋楼里，但是大课题组发的钱却反而变少了，不知道是不是所有人只要进了那栋楼，就也要响应清正廉洁大公无私，时刻准备为组织利益牺牲个人利益的号召了。宇树机器人看的我实在心痒痒，要是有钱，我宁愿去坐厕所旁边呀！当然，不用呆在厕所旁边也有钱就最好了。&lt;/p&gt;
+&lt;p&gt;总之那个时候确实还是在厕所旁边。&lt;/p&gt;
+&lt;h3 id=&quot;webassembly-技术在-flv-视频即时转封装中的应用&quot;&gt;WebAssembly
+技术在 FLV 视频即时转封装中的应用&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WebAssembly 在 FLV 转 fMP4
+中具有潜在的优势，主要体现在性能提升、跨平台兼容性、流媒体处理效率、轻量级部署和开发者友好等方面……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span lang=&quot;ja&quot;&gt;その時&lt;/span&gt; 我在学
+Rust，就琢磨着怎么写个项目练手。然后不知道哪根筋搭错了，看到 flv.js
+就想要写个 flv.rs 用 WASM
+跑在浏览器里面。于是每天就坐在基地里面写代码，从傍晚写到凌晨，写了三周居然写出来了。当然客观来讲这个项目写的是非常拉胯的。最早我不知道
+WASM 的模型不允许多线程，于是开了好几个线程互相
+&lt;code&gt;mpsc::channel&lt;/code&gt; 发送消息，最后迁移时不得不大重构；不会用
+serde，于是解析和构造全部手写；没有任何零拷贝也就算了，而且还
+&lt;code&gt;.clone()&lt;/code&gt; 满天飞。而且生命周期也乱七八糟的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于浏览器的安全性限制，Rust 标准库中的线程实现无法直接应用于
+WebAssembly。因此，本项目选择放弃多线程功能，尽管在某些场景下多线程可能更为高效。然而，考虑到与本实验项目性质类似的
+flv.js
+默认采用单线程，且其多线程模式并不稳定，可以认为这种潜在的性能损失对程序的整体效率影响较小。在牺牲程序稳定性的前提下追求性能提升并不具有成本效益。因此，对于此方面的优化可暂缓讨论。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但是到底是能跑起来了，虽然第一次跑起来还有一个诡异的画面闪回问题，排查了一周多才排查出来
+&lt;strong&gt;帧的 decode time 和 presentation time
+是不一样的，而我默认把两者的 offset 置为了 0&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;总的来说虽然中途坐牢完了，但是最后出来结果的时候是真给我高兴坏了，反复换各种视频播放，令人感叹。&lt;/p&gt;
+&lt;p&gt;另外软院新生研讨课论文是拿这个项目水的。那时候学院还没有要求人人会
+YOLO 且人人 &lt;strong&gt;必须做&lt;/strong&gt; YOLO。&lt;/p&gt;
+&lt;h3 id=&quot;心的规律与自大狂&quot;&gt;心的规律与自大狂&lt;/h3&gt;
+&lt;p&gt;我写完这个项目我感觉我牛逼到爆炸了！试问哪个大一学生做得到？我马上就能找到音视频处理相关工作了！&lt;/p&gt;
+&lt;p&gt;后来我才知道在国内音视频处理并不好找工作。得知这个不幸的消息后，我毅然转战游戏引擎开发，随后发现引擎开发也不好找工作。&lt;/p&gt;
+&lt;h3 id=&quot;西安森林&quot;&gt;西安森林&lt;/h3&gt;
+&lt;p&gt;至少那个时候我还是相信，只要投入足够多时间和精力，我便能文能武，无所不能了。当时总是跟别人说，我肯定是热爱着计算机科学的，总是对别人说，计算机科学给我带来无数惊奇。但是现在想来大概就是立牌坊然后自我标榜罢了。与其说是热爱计算机科学，倒不如说是没什么别的东西可以热爱了，于是就像抱着救命稻草一样死死抓着这个东西不放。前段时间有个同学跟我吐槽说感到十分迷茫，不知道未来要干什么。难道我就不迷茫吗，完全不知道以后要做什么。但我进校的时候就已经知道会这样了，在其他人都还非常开心充满希望的时候。最后总会变得迷茫而无所适从，说到底又是什么支撑我一直走下去的呢。倒不如说是沿着“学计算机”这个诱导出来的
+trajectory
+走下去成为了目的本身了吧。说什么不要否定掉之前的自己做的工作，不要否定掉自己轻狂时候的冒险（哦不
+Jarred Sumner……），不要否定掉计算机行业，不要变得 cynical，don’t take
+the black pill（Andrew Kelley 语），但说到底只有 andrewk
+这种水平的人才能站着说这种话还不自觉腰疼吧，其他卡在中间上不去下不来的人怎么办就只有天知道了。&lt;/p&gt;
+&lt;p&gt;有个同学跟我说不喜欢《漂流少年》的结局。但说实话我还挺喜欢的，我认为这个结局在一定程度上构成了对于我们一群人，乃至一代人即将经历或者正在经历的创伤的某种隐喻。所以从这个角度上来讲这个作品是有时代精神的。但是至少长良自己选择了回归“惨淡的”现实世界，而有些人甚至没得选。不论主动选择还是被动接受，“回去”本身并不代表事情的结束。某种意义上它甚至是事情的开始。我感觉我有点不知道怎么编了，所以闲话休题——&lt;/p&gt;
+&lt;p&gt;——夏天就要结束了。奇幻的冒险就要结束了。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</content></entry><entry><title>少男终末旅行</title><link rel="alternate" href="https://lizi.moe/posts/Boys-Last-Tour/"></link><id>https://lizi.moe/posts/Boys-Last-Tour/</id><updated>2026-09-13</updated><category term="杂谈"></category><category term="生活"></category><summary>如何开展 nerd 友好型的旅游活动</summary><content type="html">&lt;!-- digest: 243178bc --&gt;
 &lt;h3 id=&quot;我爱成都&quot;&gt;我爱成都&lt;/h3&gt;
 &lt;p&gt;五一节的时候和同学去成都玩了三天。成都！全四川乃至全西南的心脏，西部小北京！
 &lt;del&gt;绵阳！西部小衡水！&lt;/del&gt;
