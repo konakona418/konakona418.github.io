@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flv-rs · WASM static deployment demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>flv-rs · WASM static deployment demo</h1>
+      <p class="hint">
+        Pick a local FLV file and transmux it to fMP4 in the browser. All
+        parsing happens in WebAssembly; the page itself is fully static.
+      </p>
+
+      <div class="controls">
+        <input id="file" type="file" accept=".flv,video/x-flv" />
+        <button id="download" disabled>Download MP4</button>
+      </div>
+
+      <p id="status" class="status">Waiting for a file…</p>
+      <video id="player" controls playsinline></video>
+
+      <footer>
+        Build: <code>./build.sh</code> · Deploy: upload the
+        <code>www/</code> directory to any static host
+      </footer>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
