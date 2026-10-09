@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="嚯嚯嚯，夸张哦"><title>梦日记</title><meta property="og:title" content="梦日记"><meta property="og:type" content="article"><meta property="og:site_name" content="李萌的博客"><meta property="og:description" content="我感到无比的鲜香与麻辣"><meta property="og:url" content="https://lizi.moe/posts/Yume-Nikki/"><script>(function () {
+ var stored = localStorage.getItem("burogu-theme");
+ if (stored === "dark" || stored === "light") {
+  document.documentElement.setAttribute("data-theme", stored);
+ }
+})();
+document.addEventListener("DOMContentLoaded", function () {
+ var button = document.querySelector(".theme-toggle");
+ if (!button) { return; }
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var moonSvg = '<svg ' + svgAttrs + '><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+ var sunSvg = '<svg ' + svgAttrs + '><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+ function apply(theme) {
+  if (theme === "dark" || theme === "light") {
+   document.documentElement.setAttribute("data-theme", theme);
+  } else {
+   document.documentElement.removeAttribute("data-theme");
+  }
+  button.innerHTML = theme === "dark" ? sunSvg : moonSvg;
+ }
+ apply(localStorage.getItem("burogu-theme"));
+ button.addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  localStorage.setItem("burogu-theme", next);
+  apply(next);
+ });
+});
+</script><script>document.addEventListener("DOMContentLoaded", function () {
+ var langNames = {
+  haskell: "Haskell", c: "C", "c++": "C++", cpp: "C++", cxx: "C++",
+  python: "Python", javascript: "JavaScript", js: "JavaScript",
+  typescript: "TypeScript", ts: "TypeScript", rust: "Rust", go: "Go",
+  java: "Java", kotlin: "Kotlin", swift: "Swift", ruby: "Ruby", php: "PHP",
+  perl: "Perl", lua: "Lua", r: "R", julia: "Julia", scala: "Scala",
+  elixir: "Elixir", erlang: "Erlang", clojure: "Clojure", lisp: "Lisp",
+  ocaml: "OCaml", "f#": "F#", fsharp: "F#", "c#": "C#", cs: "C#",
+  shell: "Shell", sh: "Shell", bash: "Shell", zsh: "Shell",
+  sql: "SQL", html: "HTML", css: "CSS", xml: "XML", json: "JSON",
+  yaml: "YAML", toml: "TOML", ini: "INI", markdown: "Markdown", md: "Markdown",
+  text: "Text", diff: "Diff", makefile: "Makefile", dockerfile: "Dockerfile",
+  cmake: "CMake", nix: "Nix", latex: "LaTeX", matlab: "MATLAB",
+  pascal: "Pascal", fortran: "Fortran", ada: "Ada", assembly: "Assembly",
+  asm: "Assembly", groovy: "Groovy", dart: "Dart", prolog: "Prolog",
+  scheme: "Scheme", zig: "Zig", nim: "Nim"
+ };
+ var svgAttrs = 'xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+ var copySvg = '<svg ' + svgAttrs + '><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+ var checkSvg = '<svg ' + svgAttrs + '><polyline points="20 6 9 17 4 12"/></svg>';
+ var xSvg = '<svg ' + svgAttrs + '><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+ var blocks = document.querySelectorAll("pre > code");
+ blocks.forEach(function (code) {
+  var pre = code.parentElement;
+  var wrapper = document.createElement("div");
+  wrapper.className = "code-block";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+  var lang = null;
+  code.className.split(/\s+/).forEach(function (cls) {
+   if (cls !== "sourceCode" && lang === null) { lang = cls; }
+  });
+  if (lang) {
+   var label = document.createElement("span");
+   label.className = "code-lang";
+   label.textContent = langNames[lang] || lang;
+   wrapper.appendChild(label);
+  }
+  var button = document.createElement("button");
+  button.className = "copy-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Copy code");
+  button.innerHTML = copySvg;
+  button.addEventListener("click", function () {
+   var fail = function () {
+    button.innerHTML = xSvg;
+    setTimeout(function () { button.innerHTML = copySvg; }, 800);
+   };
+   if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () {
+     button.innerHTML = checkSvg;
+     setTimeout(function () { button.innerHTML = copySvg; }, 800);
+    }, fail);
+   } else {
+    fail();
+   }
+  });
+  wrapper.appendChild(button);
+ });
+});
+</script><link rel="stylesheet" href="/style.css?v=6b856d78"></head><body><header class="site-header"><nav><a class="site-name" href="/">李萌的博客</a><a href="/about/">关于</a><a href="/tags/">标签</a><a href="/archive/">归档</a><a href="/search/">搜索</a></nav></header><main><article><h1>梦日记</h1><p class="post-meta"><time>2026-10-09</time><span class="post-tags"><a class="post-tag" href="/tags/杂谈/">杂谈</a><span class="post-tag-sep"> · </span><a class="post-tag" href="/tags/生活/">生活</a></span><span class="post-meta-time">约 3 分钟</span></p><div class="post-body"><h3 id="死神来了">死神来了</h3>
+<p>晚上梦到了坐飞机，梦到了无比真实的空难场景。我梦到飞机先是突然失去动力，随后往下俯冲，我梦见各种东西在空中四散，饮料杯杂志呕吐袋和我的手机，一切的一切都失重了，悬浮在空中，“仿佛”梦境一般，然后随着过载全部往我背后飞去。我刚想要伸手抓我飞出去的手机，就被过载按在椅背上。</p>
+<p>有那么一瞬间我真的以为我要死了，我感到了无比真实的恐惧，也就是对于死亡本身的恐惧。但是——但是在最后一刻我觉得我已经和一切都和解了，我没有任何遗憾，我对我的生活和我的整个人生十分满意，可以说是我彻底释怀了，就在短短的几秒之内。我怀疑，如果在那一瞬间我起床然后来个法官宣判我死刑立即执行，我真的能坦然走上刑场。</p>
+<p>但是紧接着就梦到了无比虚假的碰撞，虚假到仅仅有一个“碰撞了”的这么一个事实的暗示，而由于我没法梦到死亡本身（鉴于我没有死亡的体验），因此我的大脑只好找来剧痛来模拟——死亡是这样的吗？在不知道持续了多久的梦中剧痛后总算是醒过来了，醒来还是寝室的天花板。</p>
+<h3 id="komm-süsser-tod">komm süsser tod</h3>
+<p>梦境中最后释怀的那一刻这应该是我很长一段时间最快乐的时候了，我总算不用处理任何事情了，一切都要结束了——一切都要结束了！我如此想着。所有的狗屁破事和烂摊子都是别人的了，我就要死了，我会坦然的接受这个事实然后去死。</p>
+<p>另外，我在受到惊吓的时候会解离。解离了以后，看世界就像做梦一般。因此，梦里面的东西仿佛就是我死前的解离一般。也就是说，那时候我的体验和我真的要面对死亡本身，其实没什么区别。</p>
+<p>除了死亡本身真的会把我干死以外。</p>
+<h3 id="自私的基因">自私的基因</h3>
+<p>人不应该想到死亡的。碱基序列如此决定。它希望我们能够存续，发展，繁衍生息。</p>
+<p>是什么东西给了我们连碱基序列的敕令都可以违抗的能力？还是说，这就是它的意图？</p>
+<p>为什么人这种生物不能设计为每天都快乐呢？</p>
+<p><strong>因为他们都被自然选择淘汰掉了吗？</strong></p>
+<h3 id="发条橙">发条橙</h3>
+<blockquote>
+<p><strong>Fluvoxamine</strong>, sold under the brand name
+<strong>Luvox</strong> among others, is an antidepressant of the
+selective serotonin reuptake inhibitor (SSRI) class. It is primarily
+used to treat major depressive disorder and, perhaps more especially,
+obsessive–compulsive disorder (OCD), but is also used to treat anxiety
+disorders such as panic disorder, social anxiety disorder, and
+post-traumatic stress disorder.</p>
+<p>Fluvoxamine’s side-effect profile is similar to that of other SSRIs.
+Common adverse effects include constipation, gastrointestinal problems,
+headache, anxiety, irritation, sexual problems, dry mouth, sleep
+problems, <strong>and an increased risk of suicide</strong> at the start
+of treatment.</p>
+<p>— Wikipedia</p>
+</blockquote></div><nav class="post-nav"><div class="post-nav-next"><span class="post-nav-label">下一篇</span><a href="/posts/Thoughts-on-Long-Egg-Tarts/">关于超长蛋挞的一点迷思</a></div></nav></article></main><footer class="site-footer"><nav class="footer-links"><a href="/rss/">RSS</a>·<a href="https://github.com/konakona418">GitHub</a></nav><p>© moe li · Generated with Burogu</p><button class="theme-toggle" type="button" aria-label="切换暗色模式"></button></footer></body></html>
